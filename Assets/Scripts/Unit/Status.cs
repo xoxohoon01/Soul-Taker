@@ -6,12 +6,12 @@ public class Status : MonoBehaviour
 {
     public Stat HP;
     public Stat MP;
-    public Stat MoveSpeed;
-    public Stat AttackSpeed;
     public Stat Damage;
     public Stat Defense;
-    public Stat HP_Regeneration;
-    public Stat MP_Regeneration;
+    public Stat MoveSpeed;
+    public Stat AttackSpeed;
+    public Stat HPRegeneration;
+    public Stat MPRegeneration;
     public Stat DrainLife;
 
     private void Update()
