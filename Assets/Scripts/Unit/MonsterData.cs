@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterData : MonoBehaviour
+public class MonsterData
 {
+    public string Name;
+    public string Description;
+
     public float HP;
     public float MP;
     public float Damage;
