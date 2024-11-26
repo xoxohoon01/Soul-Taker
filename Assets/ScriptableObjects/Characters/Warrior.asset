@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   HP: 100
-  MP: 100
+  MP: 80
+  Damage: 7
+  Defense: 10
   MoveSpeed: 5
   AttackSpeed: 3
-  Damage: 10
-  Defense: 10
   HPRegeneration: 5
   MPRegeneration: 5
   DrainLife: 0
-  HPPerLevel: 10
-  MPPerLevel: 10
+  HPPerLevel: 12
+  MPPerLevel: 7
   DamagePerLevel: 2
-  DefensePerLevel: 2
+  DefensePerLevel: 3
   HPRegenerationPerLevel: 1
   MPRegenerationPerLevel: 1

@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c2adb03aa04ec42b0bdfbfd9947e8a, type: 3}
   m_Name: Mage
   m_EditorClassIdentifier: 
-  HP: 100
-  MP: 100
+  HP: 75
+  MP: 120
+  Damage: 14
+  Defense: 6
   MoveSpeed: 5
-  AttackSpeed: 3
-  Damage: 10
-  Defense: 10
+  AttackSpeed: 2
   HPRegeneration: 5
-  MPRegeneration: 5
+  MPRegeneration: 7
   DrainLife: 0
   HPPerLevel: 10
-  MPPerLevel: 10
-  DamagePerLevel: 2
-  DefensePerLevel: 2
+  MPPerLevel: 12
+  DamagePerLevel: 3
+  DefensePerLevel: 1
   HPRegenerationPerLevel: 1
   MPRegenerationPerLevel: 1

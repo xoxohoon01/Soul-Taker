@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c2adb03aa04ec42b0bdfbfd9947e8a, type: 3}
   m_Name: Rogue
   m_EditorClassIdentifier: 
-  HP: 100
+  HP: 90
   MP: 100
-  MoveSpeed: 5
-  AttackSpeed: 3
   Damage: 10
-  Defense: 10
+  Defense: 8
+  MoveSpeed: 5
+  AttackSpeed: 4
   HPRegeneration: 5
   MPRegeneration: 5
   DrainLife: 0
-  HPPerLevel: 10
-  MPPerLevel: 10
-  DamagePerLevel: 2
+  HPPerLevel: 8
+  MPPerLevel: 7
+  DamagePerLevel: 4
   DefensePerLevel: 2
   HPRegenerationPerLevel: 1
   MPRegenerationPerLevel: 1
