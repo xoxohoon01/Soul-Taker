@@ -5,20 +5,20 @@ using UnityEngine.Serialization;
 
 public class UIInventory : MonoBehaviour
 {
-    public ItemSlot[] itemSlots;
+    public ItemSlot[] slots;
     public GameObject inventoryUI;
     public Transform slotPanel;
 
     private void Start()
     {
         inventoryUI.SetActive(false);
-        itemSlots = new ItemSlot[slotPanel.childCount];
+        slots = new ItemSlot[slotPanel.childCount];
 
-        for (int i = 0; i < itemSlots.Length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
-            itemSlots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
-            itemSlots[i].index = i;
-            itemSlots[i].inventory = this;
+            slots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
+            slots[i].index = i;
+            slots[i].inventory = this;
         }
     }
 
@@ -38,14 +38,14 @@ public class UIInventory : MonoBehaviour
     {
         return inventoryUI.activeInHierarchy;
     }
-
+    
     public void AddItem(ItemData itemData)
     {
-        for (int i = 0; i < itemSlots.Length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
-            if (itemSlots[i].item == null)
+            if (slots[i].item == null)
             {
-                itemSlots[i].item = itemData;
+                slots[i].item = itemData;
                 UpdateUI();
                 return;
             }
@@ -54,15 +54,25 @@ public class UIInventory : MonoBehaviour
 
     public void RemoveItem(int index)
     {
-        if (index >= 0 && index < itemSlots.Length)
+        if (index >= 0 && index < slots.Length)
         {
-            itemSlots[index].item = null;
+            slots[index].item = null;
             UpdateUI();
         }
     }
     
-    private void UpdateUI()
+    public void UpdateUI()
     {
-        
+        for(int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].item != null)
+            {
+                slots[i].Set();
+            }
+            else
+            {
+                slots[i].Clear();
+            }
+        }
     }
 }

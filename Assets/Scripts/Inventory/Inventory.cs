@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
 {
     private const int MaxItems = 30;
     public List<ItemData> items = new List<ItemData>();
+    public UIInventory inventoryUI;
 
     public bool AddItem(ItemData itemData)
     {
@@ -21,7 +22,14 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(ItemData itemData)
     {
-        itemData = new ItemData();
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (inventoryUI.slots[i].index == itemData.itemId)
+            {
+                items.Remove(items[i]);
+            }
+        }
+        
     }
     
     public void RemoveItem(int number)
