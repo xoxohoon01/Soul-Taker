@@ -4,36 +4,101 @@ using UnityEditor;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
-{
-    private const int MaxItems = 30;
-    public List<ItemData> items = new List<ItemData>();
-    public UIInventory inventoryUI;
+{ 
+    public Transform slotPanel;
+    public UIInventory uiInventory;
 
-    public bool AddItem(ItemData itemData)
+    private void Start()
     {
-        if (items.Count >= MaxItems)
-        {
-            return false;
-        }
+        uiInventory.gameObject.SetActive(false);
+        uiInventory.slots = new ItemSlot[slotPanel.childCount];
 
-        items.Add(itemData);
-        return true;
+        for (int i = 0; i < uiInventory.slots.Length; i++)
+        {
+            uiInventory.slots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
+            uiInventory.slots[i].index = i;
+            uiInventory.slots[i].inventory = uiInventory;
+        }
     }
 
-    public void RemoveItem(ItemData itemData)
+    public void Toggle()
     {
-        for (int i = 0; i < items.Count; i++)
+        if (IsOpen())
         {
-            if (inventoryUI.slots[i].index == itemData.itemId)
-            {
-                items.Remove(items[i]);
-            }
+            uiInventory.gameObject.SetActive(false);
         }
-        
+        else
+        {
+            uiInventory.gameObject.SetActive(true);
+        }
+    }
+
+    public bool IsOpen()
+    {
+        return uiInventory.gameObject.activeInHierarchy;
     }
     
-    public void RemoveItem(int number)
+    public void AddItem(ItemData data)
     {
-        items[number] = new ItemData();
+        //ItemData data = CharacterManager.Instance.Player.itemData;
+
+        if (data.canStack)
+        {
+            ItemSlot slot = GetItemStack(data);
+            if(slot != null)
+            {
+                slot.quantity++;
+                uiInventory.UpdateUI();
+                //CharacterManager.Instance.Player.itemData = null;
+                return;
+            }
+        }
+
+        ItemSlot emptySlot = GetEmptySlot();
+
+        if(emptySlot != null)
+        {
+            emptySlot.item = data;
+            emptySlot.quantity = 1;
+            uiInventory.UpdateUI();
+            //CharacterManager.Instance.Player.itemData = null;
+            return;
+        }
+
+        RemoveItem(data.itemId);
+        //CharacterManager.Instance.Player.itemData = null;
+    }
+
+    public void RemoveItem(int index)
+    {
+        if (index >= 0 && index < uiInventory.slots.Length)
+        {
+            uiInventory.slots[index].item = null;
+            uiInventory.UpdateUI();
+        }
+    }
+    
+    ItemSlot GetItemStack(ItemData data)
+    {
+        for(int i = 0; i < uiInventory.slots.Length; i++)
+        {
+            if (uiInventory.slots[i].item == data && uiInventory.slots[i].quantity < data.maxStackAmount)
+            {
+                return uiInventory.slots[i];
+            }
+        }
+        return null;
+    }
+
+    ItemSlot GetEmptySlot()
+    {
+        for(int i = 0; i < uiInventory.slots.Length; i++)
+        {
+            if (uiInventory.slots[i].item == null)
+            {
+                return uiInventory.slots[i];
+            }
+        }
+        return null;
     }
 }
