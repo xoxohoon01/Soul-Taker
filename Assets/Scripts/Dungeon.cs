@@ -6,6 +6,7 @@ public class Dungeon
     public string Description; // 던전 설명 
     public int Difficulty; // 던전 난이도 
     public int PlayerLevel; // 적정 플레이어 레벨 
+    public int[] Spawner; // 스포너 데이터
 }
 
 
