@@ -59,6 +59,15 @@ namespace Database
 		public System.Int32 ID;
 		public System.String displayName;
 		public System.String description;
+		public System.String icon;
+		public System.Int32 itemType;
+		public System.Int32 equipmentType;
+		public System.Single hp;
+		public System.Single mp;
+		public System.Single damage;
+		public System.Single defense;
+		public System.Single moveSpeed;
+		public System.Single attackSpeed;
   
 
 #region fuctions

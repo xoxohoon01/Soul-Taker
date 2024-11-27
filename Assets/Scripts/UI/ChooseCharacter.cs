@@ -9,21 +9,23 @@ public class ChooseCharacter : MonoBehaviour
     public CharacterType type;
     public void Choose()
     {
-        switch (type)
-        {
-            case CharacterType.Warrior:
-                CharacterCreator.Instance.nowCharacter = DatabaseManager.Instance.CharacterDB[0];
-                break;
-            case CharacterType.Archer:
-                CharacterCreator.Instance.nowCharacter = DatabaseManager.Instance.CharacterDB[1];
-                break;
-            case CharacterType.Mage:
-                CharacterCreator.Instance.nowCharacter = DatabaseManager.Instance.CharacterDB[2];
-                break;
-            case CharacterType.Rogue:
-                CharacterCreator.Instance.nowCharacter = DatabaseManager.Instance.CharacterDB[3];
-                break;
-        }
+        Character newCharacter = new Character();
+        newCharacter.HP = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.MP = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.Damage = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.Defense = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.MoveSpeed = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.AttackSpeed = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.HPRegeneration = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.MPRegeneration = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.DrainLife = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.HPPerLevel = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.MPPerLevel = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.DamagePerLevel = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.DefensePerLevel = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.HPRegenerationPerLevel = Database.Characters.CharactersMap[(int)type].HP;
+        newCharacter.MPRegenerationPerLevel = Database.Characters.CharactersMap[(int)type].HP;
+        CharacterCreator.Instance.nowCharacter = newCharacter;
         CharacterCreator.Instance.CreateNewCharacter();
     }
 }
