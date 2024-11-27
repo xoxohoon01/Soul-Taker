@@ -24,7 +24,7 @@ namespace Database
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
-        static string sheetID = "19687772"; // it is sheet id
+        static string sheetID = "182253627"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
@@ -57,8 +57,10 @@ namespace Database
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.String displayName;
-		public System.String description;
+		public UnityEngine.Vector3 SpawnPosition;
+		public System.Int32 MonsterID;
+		public System.Int32 SpawnCount;
+		public System.Int32 MonsterLevel;
   
 
 #region fuctions

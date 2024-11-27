@@ -6,6 +6,11 @@ public class Spawndata: MonoSingleton<Spawndata>
     public Spawn[] spawn;
     public GameObject GameObject; // 임시 몬스터 프리펩
     public GameObject GameObject2;
+
+    public void Awake()
+    {
+        TestSpawnData();
+    }
     private void TestSpawnData()
     {
         spawn = new Spawn[]

@@ -9,6 +9,7 @@ public class SpawnSystem : MonoBehaviour
     [Tooltip("풀링된 오브젝트")]
     [SerializeField] private GameObject[] objectPool;
 
+    public Spawndata spawnData;
     
     private void Awake()
     {

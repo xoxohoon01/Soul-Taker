@@ -15,7 +15,7 @@ public class DungeonManager : MonoBehaviour
     }
     private void Start()
     {
-        dungeondata = Dungeondata.Instance.dungeon[0];
+        dungeondata = Dungeondata.Instance.dungeon[CurrentDungeonIndex];
         CreatSpawner();
     }
 
@@ -24,7 +24,8 @@ public class DungeonManager : MonoBehaviour
         for (int i = 0; i < dungeondata.Spawner.Length; i++)
         {
             GameObject newSpawner = Instantiate(SpawnerPrefab);
-           
+            //newSpawner.GetComponent<SpawnSystem>().spawnData = Spawndata.Instance.spawn[0];
+            //스폰시스템 쪽에 겟데이터 함수를 만들고, 이 함수에서 
         }
     }
 
