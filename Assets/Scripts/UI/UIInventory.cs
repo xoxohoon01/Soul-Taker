@@ -7,11 +7,14 @@ using UnityEngine.Serialization;
 public class UIInventory : MonoBehaviour
 {
     public ItemSlot[] slots;
-    public GameObject inventoryUI;
+    public GameObject inventoryWindow;
+    public Transform slotPanel;
     public Inventory inventory;
     
     private ItemSlot selectedItem;
     private int selectedItemIndex;
+    
+    [Header("Select Item")]
     public TextMeshProUGUI selectedItemName;
     public TextMeshProUGUI selectedItemDescription;
     public TextMeshProUGUI selectedItemStatName;

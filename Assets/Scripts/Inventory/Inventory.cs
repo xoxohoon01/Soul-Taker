@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 { 
-    public Transform slotPanel;
     public UIInventory uiInventory;
 
     private void Start()
     {
         uiInventory.gameObject.SetActive(false);
-        uiInventory.slots = new ItemSlot[slotPanel.childCount];
+        uiInventory.slots = new ItemSlot[uiInventory.slotPanel.childCount];     //자식들의 개수만큼 슬롯 생성
 
         for (int i = 0; i < uiInventory.slots.Length; i++)
         {
-            uiInventory.slots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
+            uiInventory.slots[i] = uiInventory.slotPanel.GetChild(i).GetComponent<ItemSlot>();
             uiInventory.slots[i].index = i;
             uiInventory.slots[i].inventory = uiInventory;
         }

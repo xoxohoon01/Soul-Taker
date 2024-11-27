@@ -14,9 +14,9 @@ public class ItemSlot : MonoBehaviour
     public TextMeshProUGUI quatityText;
     private Outline outline;
     
-    public int index;
-    public bool equipped;
-    public int quantity;
+    public int index;           //몇번째 아이템 슬롯인지 확인하는 번호
+    public bool equipped;       //장착확인
+    public int quantity;        //갯수
     
     private void Awake()
     {
