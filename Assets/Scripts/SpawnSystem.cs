@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterSpawnSystem : MonoBehaviour
+public class SpawnSystem : MonoBehaviour
 {
     [Tooltip("스폰 위치 배열")]
     [SerializeField] private Vector3[] spawnPositions; // 임시, 생성 규칙 그리드로 변경 예정 
@@ -11,11 +11,11 @@ public class MonsterSpawnSystem : MonoBehaviour
 
     private void Awake()
     {
-        objectPool = new GameObject[SpawnManger.Instance.spawndata.spawns[0].SpawnCount];
+        objectPool = new GameObject[SpawnManger.Instance.spawn.SpawnCount];
 
-        for (int i = 0; i < SpawnManger.Instance.spawndata.spawns[0].SpawnCount; i++)
+        for (int i = 0; i < SpawnManger.Instance.spawn.SpawnCount; i++)
         {
-            GameObject obj = Instantiate(SpawnManger.Instance.spawndata.spawns[0].MonsterTestprefab);
+            GameObject obj = Instantiate(SpawnManger.Instance.spawn.MonsterTestprefab);
             obj.SetActive(false); 
             obj.transform.SetParent(this.transform); 
             objectPool[i] = obj;
@@ -32,7 +32,7 @@ public class MonsterSpawnSystem : MonoBehaviour
 
     public void Spawn()
     {
-        for (int i = 0; i < SpawnManger.Instance.spawndata.spawns[0].SpawnCount; i++)
+        for (int i = 0; i < SpawnManger.Instance.spawn.SpawnCount; i++)
         {
             if (i >= spawnPositions.Length)
                 break;

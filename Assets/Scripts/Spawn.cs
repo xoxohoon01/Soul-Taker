@@ -12,10 +12,3 @@ public class Spawn
     public int MonsterLevel; // 생성할 몬스터 레벨 
 }
 
-[System.Serializable]
-public class Spawndata
-{
-    // 맵에서 여러 개의 스포너를 가지고 있어야 되기 때문에 배열로 저장 
-    public Spawn[] spawns;
-}
-
