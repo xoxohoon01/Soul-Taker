@@ -1,29 +1,31 @@
 ﻿using UnityEngine;
 
-public class DungeonManager : MonoSingleton<DungeonManager>
+public class DungeonManager : MonoBehaviour 
 {
     public bool isClear = false; // 클리어 여부 확인
-    public GameObject[] Spawns = null; // 생성할 스포너 배열로 저장
+    public GameObject SpawnerPrefab; // 생성할 스포너 프리펩
+    public GameObject[] Spawns = null; // 생성된 스포너를 담을 배열 
 
+    [SerializeField] private int CurrentDungeonIndex = 0;
+    [SerializeField] private Dungeon dungeondata;
+
+    private void Awake()
+    {
+        SpawnerPrefab = Resources.Load<GameObject>("Spawn");
+    }
     private void Start()
     {
-        // 현재 던전 데이터 초기화
-        // 스포너 초기화
-
-        // DungeonID에 맞는 스포너를 배열로 저장해서 넣어야 함 
-        //Spawns = new GameObject[SpawnManger.Instance.spawn.DungeonID];
-
-        for (int i = 0; i < SpawnManger.Instance.spawn.SpawnCount; i++)
-        {
-            GameObject obj = Instantiate(SpawnManger.Instance.spawn.MonsterTestprefab);
-            Spawns[i] = obj;
-        }
+        dungeondata = Dungeondata.Instance.dungeon[0];
+        CreatSpawner();
     }
 
-    private void DungeonEnter() 
+    private void CreatSpawner()
     {
-        // 각 구역마다 스포너 초기화
-        // 관련 퀘스트 상태 '진행중'으로 변경
+        for (int i = 0; i < dungeondata.Spawner.Length; i++)
+        {
+            GameObject newSpawner = Instantiate(SpawnerPrefab);
+           
+        }
     }
 
     private void DungeonClear() 

@@ -9,17 +9,18 @@ public class SpawnSystem : MonoBehaviour
     [Tooltip("풀링된 오브젝트")]
     [SerializeField] private GameObject[] objectPool;
 
+    
     private void Awake()
     {
-        objectPool = new GameObject[SpawnManger.Instance.spawn.SpawnCount];
+        //objectPool = new GameObject[Spawndata.Instance.spawn.SpawnCount];
 
-        for (int i = 0; i < SpawnManger.Instance.spawn.SpawnCount; i++)
-        {
-            GameObject obj = Instantiate(SpawnManger.Instance.spawn.MonsterTestprefab);
-            obj.SetActive(false); 
-            obj.transform.SetParent(this.transform); 
-            objectPool[i] = obj;
-        }
+        //for (int i = 0; i < Spawndata.Instance.spawn.SpawnCount; i++)
+        //{
+        //    GameObject obj = Instantiate(Spawndata.Instance.spawn.MonsterTestprefab);
+        //    obj.SetActive(false); 
+        //    obj.transform.SetParent(this.transform); 
+        //    objectPool[i] = obj;
+        //}
     }
 
     private void Start()
@@ -27,24 +28,24 @@ public class SpawnSystem : MonoBehaviour
         // 일정 반경 안에서 플레이어를 찾으면 활성화
         // 콜라이더를 설정해서 enter 콜라이더로 활성화
         // 또는 플레이어가 방에 입장했을 때 onEnter?Invoke 활성화
-        Spawn();
+        //Spawn();
     }
 
-    public void Spawn()
-    {
-        for (int i = 0; i < SpawnManger.Instance.spawn.SpawnCount; i++)
-        {
-            if (i >= spawnPositions.Length)
-                break;
+    //public void Spawn()
+    //{
+    //    for (int i = 0; i < Spawndata.Instance.spawn.SpawnCount; i++)
+    //    {
+    //        if (i >= spawnPositions.Length)
+    //            break;
 
-            GameObject obj = objectPool[i];
-            if (!obj.activeInHierarchy)
-            {
-                obj.transform.localPosition = spawnPositions[i]; 
-                obj.SetActive(true); 
-            }
-        }
-    }
+    //        GameObject obj = objectPool[i];
+    //        if (!obj.activeInHierarchy)
+    //        {
+    //            obj.transform.localPosition = spawnPositions[i]; 
+    //            obj.SetActive(true); 
+    //        }
+    //    }
+    //}
 
     public void DeactivateAllObjects()
     {
