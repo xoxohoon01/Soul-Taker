@@ -1,19 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Player : Unit
 {
     public Character character;
-    private Status status;
 
     public float Level;
     public float EXP;
 
-    private void Awake()
+    protected new void Awake()
     {
-        status = GetComponent<Status>();
+        base.Awake();
     }
     private void Start()
     {
