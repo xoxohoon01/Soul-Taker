@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2185407710681530454}
-  - component: {fileID: 8353153747113943401}
+  - component: {fileID: -5150753463062696413}
   m_Layer: 0
   m_Name: DatabaseManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8353153747113943401
+--- !u!114 &-5150753463062696413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,9 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e505006a7c1a63a4fa1a4de4567bb857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDontDestroyOnLoad: 1
-  CharacterDB:
-  - {fileID: 11400000, guid: 6f833b3e887d23a4e8d1187160b5236e, type: 2}
-  - {fileID: 11400000, guid: efeea6de153e349499b39c4f2b56b796, type: 2}
-  - {fileID: 11400000, guid: f8b8399a05d262b499750d2e05ef8ec8, type: 2}
-  - {fileID: 11400000, guid: a269ee568702020429c263da14dd7b01, type: 2}
+  isDontDestroyOnLoad: 0
