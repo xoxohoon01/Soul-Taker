@@ -106,12 +106,14 @@ public class UIInventory : MonoBehaviour
                 switch (selectedItem.consumables[i].type)
                 {
                     case ConsumableType.Health:
-                        //condition.Heal(selectedItem.item.consumables[i].value); break;
+                        //condition.Heal(selectedItem.item.consumables[i].value);       해당 함수를 통해서 체력을 회복시키는 코드
+                        break;
                     case ConsumableType.Hunger:
                         //condition.Eat(selectedItem.item.consumables[i].value);break;
                         break;
                 }
             }
+            
             RemoveSelctedItem();
         }
     }
