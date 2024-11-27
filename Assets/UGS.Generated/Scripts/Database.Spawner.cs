@@ -17,10 +17,10 @@ using UnityEngine;
 namespace Database
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class Spawners : ITable
+    public partial class Spawner : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<Spawners> loadedList, Dictionary<int, Spawners> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<Spawner> loadedList, Dictionary<int, Spawner> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
@@ -29,27 +29,27 @@ namespace Database
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, Spawners> SpawnersMap = new Dictionary<int, Spawners>();  
-        public static List<Spawners> SpawnersList = new List<Spawners>();   
+        public static Dictionary<int, Spawner> SpawnerMap = new Dictionary<int, Spawner>();  
+        public static List<Spawner> SpawnerList = new List<Spawner>();   
 
         /// <summary>
-        /// Get Spawners List 
+        /// Get Spawner List 
         /// Auto Load
         /// </summary>
-        public static List<Spawners> GetList()
+        public static List<Spawner> GetList()
         {{
            if (isLoaded == false) Load();
-           return SpawnersList;
+           return SpawnerList;
         }}
 
         /// <summary>
-        /// Get Spawners Dictionary, keyType is your sheet A1 field type.
+        /// Get Spawner Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, Spawners>  GetDictionary()
+        public static Dictionary<int, Spawner>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return SpawnersMap;
+           return SpawnerMap;
         }}
 
     
@@ -57,10 +57,8 @@ namespace Database
 /* Fields. */
 
 		public System.Int32 ID;
-		public UnityEngine.Vector3 SpawnPosition;
-		public System.Int32 MonsterID;
-		public System.Int32 SpawnCount;
-		public System.Int32 MonsterLevel;
+		public System.String displayName;
+		public System.String description;
   
 
 #region fuctions
@@ -71,7 +69,7 @@ namespace Database
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("Spawners is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("Spawner is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -87,7 +85,7 @@ namespace Database
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<Spawners>, Dictionary<int, Spawners>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<Spawner>, Dictionary<int, Spawner>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -115,14 +113,14 @@ namespace Database
                
 
 
-    public static (List<Spawners> list, Dictionary<int, Spawners> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, Spawners> Map = new Dictionary<int, Spawners>();
-            List<Spawners> List = new List<Spawners>();     
+    public static (List<Spawner> list, Dictionary<int, Spawner> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, Spawner> Map = new Dictionary<int, Spawner>();
+            List<Spawner> List = new List<Spawner>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Spawners).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Spawner).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["Spawners"];
+            var sheet = jsonObject["Spawner"];
 
             foreach (var column in sheet.Keys)
             {
@@ -141,7 +139,7 @@ namespace Database
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            Spawners instance = new Spawners();
+                            Spawner instance = new Spawner();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -182,8 +180,8 @@ namespace Database
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            SpawnersList = List;
-                            SpawnersMap = Map;
+                            SpawnerList = List;
+                            SpawnerMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -193,10 +191,10 @@ namespace Database
 
  
 
-        public static void Write(Spawners data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(Spawner data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Spawners).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Spawner).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {
