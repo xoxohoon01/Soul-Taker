@@ -16,14 +16,14 @@ public class Inventory : MonoBehaviour
         {
             uiInventory.slots[i] = uiInventory.slotPanel.GetChild(i).GetComponent<ItemSlot>();
             uiInventory.slots[i].index = i;
-            uiInventory.slots[i].inventory = uiInventory;
+            uiInventory.slots[i].uiInventory = uiInventory;
         }
     }
     
-    public void AddItem(ItemData data)
+    public void AddItem()      //아이템 추가
     {
-        //ItemData data = CharacterManager.Instance.Player.itemData;
-
+        //ItemData data = CharacterManager.Instance.Player.itemData;    //아이템 데이터 받아오기-----------------어케함??
+        ItemData data = new ItemData();         //오류뜨는거 임시로 막아두기 아이템 데이터 받아오면 이 코드 지우기 ----------------------------
         if (data.canStack)
         {
             ItemSlot slot = GetItemStack(data);
@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
             {
                 slot.quantity++;
                 uiInventory.UpdateUI();
-                //CharacterManager.Instance.Player.itemData = null;
+                //CharacterManager.Instance.Player.itemData = null;     아이템을 가져왔으니 다시 지운다
                 return;
             }
         }
@@ -47,20 +47,22 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        RemoveItem(data.itemId);
+        WarnInventoryFull();
         //CharacterManager.Instance.Player.itemData = null;
     }
 
-    public void RemoveItem(int index)
+    public void RemoveItem(ItemData data)       //아이템 파괴 어떻게 시키지???
     {
+        /*
         if (index >= 0 && index < uiInventory.slots.Length)
         {
             uiInventory.slots[index].item = null;
             uiInventory.UpdateUI();
         }
+        */      //Destroy(data); 사용해서 아이템 지울려니깐 매개변수 타입이 Object여서 안되네...
     }
     
-    ItemSlot GetItemStack(ItemData data)
+    private ItemSlot GetItemStack(ItemData data)            //소모품 중복 슬롯 찾기
     {
         for(int i = 0; i < uiInventory.slots.Length; i++)
         {
@@ -72,7 +74,7 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
-    ItemSlot GetEmptySlot()
+    private ItemSlot GetEmptySlot()                         //비어있는 슬롯 가져오기 
     {
         for(int i = 0; i < uiInventory.slots.Length; i++)
         {
@@ -82,5 +84,10 @@ public class Inventory : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void WarnInventoryFull()                //아이템 슬롯이 꽉 찼을시 보내는 문구
+    {
+        Debug.Log("아이템 슬롯이 가득찼습니다");            //빈 슬롯이 없으니 안내문구를 보낸다.
     }
 }
