@@ -24,6 +24,23 @@ public class UIInventory : MonoBehaviour
     public GameObject unEquipButton;
     public GameObject dropButton;
     
+    public void Toggle()            //인벤토리 키 눌렀을때 인벤토리 나오게 하는 함수
+    {
+        if (IsOpen())
+        {
+            inventoryWindow.SetActive(false);
+        }
+        else
+        {
+            inventoryWindow.SetActive(true);
+        }
+    }
+
+    public bool IsOpen()
+    {
+        return inventoryWindow.activeInHierarchy;
+    }
+    
     public void UpdateUI()
     {
         for(int i = 0; i < slots.Length; i++)

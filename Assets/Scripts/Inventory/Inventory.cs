@@ -19,23 +19,6 @@ public class Inventory : MonoBehaviour
             uiInventory.slots[i].inventory = uiInventory;
         }
     }
-
-    public void Toggle()
-    {
-        if (IsOpen())
-        {
-            uiInventory.gameObject.SetActive(false);
-        }
-        else
-        {
-            uiInventory.gameObject.SetActive(true);
-        }
-    }
-
-    public bool IsOpen()
-    {
-        return uiInventory.gameObject.activeInHierarchy;
-    }
     
     public void AddItem(ItemData data)
     {
