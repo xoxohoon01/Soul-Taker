@@ -31,7 +31,7 @@ public class ItemSlot : MonoBehaviour
     public void Set()
     {
         icon.gameObject.SetActive(true);
-        icon.sprite = item.icon;
+        //icon.sprite = item.icon;                                  //-----------아이콘 JSON에서 가져올때 어떻게 가져오는지 알기 / 리소스에서 가져온다고했는데... JSON에 어떻게 접근하는지도 몰라서 ㅎㅎ..
         quatityText.text = quantity > 1 ? quantity.ToString() : string.Empty;
 
         if(outline != null)
