@@ -17,10 +17,10 @@ using UnityEngine;
 namespace Database
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class Quests : ITable
+    public partial class Quest : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<Quests> loadedList, Dictionary<string, Quests> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<Quest> loadedList, Dictionary<string, Quest> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
@@ -29,27 +29,27 @@ namespace Database
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<string, Quests> QuestsMap = new Dictionary<string, Quests>();  
-        public static List<Quests> QuestsList = new List<Quests>();   
+        public static Dictionary<string, Quest> QuestMap = new Dictionary<string, Quest>();  
+        public static List<Quest> QuestList = new List<Quest>();   
 
         /// <summary>
-        /// Get Quests List 
+        /// Get Quest List 
         /// Auto Load
         /// </summary>
-        public static List<Quests> GetList()
+        public static List<Quest> GetList()
         {{
            if (isLoaded == false) Load();
-           return QuestsList;
+           return QuestList;
         }}
 
         /// <summary>
-        /// Get Quests Dictionary, keyType is your sheet A1 field type.
+        /// Get Quest Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<string, Quests>  GetDictionary()
+        public static Dictionary<string, Quest>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return QuestsMap;
+           return QuestMap;
         }}
 
     
@@ -76,7 +76,7 @@ namespace Database
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("Quests is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("Quest is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -92,7 +92,7 @@ namespace Database
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<Quests>, Dictionary<string, Quests>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<Quest>, Dictionary<string, Quest>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -120,14 +120,14 @@ namespace Database
                
 
 
-    public static (List<Quests> list, Dictionary<string, Quests> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<string, Quests> Map = new Dictionary<string, Quests>();
-            List<Quests> List = new List<Quests>();     
+    public static (List<Quest> list, Dictionary<string, Quest> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<string, Quest> Map = new Dictionary<string, Quest>();
+            List<Quest> List = new List<Quest>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Quests).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Quest).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["Quests"];
+            var sheet = jsonObject["Quest"];
 
             foreach (var column in sheet.Keys)
             {
@@ -146,7 +146,7 @@ namespace Database
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            Quests instance = new Quests();
+                            Quest instance = new Quest();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -187,8 +187,8 @@ namespace Database
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            QuestsList = List;
-                            QuestsMap = Map;
+                            QuestList = List;
+                            QuestMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -198,10 +198,10 @@ namespace Database
 
  
 
-        public static void Write(Quests data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(Quest data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Quests).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Quest).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

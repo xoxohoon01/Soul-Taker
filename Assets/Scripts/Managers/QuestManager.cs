@@ -1,8 +1,8 @@
-using Database;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Database;
 
 public class QuestManager : MonoSingleton<QuestManager>
 {
@@ -42,7 +42,7 @@ public class QuestManager : MonoSingleton<QuestManager>
     {
         if (!processingQuests.ContainsKey(questKey) && !completedQuests.ContainsKey(questKey))
         {
-            processingQuests.Add(questKey, DatabaseManager.Instance.Parse<Quest>(Database.Quests.QuestsMap[questKey]));
+            processingQuests.Add(questKey, DatabaseManager.Instance.Parse<Quest>(Quest.QuestMap[questKey]));
 
             return processingQuests[questKey];
         }
@@ -79,7 +79,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     private void Start()
     {
-        foreach(Quests quest in DatabaseManager.Instance.Quest.GetQuestDatas())
+        foreach (Quest quest in DatabaseManager.Instance.Quest.GetQuestDatas())
         {
             questList.AddQuest(quest);
         }

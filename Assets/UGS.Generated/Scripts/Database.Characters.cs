@@ -57,7 +57,7 @@ namespace Database
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.String name;
+		public System.String Name;
 		public System.Single HP;
 		public System.Single MP;
 		public System.Single Damage;
