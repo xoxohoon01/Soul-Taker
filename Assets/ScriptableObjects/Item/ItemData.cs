@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public enum ItemType
 {
     Equipable,              //장비 아이템
@@ -9,21 +8,21 @@ public enum ItemType
     QuestItem               // 퀘스트 아이템
 }
 
-[Serializable]
+[System.Serializable]
 public enum ConsumableType
 {
     Hunger,                     //추후 HP, MP 물약으로 변경예정
     Health
 }
 
-[Serializable]
+[System.Serializable]
 public class ItemDataConsumable
 {
     public ConsumableType type;         //소모품의 타입
     public float value;                 //소모품 회복시킬 양
 }
 
-
+[System.Serializable]
 public class ItemData
 {
     public string Icon = "Sprites/Square";     //아이템 이미지는 리소스폴더에서 이미지를 가져오는방식
