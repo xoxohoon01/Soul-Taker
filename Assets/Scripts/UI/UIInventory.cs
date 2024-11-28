@@ -24,7 +24,7 @@ public class UIInventory : MonoBehaviour
     public GameObject unEquipButton;
     public GameObject dropButton;
     
-    public void Toggle()            //인벤토리 키 눌렀을때 인벤토리 나오게 하는 함수
+    public void OnToggle()            //인벤토리 키 눌렀을때 인벤토리 나오게 하는 함수
     {
         if (IsOpen())
         {
