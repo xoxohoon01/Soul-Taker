@@ -9,6 +9,7 @@ public class PlayerBehavior : MonoBehaviour
     public Rigidbody rb;
     public Transform mainMesh;
     public PlayerStateMachine stateMachine;
+    public PlayerWeapon weapon;
     public Animator Animator { get; private set; }
 
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
@@ -20,6 +21,7 @@ public class PlayerBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Animator = GetComponent<Animator>();
         stateMachine = new PlayerStateMachine(this);
+        weapon = GetComponentInChildren<PlayerWeapon>();
     }
 
     private void Start()
@@ -36,5 +38,11 @@ public class PlayerBehavior : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+    }
+
+    public void Attack()
+    {
+        stateMachine.IsAttacking = true;
+        weapon.UseWeapon();
     }
 }

@@ -947,6 +947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
+  currentHealth: 0
 --- !u!4 &1422979414
 Transform:
   m_ObjectHideFlags: 0
@@ -1160,7 +1161,7 @@ PrefabInstance:
     - target: {fileID: 3003119836512672996, guid: c9f349bf7d5a9c1498c567138322a4c0,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 3462897784386727915, guid: c9f349bf7d5a9c1498c567138322a4c0,
         type: 3}

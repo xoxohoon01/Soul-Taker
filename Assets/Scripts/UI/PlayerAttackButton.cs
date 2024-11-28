@@ -17,7 +17,7 @@ public class PlayerAttackButton : MonoBehaviour
 
     public void Attack()
     {
-        //ChangeState(stateMachine.AttackState);
+        CharacterManager.Instance.Player.Behavior.Attack();
         StartCoroutine(CheckCoolDown());
     }
 

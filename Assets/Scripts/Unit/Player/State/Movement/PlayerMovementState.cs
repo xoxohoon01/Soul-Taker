@@ -4,7 +4,6 @@ public class PlayerMovementState : PlayerBaseState
 {
     public PlayerMovementState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
-
     }
 
     public override void Enter()
@@ -22,10 +21,21 @@ public class PlayerMovementState : PlayerBaseState
     public override void Update()
     {
         base.Update();
+
+        if (stateMachine.IsAttacking)
+        {
+            OnAttack();
+            return;
+        }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    protected virtual void OnAttack()
+    {
+        stateMachine.ChangeState(stateMachine.BaseAttackState);
     }
 }
