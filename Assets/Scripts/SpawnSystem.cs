@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpawnSystem : MonoBehaviour
 {
-    [Tooltip("½ºÆù À§Ä¡ ¹è¿­")]
-    [SerializeField] private Vector3[] spawnPositions; // ÀÓ½Ã, »ı¼º ±ÔÄ¢ ±×¸®µå·Î º¯°æ ¿¹Á¤ 
-    [Tooltip("Ç®¸µµÈ ¿ÀºêÁ§Æ®")]
+    [Tooltip("ìŠ¤í° ìœ„ì¹˜ ë°°ì—´")]
+    [SerializeField] private Vector3[] spawnPositions; // ì„ì‹œ, ìƒì„± ê·œì¹™ ê·¸ë¦¬ë“œë¡œ ë³€ê²½ ì˜ˆì • 
+    [Tooltip("í’€ë§ëœ ì˜¤ë¸Œì íŠ¸")]
     [SerializeField] private GameObject[] objectPool;
 
-    public Spawndata spawnData;
+    public Spawn spawnData;
     
     private void Awake()
     {
@@ -26,9 +26,9 @@ public class SpawnSystem : MonoBehaviour
 
     private void Start()
     {
-        // ÀÏÁ¤ ¹İ°æ ¾È¿¡¼­ ÇÃ·¹ÀÌ¾î¸¦ Ã£À¸¸é È°¼ºÈ­
-        // Äİ¶óÀÌ´õ¸¦ ¼³Á¤ÇØ¼­ enter Äİ¶óÀÌ´õ·Î È°¼ºÈ­
-        // ¶Ç´Â ÇÃ·¹ÀÌ¾î°¡ ¹æ¿¡ ÀÔÀåÇßÀ» ¶§ onEnter?Invoke È°¼ºÈ­
+        // ì¼ì • ë°˜ê²½ ì•ˆì—ì„œ í”Œë ˆì´ì–´ë¥¼ ì°¾ìœ¼ë©´ í™œì„±í™”
+        // ì½œë¼ì´ë”ë¥¼ ì„¤ì •í•´ì„œ enter ì½œë¼ì´ë”ë¡œ í™œì„±í™”
+        // ë˜ëŠ” í”Œë ˆì´ì–´ê°€ ë°©ì— ì…ì¥í–ˆì„ ë•Œ onEnter?Invoke í™œì„±í™”
         //Spawn();
     }
 
