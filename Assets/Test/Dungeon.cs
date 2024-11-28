@@ -1,4 +1,6 @@
-﻿[System.Serializable]
+﻿using System.Collections.Generic;
+
+[System.Serializable]
 public class Dungeon
 {
     public int ID; // 던전 ID
@@ -6,7 +8,7 @@ public class Dungeon
     public string Description; // 던전 설명 
     public int Difficulty; // 던전 난이도 
     public int PlayerLevel; // 적정 플레이어 레벨 
-    public int[] Spawner; // 스포너 데이터
+    public List<int> Spawners; // 스포너 데이터
 }
 
 
