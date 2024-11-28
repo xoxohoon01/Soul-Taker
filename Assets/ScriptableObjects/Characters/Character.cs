@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewCharacter", menuName = "Character")]
-public class Character : ScriptableObject
+public class Character
 {
     public float HP;
     public float MP;

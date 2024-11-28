@@ -4,10 +4,10 @@ public class UIBase : MonoBehaviour
 {
     public Canvas canvas;
 
-    //public virtual void Opened(params object[] param)
-    //{
+    public virtual void Opened(params object[] param)
+    {
 
-    //}
+    }
 
     public void Hide()
     {
