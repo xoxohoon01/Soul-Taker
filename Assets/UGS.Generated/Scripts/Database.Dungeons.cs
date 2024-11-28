@@ -61,7 +61,7 @@ namespace Database
 		public System.String Description;
 		public System.Int32 Difficulty;
 		public System.Int32 PlayerLevel;
-		public System.Collections.Generic.List<Int32> Spawner;
+		public System.Collections.Generic.List<Int32> Spawners;
   
 
 #region fuctions
