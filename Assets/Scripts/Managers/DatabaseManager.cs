@@ -5,17 +5,26 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 using UGS;
+using Database;
 
 public class DatabaseManager : MonoSingleton<DatabaseManager>
 {
     private new void Awake()
     {
-        // ±¸±Û½ÃÆ® ºÒ·¯¿À±â
+        // êµ¬ê¸€ì‹œíŠ¸ ë¶ˆëŸ¬ì˜¤ê¸°
         UnityGoogleSheet.LoadAllData();
     }
 
     private void Start()
     {
+        Dungeon newDungeon = Parse<Dungeon>(Dungeons.DungeonsList[0]);
+        Debug.Log(newDungeon.ID);
+    }
 
+    public T Parse<T>(object target)
+    {
+        string data = JsonUtility.ToJson(target);
+
+        return JsonUtility.FromJson<T>(data);
     }
 }

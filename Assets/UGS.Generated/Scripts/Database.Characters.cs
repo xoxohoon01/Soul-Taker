@@ -19,7 +19,7 @@ namespace Database
     [GoogleSheet.Attribute.TableStruct]
     public partial class Characters : ITable
     { 
-         
+
         public delegate void OnLoadedFromGoogleSheets(List<Characters> loadedList, Dictionary<int, Characters> loadedDictionary);
 
         static bool isLoaded = false;
