@@ -61,7 +61,8 @@ public class DungeonManager : MonoBehaviour
                 Spawn spawnData = DatabaseManager.Instance.Parse<Spawn>(Spawners.SpawnersList[index]);
 
                 GameObject newSpawner = Instantiate(SpawnerPrefab, spawnData.SpawnPosition, Quaternion.identity);
-                newSpawner.GetComponent<SpawnSystem>().spawnData = spawnData; // 데이터 전달
+                newSpawner.GetComponent<SpawnSystem>().InitializeObjectPool(spawnData); // 데이터 전달
+                
             }
         }
         else
