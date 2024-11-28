@@ -4,57 +4,62 @@ using UnityEngine;
 
 public class SpawnSystem : MonoBehaviour
 {
-    [Tooltip("스폰 위치 배열")]
-    [SerializeField] private Vector3[] spawnPositions; // 임시, 생성 규칙 그리드로 변경 예정 
-    [Tooltip("풀링된 오브젝트")]
     [SerializeField] private GameObject[] objectPool;
+    [SerializeField] private Vector3 spawnAreaMin; 
+    [SerializeField] private Vector3 spawnAreaMax; 
 
-    
+    public Spawn spawnData;
+    public GameObject TestPrefab;
+
     private void Awake()
     {
-        //objectPool = new GameObject[Spawndata.Instance.spawn.SpawnCount];
-
-        //for (int i = 0; i < Spawndata.Instance.spawn.SpawnCount; i++)
-        //{
-        //    GameObject obj = Instantiate(Spawndata.Instance.spawn.MonsterTestprefab);
-        //    obj.SetActive(false); 
-        //    obj.transform.SetParent(this.transform); 
-        //    objectPool[i] = obj;
-        //}
+        TestPrefab = Resources.Load<GameObject>("Monster");
     }
-
     private void Start()
     {
-        // 일정 반경 안에서 플레이어를 찾으면 활성화
-        // 콜라이더를 설정해서 enter 콜라이더로 활성화
-        // 또는 플레이어가 방에 입장했을 때 onEnter?Invoke 활성화
-        //Spawn();
-    }
+        objectPool = new GameObject[spawnData.SpawnCount];
 
-    //public void Spawn()
-    //{
-    //    for (int i = 0; i < Spawndata.Instance.spawn.SpawnCount; i++)
-    //    {
-    //        if (i >= spawnPositions.Length)
-    //            break;
-
-    //        GameObject obj = objectPool[i];
-    //        if (!obj.activeInHierarchy)
-    //        {
-    //            obj.transform.localPosition = spawnPositions[i]; 
-    //            obj.SetActive(true); 
-    //        }
-    //    }
-    //}
-
-    public void DeactivateAllObjects()
-    {
-        foreach (GameObject obj in objectPool)
+        for (int i = 0; i < spawnData.SpawnCount; i++)
         {
-            if (obj.activeInHierarchy)
+            GameObject obj = Instantiate(TestPrefab);
+            obj.SetActive(false);
+            obj.transform.SetParent(this.transform);
+            objectPool[i] = obj;
+        }
+
+        Spawn();
+    }
+    public void Spawn()
+    {
+        for (int i = 0; i < spawnData.SpawnCount; i++)
+        {
+            GameObject obj = objectPool[i];
+
+            if (!obj.activeInHierarchy) 
             {
-                obj.SetActive(false); 
+                Vector3 randomPosition = GetRandomPosition();
+                obj.transform.localPosition = randomPosition; 
+                obj.SetActive(true); 
             }
         }
     }
-}
+
+    private Vector3 GetRandomPosition()
+    {
+        float randomX = Random.Range(spawnAreaMin.x, spawnAreaMax.x);
+        float randomY = Random.Range(spawnAreaMin.y, spawnAreaMax.y);
+        float randomZ = Random.Range(spawnAreaMin.z, spawnAreaMax.z);
+        return new Vector3(randomX, randomY, randomZ);
+    }
+
+    public void DeactivateAllObjects()
+        {
+            foreach (GameObject obj in objectPool)
+            {
+                if (obj.activeInHierarchy)
+                {
+                    obj.SetActive(false);
+                }
+            }
+        }
+    }
