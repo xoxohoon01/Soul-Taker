@@ -17,51 +17,55 @@ using UnityEngine;
 namespace Database
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class Dungeons : ITable
+    public partial class Quests : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<Dungeons> loadedList, Dictionary<int, Dungeons> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<Quests> loadedList, Dictionary<string, Quests> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
-        static string sheetID = "406833570"; // it is sheet id
+        static string sheetID = "1525291883"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, Dungeons> DungeonsMap = new Dictionary<int, Dungeons>();  
-        public static List<Dungeons> DungeonsList = new List<Dungeons>();   
+        public static Dictionary<string, Quests> QuestsMap = new Dictionary<string, Quests>();  
+        public static List<Quests> QuestsList = new List<Quests>();   
 
         /// <summary>
-        /// Get Dungeons List 
+        /// Get Quests List 
         /// Auto Load
         /// </summary>
-        public static List<Dungeons> GetList()
+        public static List<Quests> GetList()
         {{
            if (isLoaded == false) Load();
-           return DungeonsList;
+           return QuestsList;
         }}
 
         /// <summary>
-        /// Get Dungeons Dictionary, keyType is your sheet A1 field type.
+        /// Get Quests Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, Dungeons>  GetDictionary()
+        public static Dictionary<string, Quests>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return DungeonsMap;
+           return QuestsMap;
         }}
 
     
 
 /* Fields. */
 
-		public System.Int32 ID;
+		public System.String ID;
 		public System.String Name;
 		public System.String Description;
-		public System.Int32 Difficulty;
-		public System.Int32 PlayerLevel;
-		public System.Collections.Generic.List<Int32> Spawners;
+		public System.Collections.Generic.List<String> Requirements;
+		public System.Collections.Generic.List<String> Requirements_Value;
+		public System.Collections.Generic.List<String> Contents;
+		public System.Collections.Generic.List<String> Contents_Value;
+		public System.Single Rewards_EXP;
+		public System.Int32 Rewards_Gold;
+		public System.Collections.Generic.List<String> Rewards_Items;
   
 
 #region fuctions
@@ -72,7 +76,7 @@ namespace Database
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("Dungeons is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("Quests is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -88,7 +92,7 @@ namespace Database
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<Dungeons>, Dictionary<int, Dungeons>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<Quests>, Dictionary<string, Quests>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -116,14 +120,14 @@ namespace Database
                
 
 
-    public static (List<Dungeons> list, Dictionary<int, Dungeons> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, Dungeons> Map = new Dictionary<int, Dungeons>();
-            List<Dungeons> List = new List<Dungeons>();     
+    public static (List<Quests> list, Dictionary<string, Quests> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<string, Quests> Map = new Dictionary<string, Quests>();
+            List<Quests> List = new List<Quests>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Dungeons).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Quests).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["Dungeons"];
+            var sheet = jsonObject["Quests"];
 
             foreach (var column in sheet.Keys)
             {
@@ -142,7 +146,7 @@ namespace Database
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            Dungeons instance = new Dungeons();
+                            Quests instance = new Quests();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -183,8 +187,8 @@ namespace Database
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            DungeonsList = List;
-                            DungeonsMap = Map;
+                            QuestsList = List;
+                            QuestsMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -194,10 +198,10 @@ namespace Database
 
  
 
-        public static void Write(Dungeons data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(Quests data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Dungeons).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Quests).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {
