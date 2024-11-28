@@ -2,29 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Unit
+public class Player : MonoBehaviour
 {
-    public Character character;
+    public Character Character;
+    public PlayerStatus Status;
+    public PlayerBehavior Behavior;
 
-    public float Level;
-    public float EXP;
-
-    protected new void Awake()
+    private void Awake()
     {
-        base.Awake();
+        CharacterManager.Instance.Player = this;
+        Status = GetComponent<PlayerStatus>();
+        Behavior = GetComponent<PlayerBehavior>();
     }
+
     private void Start()
     {
-        if (character != null)
+        if (Character != null)
         {
-            status.HP.originalValue = character.HP;
-            status.MP.originalValue = character.MP;
-            status.Damage.originalValue = character.Damage;
-            status.Defense.originalValue = character.Defense;
-            status.MoveSpeed.originalValue = character.MoveSpeed;
-            status.AttackSpeed.originalValue = character.AttackSpeed;
-            status.HPRegeneration.originalValue = character.HPRegeneration;
-            status.MPRegeneration.originalValue = character.MPRegeneration;
+            Status.InitializeStatus(Character);
         }
     }
 }
