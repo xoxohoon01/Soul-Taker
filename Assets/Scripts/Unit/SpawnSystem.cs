@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,19 +38,26 @@ public class SpawnSystem : MonoBehaviour
 
             if (!obj.activeInHierarchy) 
             {
-                Vector3 randomPosition = GetRandomPosition();
+                Vector3 randomPosition = GetGridPosition(i, spawnData.SpawnCount);
                 obj.transform.localPosition = randomPosition; 
                 obj.SetActive(true); 
             }
         }
     }
 
-    private Vector3 GetRandomPosition()
+    private Vector3 GetGridPosition(int index, int count)
     {
-        float randomX = Random.Range(spawnAreaMin.x, spawnAreaMax.x);
-        float randomY = Random.Range(spawnAreaMin.y, spawnAreaMax.y);
-        float randomZ = Random.Range(spawnAreaMin.z, spawnAreaMax.z);
-        return new Vector3(randomX, randomY, randomZ);
+        int gridSize = Mathf.CeilToInt(Mathf.Sqrt(count));
+        float spacing = 3f;
+
+        int row = index / gridSize;
+        int col = index % gridSize;
+
+        float x = (col - gridSize / 2) * spacing;
+        float z = (row - gridSize / 2) * spacing;
+        float y = 0; 
+
+        return new Vector3(x, y, z);
     }
 
     public void DeactivateAllObjects()
