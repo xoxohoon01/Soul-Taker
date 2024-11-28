@@ -1,4 +1,6 @@
-﻿public class PlayerMovementState : PlayerBaseState
+﻿using UnityEngine;
+
+public class PlayerMovementState : PlayerBaseState
 {
     public PlayerMovementState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
