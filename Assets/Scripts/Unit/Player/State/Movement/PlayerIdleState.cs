@@ -4,7 +4,6 @@ public class PlayerIdleState : PlayerMovementState
 {
     public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
-
     }
 
     public override void Enter()
