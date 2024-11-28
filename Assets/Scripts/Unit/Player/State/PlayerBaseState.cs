@@ -78,7 +78,7 @@ public class PlayerBaseState : IState
 
     private float GetMoveSpeed()
     {
-        float moveSpeed = CharacterManager.Instance.Player.Status.MoveSpeed.CurrentValue;
+        float moveSpeed = stateMachine.IsStop ? 0f : stateMachine.MoveSpeed;
         return moveSpeed;
     }
 }

@@ -9,6 +9,7 @@ public class PlayerIdleState : PlayerMovementState
 
     public override void Enter()
     {
+        stateMachine.IsStop = true;
         base.Enter();
         StartAnimation(stateMachine.PlayerBehavior.AnimationData.IdleParameterHash);
     }

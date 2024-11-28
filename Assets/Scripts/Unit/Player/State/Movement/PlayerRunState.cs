@@ -1,5 +1,4 @@
-﻿using UnityEditor.ShaderGraph;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerRunState : PlayerMovementState
 {
@@ -10,6 +9,7 @@ public class PlayerRunState : PlayerMovementState
 
     public override void Enter()
     {
+        stateMachine.IsStop = false;
         base.Enter();
         StartAnimation(stateMachine.PlayerBehavior.AnimationData.RunParameterHash);
     }
