@@ -10,8 +10,8 @@ public class ItemDataManager : Items
         return ItemsList;
     }
 
-    public Items GetItemid(int index)
+    public Items GetItemid(int id)
     {
-        return ItemsMap[index];
+        return ItemsMap[id];
     }
 }

@@ -12,8 +12,8 @@ public class ItemManager : MonoSingleton<ItemManager>
        _items = items;
     }
 
-    public void AddItem(int itemId)
+    public ItemInstance AddItem(int id)
     {
-        
+        return _items.Find(x => x.itemId == id);
     }
 }
