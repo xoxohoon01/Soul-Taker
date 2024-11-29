@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Database;
-using static UnityEditor.Progress;
-using UGS;
 
-public class QuestDataManager : Quests
+public class QuestDataManager : Quest
 {
-    public List<Quests> GetQuestDatas()
+    public List<Quest> GetQuestDatas()
     {
-        DatabaseManager.Instance.Initialize();
-        return QuestsList;
+        return QuestList;
     }
 }

@@ -29,7 +29,7 @@ public class MonsterEditor : MonoBehaviour
         int number = Monsters.value;
 
         Monsters.ClearOptions();
-        // MonsterÀÇ ¿É¼Ç¿¡ json ºÒ·¯¿À±â
+        // Monsterì˜ ì˜µì…˜ì— json ë¶ˆëŸ¬ì˜¤ê¸°
         DirectoryInfo directoryInfo = new DirectoryInfo(Application.persistentDataPath + "/Monsters");
         for (int i = 0; i < directoryInfo.GetFiles().Length; i++)
         {
@@ -80,7 +80,7 @@ public class MonsterEditor : MonoBehaviour
     public void InstantiateMonster()
     {
         GameObject newMonster = Instantiate(MonsterPrefab);
-        newMonster.GetComponent<Monster>().InitMonster(GetMonster());
+        newMonster.GetComponent<Monster>().Status.InitializeStatus(GetMonster());
     }
 
     private MonsterData GetMonster()

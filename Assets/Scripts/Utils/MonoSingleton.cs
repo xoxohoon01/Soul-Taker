@@ -22,7 +22,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     public bool isDontDestroyOnLoad;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         if (_instance == null)
         {

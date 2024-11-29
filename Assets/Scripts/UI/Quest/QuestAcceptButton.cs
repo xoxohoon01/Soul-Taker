@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class QuestAcceptButton : MonoBehaviour
 {
-    public string questKey;
-
     public void Accept()
     {
-        QuestManager.Instance.AcceptQuest(questKey);
+        QuestManager.Instance.AcceptQuest();
     }
 }

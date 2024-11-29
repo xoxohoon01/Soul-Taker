@@ -1,8 +1,8 @@
-using Database;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Database;
 
 public class QuestManager : MonoSingleton<QuestManager>
 {
@@ -38,13 +38,15 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     private QuestListPanel questList;
 
-    public Quest AcceptQuest(string questKey)
-    {
-        if (!processingQuests.ContainsKey(questKey) && !completedQuests.ContainsKey(questKey))
-        {
-            processingQuests.Add(questKey, DatabaseManager.Instance.Parse<Quest>(Database.Quests.QuestsMap[questKey]));
+    public string currentQuestKey;
 
-            return processingQuests[questKey];
+    public Quest AcceptQuest()
+    {
+        if (!processingQuests.ContainsKey(currentQuestKey) && !completedQuests.ContainsKey(currentQuestKey))
+        {
+            processingQuests.Add(currentQuestKey, DatabaseManager.Instance.Parse<Quest>(Quest.QuestMap[currentQuestKey]));
+
+            return processingQuests[currentQuestKey];
         }
         else
         {
@@ -52,11 +54,11 @@ public class QuestManager : MonoSingleton<QuestManager>
         }
     }
     
-    public Quest DeclineQuest(string questKey)
+    public Quest DeclineQuest()
     {
-        if (processingQuests.ContainsKey(questKey))
+        if (processingQuests.ContainsKey(currentQuestKey))
         {
-            processingQuests.Remove(questKey, out Quest removedQuest);
+            processingQuests.Remove(currentQuestKey, out Quest removedQuest);
             return removedQuest;
         }
         else
@@ -65,10 +67,10 @@ public class QuestManager : MonoSingleton<QuestManager>
         }
     }
 
-    public void CompleteQuest(string questKey)
+    public void CompleteQuest()
     {
-        processingQuests.Remove(questKey, out Quest completedQuest);
-        completedQuests.Add(questKey, completedQuest);
+        processingQuests.Remove(currentQuestKey, out Quest completedQuest);
+        completedQuests.Add(currentQuestKey, completedQuest);
     }
 
     private new void Awake()
@@ -79,7 +81,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     private void Start()
     {
-        foreach(Quests quest in DatabaseManager.Instance.Quest.GetQuestDatas())
+        foreach (Quest quest in DatabaseManager.Instance.Quest.GetQuestDatas())
         {
             questList.AddQuest(quest);
         }
