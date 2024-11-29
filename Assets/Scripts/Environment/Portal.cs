@@ -13,6 +13,8 @@ public class Portal : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("나감");
+
         if (other.CompareTag("Player"))
         {
             UIManager.Instance.Hide<UIShowDungeon>();

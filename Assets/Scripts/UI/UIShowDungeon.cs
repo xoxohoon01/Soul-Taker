@@ -1,18 +1,31 @@
 using UnityEngine.SceneManagement;
 public class UIShowDungeon : UIBase
 {
-    private void DungeonSelect(int Index)
+    private int targetDungeonID;
+    public void DungeonSelect(int Index)
     {
         switch (Index)
         {
             case 0:
-                DungeonManager.Instance.InitializeDungeon(2001);
+                targetDungeonID = 2001; 
+                SceneManager.sceneLoaded += OnSceneLoaded;
                 SceneManager.LoadScene("YJ");
                 break;
+
             case 1:
-                DungeonManager.Instance.InitializeDungeon(2002);
+                targetDungeonID = 2002; 
+                SceneManager.sceneLoaded += OnSceneLoaded; 
                 SceneManager.LoadScene("YJ");
                 break;
         }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "YJ")
+        {
+            DungeonManager.Instance.InitializeDungeon(targetDungeonID); // InitializeDungeon 호출
+        }
+        SceneManager.sceneLoaded -= OnSceneLoaded; // 이벤트 해제
     }
 }

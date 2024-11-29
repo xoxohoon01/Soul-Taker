@@ -15,29 +15,15 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     {
         SpawnerPrefab = Resources.Load<GameObject>("Spawn");
     }
-    //private void Start()
-    //{
-    //    int currentIndex = 0;
-
-    //    for (int i = 0; i < Dungeons.DungeonsList.Count; i++)
-    //    {
-    //        if (Dungeons.DungeonsList[i].ID == CurrentDungeonID)
-    //        {
-    //            currentIndex = i;
-    //            break;
-    //        }
-    //    }
-
-    //    Dungeon = DatabaseManager.Instance.Parse<Dungeon>(Dungeons.DungeonsList[currentIndex]);
-    //    CreatSpawner();
-    //}
 
     public void InitializeDungeon(int CurrentDungeonID)
     {
         int currentIndex = 0;
+        Debug.Log(CurrentDungeonID); // 잘 넘어옴 
 
         for (int i = 0; i < Dungeons.DungeonsList.Count; i++)
         {
+            Debug.Log(CurrentDungeonID);
             if (Dungeons.DungeonsList[i].ID == CurrentDungeonID)
             {
                 currentIndex = i;
@@ -46,6 +32,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
         }
 
         Dungeon = DatabaseManager.Instance.Parse<Dungeon>(Dungeons.DungeonsList[currentIndex]);
+       
         CreatSpawner();
     }
 
