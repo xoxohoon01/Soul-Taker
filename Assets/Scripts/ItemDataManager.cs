@@ -7,6 +7,11 @@ public class ItemDataManager : Items
 {
     public List<Items> GetItemDatas()
     {
-        return Database.Items.ItemsList;
+        return ItemsList;
+    }
+
+    public Items GetItemid(int index)
+    {
+        return ItemsMap[index];
     }
 }

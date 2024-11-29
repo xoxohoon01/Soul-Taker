@@ -177,25 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1079674283}
-  quatityText: {fileID: 2094498244}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &30324498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,25 +416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 879158418}
-  quatityText: {fileID: 813861760}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &77310582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,25 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1315441421}
-  quatityText: {fileID: 1725043909}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &168333154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,25 +1160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1686355193}
-  quatityText: {fileID: 1081148880}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &201891680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,25 +1473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1174532434}
-  quatityText: {fileID: 143827047}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &246427812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1830,18 +1735,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce595d7868c5249d5ad25db58acb02a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots: []
-  inventoryWindow: {fileID: 264139080}
-  slotPanel: {fileID: 804666463}
-  inventory: {fileID: 0}
-  selectedItemName: {fileID: 1931500677}
-  selectedItemDescription: {fileID: 1215380889}
-  selectedItemStatName: {fileID: 295505020}
-  selectedItemStatValue: {fileID: 1032489346}
-  useButton: {fileID: 1310288909}
-  equipButton: {fileID: 933118019}
-  unEquipButton: {fileID: 1589050267}
-  dropButton: {fileID: 827527873}
 --- !u!114 &264139086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,7 +1747,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee95fbd78b86462394e90a8ce598cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiInventory: {fileID: 264139085}
 --- !u!1 &273133672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,25 +1801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 967276470}
-  quatityText: {fileID: 1106883514}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &273133675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2434,25 +2307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1758219167}
-  quatityText: {fileID: 551253311}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &298923642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3393,25 +3247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 351705371}
-  quatityText: {fileID: 1660222858}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &449374434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4087,25 +3922,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1442675696}
-  quatityText: {fileID: 1109917175}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &530253836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4998,25 +4814,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 585254396}
-  quatityText: {fileID: 1508614505}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &687370907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5324,25 +5121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 96053267}
-  quatityText: {fileID: 1286622652}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &724582728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5506,25 +5284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1488414287}
-  quatityText: {fileID: 2135859988}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &775716571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5688,25 +5447,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 237486843}
-  quatityText: {fileID: 389042547}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &802741834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6225,25 +5965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 296304903}
-  quatityText: {fileID: 1425342128}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &834092155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6482,25 +6203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1270885791}
-  quatityText: {fileID: 1045771022}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &874120150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7069,25 +6771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 105780863}
-  quatityText: {fileID: 2071696564}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &944914260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8507,25 +8190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 529937983}
-  quatityText: {fileID: 1826927747}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1156382118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8689,25 +8353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1017631191}
-  quatityText: {fileID: 412128117}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1160444509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9080,25 +8725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1273092926}
-  quatityText: {fileID: 1872520396}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1210119351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9606,25 +9232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1341575253}
-  quatityText: {fileID: 595649128}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1243306110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9922,25 +9529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1588867622}
-  quatityText: {fileID: 506296756}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1255637913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10179,25 +9767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1232445634}
-  quatityText: {fileID: 1440918022}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1272899909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11361,25 +10930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 487033659}
-  quatityText: {fileID: 296818675}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1484430241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11924,25 +11474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1476465972}
-  quatityText: {fileID: 1211012778}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1534767865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13164,25 +12695,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 1870724216}
-  quatityText: {fileID: 1676212162}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1838689512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13346,25 +12858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 232853825}
-  quatityText: {fileID: 121468155}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1845988291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13817,6 +13310,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872520394}
   m_CullTransparentMesh: 1
+--- !u!1001 &1901115067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1824195815247987468, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377339798961558183, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 914.1701
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377339798961558183, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 597.60016
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377339798961558183, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 66.11245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377339798961558183, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377339798961558183, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377339798961558183, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377339798961558183, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377339798961558183, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377339798961558183, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377339798961558183, guid: 4d81f51f82041ed4aafeeac2b9763a14,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d81f51f82041ed4aafeeac2b9763a14, type: 3}
 --- !u!1 &1931500675
 GameObject:
   m_ObjectHideFlags: 0
@@ -14080,25 +13641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 984575828}
-  quatityText: {fileID: 656634461}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &1944949289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14751,25 +14293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Icon: Sprites/Square
-    itemId: 0
-    displayName: 
-    description: 
-    Type: 0
-    Damage: 0
-    AttackSpeed: 0
-    Price: 0
-    canStack: 0
-    maxStackAmount: 0
-    consumables: []
-  uiInventory: {fileID: 264139085}
-  button: {fileID: 0}
-  icon: {fileID: 432407011}
-  quatityText: {fileID: 1496592971}
-  index: 0
-  equipped: 0
-  quantity: 0
 --- !u!114 &2110902716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15099,3 +14622,4 @@ SceneRoots:
   - {fileID: 1141693848}
   - {fileID: 264139084}
   - {fileID: 1808454244}
+  - {fileID: 1901115067}
