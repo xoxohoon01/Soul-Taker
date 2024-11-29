@@ -15,4 +15,9 @@ public class QuestPanel : MonoBehaviour
         Name.text = Quest.Name;
         Description.text = Quest.Description;
     }
+
+    public void Select()
+    {
+        QuestManager.Instance.currentQuestKey = Quest.ID;
+    }
 }

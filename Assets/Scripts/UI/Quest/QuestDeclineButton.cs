@@ -8,6 +8,6 @@ public class QuestDeclinetButton : MonoBehaviour
 
     public void Decline()
     {
-        QuestManager.Instance.DeclineQuest(questKey);
+        QuestManager.Instance.DeclineQuest();
     }
 }

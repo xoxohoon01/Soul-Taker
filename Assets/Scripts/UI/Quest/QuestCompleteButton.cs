@@ -8,6 +8,6 @@ public class QuestCompleteButton : MonoBehaviour
 
     public void Complete()
     {
-        QuestManager.Instance.CompleteQuest(questKey);
+        QuestManager.Instance.CompleteQuest();
     }
 }

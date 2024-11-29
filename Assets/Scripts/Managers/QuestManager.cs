@@ -38,13 +38,15 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     private QuestListPanel questList;
 
-    public Quest AcceptQuest(string questKey)
-    {
-        if (!processingQuests.ContainsKey(questKey) && !completedQuests.ContainsKey(questKey))
-        {
-            processingQuests.Add(questKey, DatabaseManager.Instance.Parse<Quest>(Quest.QuestMap[questKey]));
+    public string currentQuestKey;
 
-            return processingQuests[questKey];
+    public Quest AcceptQuest()
+    {
+        if (!processingQuests.ContainsKey(currentQuestKey) && !completedQuests.ContainsKey(currentQuestKey))
+        {
+            processingQuests.Add(currentQuestKey, DatabaseManager.Instance.Parse<Quest>(Quest.QuestMap[currentQuestKey]));
+
+            return processingQuests[currentQuestKey];
         }
         else
         {
@@ -52,11 +54,11 @@ public class QuestManager : MonoSingleton<QuestManager>
         }
     }
     
-    public Quest DeclineQuest(string questKey)
+    public Quest DeclineQuest()
     {
-        if (processingQuests.ContainsKey(questKey))
+        if (processingQuests.ContainsKey(currentQuestKey))
         {
-            processingQuests.Remove(questKey, out Quest removedQuest);
+            processingQuests.Remove(currentQuestKey, out Quest removedQuest);
             return removedQuest;
         }
         else
@@ -65,10 +67,10 @@ public class QuestManager : MonoSingleton<QuestManager>
         }
     }
 
-    public void CompleteQuest(string questKey)
+    public void CompleteQuest()
     {
-        processingQuests.Remove(questKey, out Quest completedQuest);
-        completedQuests.Add(questKey, completedQuest);
+        processingQuests.Remove(currentQuestKey, out Quest completedQuest);
+        completedQuests.Add(currentQuestKey, completedQuest);
     }
 
     private new void Awake()
