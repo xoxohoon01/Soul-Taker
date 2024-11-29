@@ -9,10 +9,13 @@ using Database;
 
 public class DatabaseManager : MonoSingleton<DatabaseManager>
 {
-    private new void Awake()
+    public ItemDataManager Item;
+    public QuestDataManager Quest;
+    public void Initialize()
     {
-        // 구글시트 불러오기
         UnityGoogleSheet.LoadAllData();
+        Item = new ItemDataManager();
+        Quest = new QuestDataManager();
     }
 
     public T Parse<T>(object target)
