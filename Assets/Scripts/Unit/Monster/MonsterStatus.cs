@@ -10,6 +10,7 @@ public class MonsterStatus : Status
 
     public float AttackRange;
     public float DetectRange;
+    public float FieldOfView;
 
     public void InitializeStatus(MonsterData monsterData)
     {

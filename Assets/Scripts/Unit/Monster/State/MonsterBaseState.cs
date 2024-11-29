@@ -48,6 +48,6 @@ public class MonsterBaseState : IState
     {
         Vector3 directionToTarget = GetTargetDirection();
         float angle = Vector3.Angle(stateMachine.Behavior.transform.forward, directionToTarget);
-        return angle < 
+        return angle < stateMachine.FieldOfView * 0.5;
     }
 }

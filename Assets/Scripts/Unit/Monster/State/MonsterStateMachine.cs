@@ -14,6 +14,7 @@ public class MonsterStateMachine : StateMachine
     public float MoveSpeed { get; private set; }
     public float DetectRange { get; private set; }
     public float AttackRange { get; private set; }
+    public float FieldOfView { get; private set; }
     public bool IsAttacking { get; set; }
 
     public MonsterStateMachine(MonsterBehavior monsterBehavior)
@@ -30,5 +31,6 @@ public class MonsterStateMachine : StateMachine
         MoveSpeed = 3f;
         DetectRange = monsterBehavior.Status.DetectRange;
         AttackRange = monsterBehavior.Status.AttackRange;
+        FieldOfView = monsterBehavior.Status.FieldOfView;
     }
 }
