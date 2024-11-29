@@ -18,15 +18,20 @@ public class MonsterIdleState : MonsterBaseState
         StopAnimation(stateMachine.Behavior.animationData.IdleParameterHash);
     }
 
+    public override void Update()
+    {
+        if (IsTargetInFieldOfView() && IsInDetectRange())
+        {
+            stateMachine.ChangeState(stateMachine.ChaseState);
+            return;
+        }
+    }
+
     public override void HandleInput()
     {
     }
 
     public override void PhysicsUpdate()
-    {
-    }
-
-    public override void Update()
     {
     }
 }

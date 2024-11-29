@@ -50,4 +50,10 @@ public class MonsterBaseState : IState
         float angle = Vector3.Angle(stateMachine.Behavior.transform.forward, directionToTarget);
         return angle < stateMachine.FieldOfView * 0.5;
     }
+
+    protected bool IsInDetectRange()
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Behavior.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= stateMachine.DetectRange * stateMachine.DetectRange;
+    }
 }

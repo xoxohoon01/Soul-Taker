@@ -14,6 +14,17 @@ public class MonsterBehavior : MonoBehaviour
         animationData.Initialize();
         Animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        
+    }
+
+    private void Start()
+    {
         stateMachine = new MonsterStateMachine(this);
+        stateMachine.ChangeState(stateMachine.IdleState);
+    }
+
+    private void Update()
+    {
+        stateMachine.Update();
     }
 }
