@@ -100,11 +100,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1052492899534941473
 MonoBehaviour:
@@ -118,8 +118,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5095ec88abf7614d82d66dc0d2fafd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPositions:
-  - {x: 2, y: 0, z: 3}
-  - {x: 4, y: 0, z: 1}
-  - {x: 5, y: 0, z: 8}
   objectPool: []
+  spawnAreaMin: {x: 0, y: 0, z: 0}
+  spawnAreaMax: {x: 0, y: 0, z: 0}
+  spawnData:
+    ID: 0
+    SpawnPosition: {x: 0, y: 0, z: 0}
+    MonsterID: 0
+    SpawnCount: 0
+    MonsterLevel: 0
+  TestPrefab: {fileID: 0}

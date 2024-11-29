@@ -69,6 +69,7 @@ namespace Database
 		public System.Single moveSpeed;
 		public System.Single attackSpeed;
 		public System.Single Range;
+		public System.Int32 Max;
   
 
 #region fuctions
