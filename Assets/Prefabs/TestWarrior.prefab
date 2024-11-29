@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3462897784386727915}
   m_Layer: 3
   m_Name: TestWarrior
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,7 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e5a8164c4edc946a0c9d14502f231f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {fileID: 11400000, guid: 6f833b3e887d23a4e8d1187160b5236e, type: 2}
   Status: {fileID: 0}
   Behavior: {fileID: 0}
 --- !u!114 &7502046433683138722
