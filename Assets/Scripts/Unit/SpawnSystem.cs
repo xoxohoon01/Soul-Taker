@@ -84,15 +84,12 @@ public class SpawnSystem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("일단 닿긴 함!");
             Debug.Log(objectPool.Length);
             if (objectPool == null || objectPool.Length == 0)
             {
-                Debug.Log("아직 풀링 안됨.");
                 return;
             }
 
-            Debug.Log("오브젝트 풀 나왔어유.");
             MonsterSpawn();
         }
     }

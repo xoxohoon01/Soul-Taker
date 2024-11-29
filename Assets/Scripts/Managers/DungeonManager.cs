@@ -2,20 +2,37 @@ using Database;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DungeonManager : MonoBehaviour
+public class DungeonManager : MonoSingleton<DungeonManager>
 {
     public bool isClear = false; // 클리어 여부 확인
     public GameObject SpawnerPrefab; // 생성할 스포너 프리펩
     public GameObject[] Spawns = null; // 생성된 스포너를 담을 배열 
 
-    [SerializeField] private int CurrentDungeonID = 2001;
+    //[SerializeField] private int CurrentDungeonID = 2001;
 
     private Dungeon Dungeon;
     private void Awake()
     {
         SpawnerPrefab = Resources.Load<GameObject>("Spawn");
     }
-    private void Start()
+    //private void Start()
+    //{
+    //    int currentIndex = 0;
+
+    //    for (int i = 0; i < Dungeons.DungeonsList.Count; i++)
+    //    {
+    //        if (Dungeons.DungeonsList[i].ID == CurrentDungeonID)
+    //        {
+    //            currentIndex = i;
+    //            break;
+    //        }
+    //    }
+
+    //    Dungeon = DatabaseManager.Instance.Parse<Dungeon>(Dungeons.DungeonsList[currentIndex]);
+    //    CreatSpawner();
+    //}
+
+    public void InitializeDungeon(int CurrentDungeonID)
     {
         int currentIndex = 0;
 
@@ -62,7 +79,6 @@ public class DungeonManager : MonoBehaviour
 
                 GameObject newSpawner = Instantiate(SpawnerPrefab, spawnData.SpawnPosition, Quaternion.identity);
                 newSpawner.GetComponent<SpawnSystem>().InitializeObjectPool(spawnData); // 데이터 전달
-                
             }
         }
         else
