@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DataTable;
 
 public class SpawnSystem : MonoBehaviour
 {
     [SerializeField] private GameObject[] objectPool;
 
-    public Spawn spawnData;
+    public SpawnerData spawnData;
     public GameObject TestPrefab;
 
     private void Awake()
@@ -48,7 +49,7 @@ public class SpawnSystem : MonoBehaviour
             }
         }
     }
-    public void InitializeObjectPool(Spawn spawndata = null) // 오브젝트 객체 생성 
+    public void InitializeObjectPool(SpawnerData spawndata = null) // 오브젝트 객체 생성 
     {
         if (spawndata != null)
         { 

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DataTable;
 
 public class CharacterCreator : MonoSingleton<CharacterCreator>
 {
-    public Character nowCharacter;
+    public CharacterData nowCharacter;
     public GameObject characterObject;
 
     public void CreateNewCharacter()

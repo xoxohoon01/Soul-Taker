@@ -28,7 +28,6 @@ public class UIManager : MonoSingleton<UIManager>
         uiDictionary.Add(uiName, ui);
         ui.Opened(param);
 
-        Debug.Log(uiName);
         return (T)ui;
     }
 

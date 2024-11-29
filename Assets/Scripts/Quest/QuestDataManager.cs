@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Database;
+using DataTable;
 
-public class QuestDataManager : Quest
+public class QuestDataManager : QuestData
 {
-    public List<Quest> GetQuestDatas()
+    public Dictionary<string, QuestData> GetQuestDatas()
     {
-        return QuestList;
+        return QuestDataMap;
     }
 }

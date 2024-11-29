@@ -14,13 +14,13 @@ using System.Reflection;
 using UnityEngine;
 
 
-namespace Database
+namespace DataTable
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class Characters : ITable
+    public partial class CharacterData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<Characters> loadedList, Dictionary<int, Characters> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<CharacterData> loadedList, Dictionary<int, CharacterData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
@@ -29,27 +29,27 @@ namespace Database
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, Characters> CharactersMap = new Dictionary<int, Characters>();  
-        public static List<Characters> CharactersList = new List<Characters>();   
+        public static Dictionary<int, CharacterData> CharacterDataMap = new Dictionary<int, CharacterData>();  
+        public static List<CharacterData> CharacterDataList = new List<CharacterData>();   
 
         /// <summary>
-        /// Get Characters List 
+        /// Get CharacterData List 
         /// Auto Load
         /// </summary>
-        public static List<Characters> GetList()
+        public static List<CharacterData> GetList()
         {{
            if (isLoaded == false) Load();
-           return CharactersList;
+           return CharacterDataList;
         }}
 
         /// <summary>
-        /// Get Characters Dictionary, keyType is your sheet A1 field type.
+        /// Get CharacterData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, Characters>  GetDictionary()
+        public static Dictionary<int, CharacterData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return CharactersMap;
+           return CharacterDataMap;
         }}
 
     
@@ -82,12 +82,12 @@ namespace Database
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("Characters is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("CharacterData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
 
-            string text = reader.ReadData("Database"); 
+            string text = reader.ReadData("DataTable"); 
             if (text != null)
             {
                 var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ReadSpreadSheetResult>(text);
@@ -98,7 +98,7 @@ namespace Database
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<Characters>, Dictionary<int, Characters>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<CharacterData>, Dictionary<int, CharacterData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -126,14 +126,14 @@ namespace Database
                
 
 
-    public static (List<Characters> list, Dictionary<int, Characters> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, Characters> Map = new Dictionary<int, Characters>();
-            List<Characters> List = new List<Characters>();     
+    public static (List<CharacterData> list, Dictionary<int, CharacterData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, CharacterData> Map = new Dictionary<int, CharacterData>();
+            List<CharacterData> List = new List<CharacterData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Characters).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(CharacterData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["Characters"];
+            var sheet = jsonObject["CharacterData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -152,7 +152,7 @@ namespace Database
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            Characters instance = new Characters();
+                            CharacterData instance = new CharacterData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -193,8 +193,8 @@ namespace Database
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            CharactersList = List;
-                            CharactersMap = Map;
+                            CharacterDataList = List;
+                            CharacterDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -204,10 +204,10 @@ namespace Database
 
  
 
-        public static void Write(Characters data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(CharacterData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Characters).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(CharacterData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

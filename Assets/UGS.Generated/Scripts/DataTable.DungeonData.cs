@@ -14,51 +14,54 @@ using System.Reflection;
 using UnityEngine;
 
 
-namespace Database
+namespace DataTable
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class Monsters : ITable
+    public partial class DungeonData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<Monsters> loadedList, Dictionary<int, Monsters> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<DungeonData> loadedList, Dictionary<string, DungeonData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
-        static string sheetID = "843192040"; // it is sheet id
+        static string sheetID = "406833570"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, Monsters> MonstersMap = new Dictionary<int, Monsters>();  
-        public static List<Monsters> MonstersList = new List<Monsters>();   
+        public static Dictionary<string, DungeonData> DungeonDataMap = new Dictionary<string, DungeonData>();  
+        public static List<DungeonData> DungeonDataList = new List<DungeonData>();   
 
         /// <summary>
-        /// Get Monsters List 
+        /// Get DungeonData List 
         /// Auto Load
         /// </summary>
-        public static List<Monsters> GetList()
+        public static List<DungeonData> GetList()
         {{
            if (isLoaded == false) Load();
-           return MonstersList;
+           return DungeonDataList;
         }}
 
         /// <summary>
-        /// Get Monsters Dictionary, keyType is your sheet A1 field type.
+        /// Get DungeonData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, Monsters>  GetDictionary()
+        public static Dictionary<string, DungeonData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return MonstersMap;
+           return DungeonDataMap;
         }}
 
     
 
 /* Fields. */
 
-		public System.Int32 ID;
-		public System.String displayName;
-		public System.String description;
+		public System.String ID;
+		public System.String Name;
+		public System.String Description;
+		public System.Int32 Difficulty;
+		public System.Int32 PlayerLevel;
+		public System.Collections.Generic.List<String> Spawners;
   
 
 #region fuctions
@@ -69,12 +72,12 @@ namespace Database
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("Monsters is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("DungeonData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
 
-            string text = reader.ReadData("Database"); 
+            string text = reader.ReadData("DataTable"); 
             if (text != null)
             {
                 var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ReadSpreadSheetResult>(text);
@@ -85,7 +88,7 @@ namespace Database
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<Monsters>, Dictionary<int, Monsters>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<DungeonData>, Dictionary<string, DungeonData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -113,14 +116,14 @@ namespace Database
                
 
 
-    public static (List<Monsters> list, Dictionary<int, Monsters> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, Monsters> Map = new Dictionary<int, Monsters>();
-            List<Monsters> List = new List<Monsters>();     
+    public static (List<DungeonData> list, Dictionary<string, DungeonData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<string, DungeonData> Map = new Dictionary<string, DungeonData>();
+            List<DungeonData> List = new List<DungeonData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Monsters).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(DungeonData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["Monsters"];
+            var sheet = jsonObject["DungeonData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -139,7 +142,7 @@ namespace Database
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            Monsters instance = new Monsters();
+                            DungeonData instance = new DungeonData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -180,8 +183,8 @@ namespace Database
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            MonstersList = List;
-                            MonstersMap = Map;
+                            DungeonDataList = List;
+                            DungeonDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -191,10 +194,10 @@ namespace Database
 
  
 
-        public static void Write(Monsters data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(DungeonData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(Monsters).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(DungeonData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

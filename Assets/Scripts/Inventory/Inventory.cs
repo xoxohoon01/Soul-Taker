@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Database;
+using DataTable;
 using UnityEditor;
 using UnityEngine;
 

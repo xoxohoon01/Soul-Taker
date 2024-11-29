@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DataTable;
 
 public class Player : MonoBehaviour
 {
-    public Character Character;
+    public CharacterData Character;
     public PlayerStatus Status;
     public PlayerBehavior Behavior;
 

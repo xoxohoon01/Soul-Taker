@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Database;
+using DataTable;
 
-public class ItemDataManager : Items
+public class ItemDataManager : ItemData
 {
-    public List<Items> GetItemDatas()
+    public List<ItemData> GetItemDatas()
     {
-        return ItemsList;
+        return ItemDataList;
     }
 
-    public Items GetItemid(int id)
+    public ItemData GetItemData(int id)
     {
-        return ItemsMap[id];
+        return ItemDataMap[id];
     }
 }

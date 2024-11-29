@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Database;
+using DataTable;
 
 public class QuestPanel : MonoBehaviour
 {
-    public Quest Quest;
+    public QuestData Quest;
     public TMP_Text Name;
     public TMP_Text Description;
 

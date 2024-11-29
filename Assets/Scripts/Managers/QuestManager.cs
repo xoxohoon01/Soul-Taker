@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Database;
+using DataTable;
 
 public class QuestManager : MonoSingleton<QuestManager>
 {
     public GameObject questCanvas;
 
-    [SerializeField] private SerializableDictionary<string, Quest> _processingQuests;
-    public SerializableDictionary<string, Quest> processingQuests
+    [SerializeField] private SerializableDictionary<string, QuestData> _processingQuests;
+    public SerializableDictionary<string, QuestData> processingQuests
     {
         get
         {
@@ -22,8 +22,8 @@ public class QuestManager : MonoSingleton<QuestManager>
         }
     }
 
-    [SerializeField] private SerializableDictionary<string, Quest> _completedQuests;
-    public SerializableDictionary<string, Quest> completedQuests
+    [SerializeField] private SerializableDictionary<string, QuestData> _completedQuests;
+    public SerializableDictionary<string, QuestData> completedQuests
     {
         get
         {
@@ -40,11 +40,11 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     public string currentQuestKey;
 
-    public Quest AcceptQuest()
+    public QuestData AcceptQuest()
     {
         if (!processingQuests.ContainsKey(currentQuestKey) && !completedQuests.ContainsKey(currentQuestKey))
         {
-            processingQuests.Add(currentQuestKey, DatabaseManager.Instance.Parse<Quest>(Quest.QuestMap[currentQuestKey]));
+            processingQuests.Add(currentQuestKey, DatabaseManager.Instance.Quest.GetQuestDatas()[currentQuestKey]);
 
             return processingQuests[currentQuestKey];
         }
@@ -54,11 +54,11 @@ public class QuestManager : MonoSingleton<QuestManager>
         }
     }
     
-    public Quest DeclineQuest()
+    public QuestData DeclineQuest()
     {
         if (processingQuests.ContainsKey(currentQuestKey))
         {
-            processingQuests.Remove(currentQuestKey, out Quest removedQuest);
+            processingQuests.Remove(currentQuestKey, out QuestData removedQuest);
             return removedQuest;
         }
         else
@@ -69,7 +69,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     public void CompleteQuest()
     {
-        processingQuests.Remove(currentQuestKey, out Quest completedQuest);
+        processingQuests.Remove(currentQuestKey, out QuestData completedQuest);
         completedQuests.Add(currentQuestKey, completedQuest);
     }
 
@@ -81,9 +81,9 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     private void Start()
     {
-        foreach (Quest quest in DatabaseManager.Instance.Quest.GetQuestDatas())
-        {
-            questList.AddQuest(quest);
-        }
+        //foreach (QuestData quest in DatabaseManager.Instance.Quest.GetQuestDatas())
+        //{
+        //    questList.AddQuest(quest);
+        //}
     }
 }

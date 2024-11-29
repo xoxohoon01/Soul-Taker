@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using DataTable;
 
 public class ChooseCharacter : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class ChooseCharacter : MonoBehaviour
     public CharacterType type;
     public void Choose()
     {
-        Character newCharacter = DatabaseManager.Instance.Parse<Character>(Database.Characters.CharactersList[(int)type]);
+        CharacterData newCharacter = DatabaseManager.Instance.Character.GetCharacter()[(int)type];
         CharacterCreator.Instance.nowCharacter = newCharacter;
         CharacterCreator.Instance.CreateNewCharacter();
     }
