@@ -8,8 +8,6 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     public GameObject SpawnerPrefab; // 생성할 스포너 프리펩
     public GameObject[] Spawns = null; // 생성된 스포너를 담을 배열 
 
-    //[SerializeField] private int CurrentDungeonID = 2001;
-
     private void Awake()
     {
         SpawnerPrefab = Resources.Load<GameObject>("Spawn");
@@ -21,10 +19,8 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     }
 
 
-    private void CreatSpawner(int CurrentDungeonID) // 스포너 생성
+    private void CreatSpawner(int CurrentDungeonID) 
     {
-        //Debug.Log(DatabaseManager.Instance.Dungeon.GetDungeonid(CurrentDungeonID).Spawners[0]);
-
         for (int i = 0; i < DatabaseManager.Instance.Dungeon.GetDungeonid(CurrentDungeonID).Spawners.Count; i++)
         {
             SpawnerData spawnData = DatabaseManager.Instance.Spawner.GetSpawnerid(DatabaseManager.Instance.Dungeon.GetDungeonid(CurrentDungeonID).Spawners[i]);
