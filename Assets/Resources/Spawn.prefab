@@ -119,12 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPool: []
-  spawnAreaMin: {x: 0, y: 0, z: 0}
-  spawnAreaMax: {x: 0, y: 0, z: 0}
-  spawnData:
-    ID: 0
-    SpawnPosition: {x: 0, y: 0, z: 0}
-    MonsterID: 0
-    SpawnCount: 0
-    MonsterLevel: 0
   TestPrefab: {fileID: 0}

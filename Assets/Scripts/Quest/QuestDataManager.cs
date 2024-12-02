@@ -5,8 +5,8 @@ using DataTable;
 
 public class QuestDataManager : QuestData
 {
-    public Dictionary<string, QuestData> GetQuestDatas()
+    public List<QuestData> GetQuestDatas()
     {
-        return QuestDataMap;
+        return QuestDataList;
     }
 }
