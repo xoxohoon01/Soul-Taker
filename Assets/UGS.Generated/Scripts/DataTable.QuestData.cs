@@ -20,7 +20,7 @@ namespace DataTable
     public partial class QuestData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<QuestData> loadedList, Dictionary<string, QuestData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<QuestData> loadedList, Dictionary<int, QuestData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
@@ -29,7 +29,7 @@ namespace DataTable
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<string, QuestData> QuestDataMap = new Dictionary<string, QuestData>();  
+        public static Dictionary<int, QuestData> QuestDataMap = new Dictionary<int, QuestData>();  
         public static List<QuestData> QuestDataList = new List<QuestData>();   
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace DataTable
         /// Get QuestData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<string, QuestData>  GetDictionary()
+        public static Dictionary<int, QuestData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
            return QuestDataMap;
@@ -56,16 +56,16 @@ namespace DataTable
 
 /* Fields. */
 
-		public System.String ID;
+		public System.Int32 ID;
 		public System.String Name;
 		public System.String Description;
-		public System.Collections.Generic.List<String> Requirements;
-		public System.Collections.Generic.List<String> Requirements_Value;
-		public System.Collections.Generic.List<String> Contents;
-		public System.Collections.Generic.List<String> Contents_Value;
+		public System.String Requirements;
+		public System.Int32 Requirements_Value;
+		public System.String Contents;
+		public System.Int32 Contents_Value;
 		public System.Single Rewards_EXP;
 		public System.Int32 Rewards_Gold;
-		public System.Collections.Generic.List<String> Rewards_Items;
+		public System.Collections.Generic.List<Int32> Rewards_Items;
   
 
 #region fuctions
@@ -92,7 +92,7 @@ namespace DataTable
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<QuestData>, Dictionary<string, QuestData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<QuestData>, Dictionary<int, QuestData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -120,8 +120,8 @@ namespace DataTable
                
 
 
-    public static (List<QuestData> list, Dictionary<string, QuestData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<string, QuestData> Map = new Dictionary<string, QuestData>();
+    public static (List<QuestData> list, Dictionary<int, QuestData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, QuestData> Map = new Dictionary<int, QuestData>();
             List<QuestData> List = new List<QuestData>();     
             TypeMap.Init();
             FieldInfo[] fields = typeof(QuestData).GetFields(BindingFlags.Public | BindingFlags.Instance);

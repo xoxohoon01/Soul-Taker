@@ -8,8 +8,8 @@ public class QuestManager : MonoSingleton<QuestManager>
 {
     public GameObject questCanvas;
 
-    [SerializeField] private SerializableDictionary<string, QuestData> _processingQuests;
-    public SerializableDictionary<string, QuestData> processingQuests
+    [SerializeField] private SerializableDictionary<int, QuestData> _processingQuests;
+    public SerializableDictionary<int, QuestData> processingQuests
     {
         get
         {
@@ -22,8 +22,8 @@ public class QuestManager : MonoSingleton<QuestManager>
         }
     }
 
-    [SerializeField] private SerializableDictionary<string, QuestData> _completedQuests;
-    public SerializableDictionary<string, QuestData> completedQuests
+    [SerializeField] private SerializableDictionary<int, QuestData> _completedQuests;
+    public SerializableDictionary<int, QuestData> completedQuests
     {
         get
         {
@@ -38,7 +38,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     private QuestListPanel questList;
 
-    public string currentQuestKey;
+    public int currentQuestKey;
 
     public QuestData AcceptQuest()
     {
@@ -81,9 +81,9 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     private void Start()
     {
-        //foreach (QuestData quest in DatabaseManager.Instance.Quest.GetQuestDatas())
-        //{
-        //    questList.AddQuest(quest);
-        //}
+        foreach (QuestData quest in DatabaseManager.Instance.Quest.GetQuestDatas())
+        {
+            questList.AddQuest(quest);
+        }
     }
 }
