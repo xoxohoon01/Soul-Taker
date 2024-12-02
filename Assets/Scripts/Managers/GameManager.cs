@@ -7,11 +7,11 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    public ItemInstance items;
-
     private new void Awake()
     {
         base.Awake();
         DatabaseManager.Instance.Initialize();
+        
+        ItemManager.Instance.Initialize(DatabaseManager.Instance.Parse(typeof(ItemInstance).ToString()));
     }
 }

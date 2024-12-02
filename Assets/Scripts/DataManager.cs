@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class DataManager : SingletonBase<DataManager>
 {
     public DialogueData Parse(string FileName)
@@ -15,10 +15,4 @@ public class DataManager : SingletonBase<DataManager>
         return dialoguedata;
     }
 }
-
-
-
-
-
-
-
+*/

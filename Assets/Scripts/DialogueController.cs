@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class DialogueController : MonoBehaviour
-{
+{/*
     public DialogueData dialogueData;
     public string fileName;
 
@@ -13,6 +13,7 @@ public class DialogueController : MonoBehaviour
         string path = Path.Combine(Application.dataPath, $"{fileName}.json");
         File.WriteAllText(path, jsonData);
     }
+    */
 }
 
 
