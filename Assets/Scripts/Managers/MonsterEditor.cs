@@ -37,7 +37,7 @@ public class MonsterEditor : MonoBehaviour
             string data = File.ReadAllText(Application.persistentDataPath + $"/Monsters/{directoryInfo.GetFiles()[i].Name}");
             MonsterData newMonster = JsonUtility.FromJson<MonsterData>(data);
             TMP_Dropdown.OptionData newOption = new TMP_Dropdown.OptionData();
-            newOption.text = newMonster.displayName;
+            newOption.text = newMonster.DisplayName;
             Monsters.options.Add(newOption);
         }
         Monsters.value = (Monsters.options.Count > number - 1 || number == 0) ? -1 : number;
@@ -47,8 +47,8 @@ public class MonsterEditor : MonoBehaviour
     {
         string data = File.ReadAllText(Application.persistentDataPath + $"/Monsters/{Monsters.options[Monsters.value].text}.json");
         MonsterData newMonster = JsonUtility.FromJson<MonsterData>(data);
-        Name.text = newMonster.displayName.ToString();
-        Description.text = newMonster.description.ToString();
+        Name.text = newMonster.DisplayName.ToString();
+        Description.text = newMonster.Description.ToString();
         HP.text = newMonster.HP.ToString();
         MP.text = newMonster.MP.ToString();
         Damage.text = newMonster.Damage.ToString();
@@ -62,7 +62,7 @@ public class MonsterEditor : MonoBehaviour
     public void SaveMonster()
     {
         string data = JsonUtility.ToJson(GetMonster(), true);
-        File.WriteAllText(Application.persistentDataPath + $"/Monsters/{GetMonster().displayName}.json", data);
+        File.WriteAllText(Application.persistentDataPath + $"/Monsters/{GetMonster().DisplayName}.json", data);
         LoadMonsters();
     }
 
@@ -87,8 +87,8 @@ public class MonsterEditor : MonoBehaviour
     private MonsterData GetMonster()
     {
         MonsterData newMonster = new MonsterData();
-        newMonster.displayName = Name.text;
-        newMonster.description = Description.text;
+        newMonster.DisplayName = Name.text;
+        newMonster.Description = Description.text;
         float.TryParse(HP.text, out newMonster.HP);
         float.TryParse(MP.text, out newMonster.MP);
         float.TryParse(Damage.text, out newMonster.Damage);
