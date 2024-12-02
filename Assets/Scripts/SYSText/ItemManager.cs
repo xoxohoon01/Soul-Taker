@@ -26,7 +26,7 @@ public class ItemManager : MonoSingleton<ItemManager>
         }
         
         _items.Add(item);
-        SaveItemData();
+        DatabaseManager.Instance.SaveData(_items);
     }
 
     private void AddId()            //아이템 번호 부여하는 로직
@@ -41,6 +41,7 @@ public class ItemManager : MonoSingleton<ItemManager>
         }
     }
     
+    /*
     private void SaveItemData()
     {
         ItemJSON item = new ItemJSON();
@@ -49,4 +50,5 @@ public class ItemManager : MonoSingleton<ItemManager>
         string path = Path.Combine(Application.dataPath, $"{typeof(ItemInstance)}.json");
         File.WriteAllText(path, jsonData);
     }
+    */
 }

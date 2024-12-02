@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using DataTable;
+using Newtonsoft.Json;
 using UGS;
 using UnityEngine;
 
@@ -38,6 +39,13 @@ public class DatabaseManager : MonoSingleton<DatabaseManager>
         return JsonUtility.FromJson<T>(loadJson); 
     }
     
+    public List<T> LoadDataList<T>()
+    {
+        string loadJson = File.ReadAllText(savePath + $"/{typeof(T)}.txt");
+        return JsonConvert.DeserializeObject<List<T>>(loadJson);
+    }
+    
+    /*
     public List<ItemInstance> Parse(string FileName)
     {
         TextAsset jsonFile = Resources.Load<TextAsset>(FileName);
@@ -48,5 +56,5 @@ public class DatabaseManager : MonoSingleton<DatabaseManager>
         }
         ItemJSON item = JsonUtility.FromJson<ItemJSON>(jsonFile.text); // 역직렬화
         return item.items;
-    }
+    }*/
 }
