@@ -9,6 +9,17 @@ public class MonsterAttackState : MonsterBaseState
     public override void Enter()
     {
         stateMachine.Behavior.agent.isStopped = true;
+        
+        // Apply AttackSpeed to Animation Speed
+        if (stateMachine.AttackSpeed > 1f)
+        {
+            stateMachine.Behavior.Animator.SetFloat("AttackSpeed", stateMachine.AttackSpeed);
+        }
+        else
+        {
+            stateMachine.Behavior.Animator.SetFloat("AttackSpeed", 1);
+        }
+
         StartAnimation(stateMachine.Behavior.animationData.AttackParameterHash);
     }
 
