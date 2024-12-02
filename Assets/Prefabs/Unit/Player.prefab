@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 0}
-  rb: {fileID: 0}
+  controller: {fileID: 0}
 --- !u!114 &2384416954557029739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,9 +1506,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4059863109858162237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70bc2346dfc118048916a5bf2475f4f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 743f775f92c8752488c1671260236f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Input: {fileID: 0}
+  rb: {fileID: 0}
+  animator: {fileID: 0}
+  animationData:
+    movementParameterName: '@Movement'
+    idleParameterName: Idle
+    runParameterName: Run
+    attackParameterName: '@Attack'
+    baseAttackParameterName: BaseAttack
 --- !u!114 &5036748419438610265
 MonoBehaviour:
   m_ObjectHideFlags: 0

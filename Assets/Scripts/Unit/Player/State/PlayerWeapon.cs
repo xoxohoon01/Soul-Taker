@@ -33,7 +33,7 @@ public class PlayerWeapon : MonoBehaviour
 
         while (true)
         {
-            if (!CharacterManager.Instance.Player.Behavior.stateMachine.IsAttacking)
+            if (!CharacterManager.Instance.Player.controller.stateMachine.playerController)
             {
                 weaponCollider.enabled = false;
                 Debug.Log("disable weapon");
@@ -49,7 +49,7 @@ public class PlayerWeapon : MonoBehaviour
 
         if (other.TryGetComponent(out Health health))
         {
-            damage = CharacterManager.Instance.Player.Status.Damage.CurrentValue;
+            damage = CharacterManager.Instance.Player.status.Damage.CurrentValue;
             health.TakeDamage(damage);
 
             Debug.Log("success attack");
