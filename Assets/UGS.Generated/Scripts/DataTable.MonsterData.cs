@@ -57,8 +57,8 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.String displayName;
-		public System.String description;
+		public System.String DisplayName;
+		public System.String Description;
 		public System.Single HP;
 		public System.Single MP;
 		public System.Single Damage;
@@ -76,6 +76,7 @@ namespace DataTable
 		public System.Single AttackRange;
 		public System.Single DetectRange;
 		public System.Single FieldOfView;
+		public System.Collections.Generic.List<Int32> DropItems;
   
 
 #region fuctions

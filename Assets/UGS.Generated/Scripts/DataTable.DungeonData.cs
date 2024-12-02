@@ -20,7 +20,7 @@ namespace DataTable
     public partial class DungeonData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<DungeonData> loadedList, Dictionary<string, DungeonData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<DungeonData> loadedList, Dictionary<int, DungeonData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
@@ -29,7 +29,7 @@ namespace DataTable
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<string, DungeonData> DungeonDataMap = new Dictionary<string, DungeonData>();  
+        public static Dictionary<int, DungeonData> DungeonDataMap = new Dictionary<int, DungeonData>();  
         public static List<DungeonData> DungeonDataList = new List<DungeonData>();   
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace DataTable
         /// Get DungeonData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<string, DungeonData>  GetDictionary()
+        public static Dictionary<int, DungeonData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
            return DungeonDataMap;
@@ -56,12 +56,12 @@ namespace DataTable
 
 /* Fields. */
 
-		public System.String ID;
+		public System.Int32 ID;
 		public System.String Name;
 		public System.String Description;
 		public System.Int32 Difficulty;
 		public System.Int32 PlayerLevel;
-		public System.Collections.Generic.List<String> Spawners;
+		public System.Collections.Generic.List<Int32> Spawners;
   
 
 #region fuctions
@@ -88,7 +88,7 @@ namespace DataTable
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<DungeonData>, Dictionary<string, DungeonData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<DungeonData>, Dictionary<int, DungeonData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -116,8 +116,8 @@ namespace DataTable
                
 
 
-    public static (List<DungeonData> list, Dictionary<string, DungeonData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<string, DungeonData> Map = new Dictionary<string, DungeonData>();
+    public static (List<DungeonData> list, Dictionary<int, DungeonData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, DungeonData> Map = new Dictionary<int, DungeonData>();
             List<DungeonData> List = new List<DungeonData>();     
             TypeMap.Init();
             FieldInfo[] fields = typeof(DungeonData).GetFields(BindingFlags.Public | BindingFlags.Instance);
