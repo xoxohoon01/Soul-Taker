@@ -20,6 +20,7 @@ public class DatabaseManager : MonoSingleton<DatabaseManager>
     public void Initialize()
     {
         UnityGoogleSheet.LoadAllData();
+        Character = new CharacterDataManager();
         Item = new ItemDataManager();
         Quest = new QuestDataManager();
         Dungeon = new DungeonDataManager();

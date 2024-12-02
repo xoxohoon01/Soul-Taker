@@ -6,18 +6,28 @@ using UnityEngine;
 [System.Serializable]
 public class Stat
 {
+    private float currentValue;
     public float CurrentValue
     {
         get
         {
-            return ((originalValue + addition.Sum() - subtraction.Sum()) * (1 + (multiplier.Sum() / 100)));
+            return currentValue;
         }
-    } // ½ºÅİ º¯°æ»çÇ×ÀÌ Àû¿ëµÈ ÇöÀç °ª
+        set
+        {
+            currentValue = value;
+        }
+    }
 
-    public float originalValue; // ¿ø·¡ÀÇ ½ºÅİ (Ä³¸¯ÅÍ Á¾·ù, ·¹º§¿¡ ÀÇÇÑ ½ºÅİ)
+    public float originalValue; // ì›ë˜ì˜ ìŠ¤í…Ÿ (ìºë¦­í„° ì¢…ë¥˜, ë ˆë²¨ì— ì˜í•œ ìŠ¤í…Ÿ)
 
-    // ¹öÇÁ³ª Àåºñ¿¡ ÀÇÇØ º¯°æµÇ´Â °ª
-    public List<float> addition = new List<float>();    // Ãß°¡·®
-    public List<float> subtraction = new List<float>(); // °¨¼Ò·®
-    public List<float> multiplier = new List<float>();  // Áõ°¡·®
+    // ë²„í”„ë‚˜ ì¥ë¹„ì— ì˜í•´ ë³€ê²½ë˜ëŠ” ê°’
+    public List<float> addition = new List<float>();    // ì¶”ê°€ëŸ‰
+    public List<float> subtraction = new List<float>(); // ê°ì†ŒëŸ‰
+    public List<float> multiplier = new List<float>();  // ì¦ê°€ëŸ‰
+
+    public float GetValue()
+    {
+        return ((originalValue + addition.Sum() - subtraction.Sum()) * (1 + (multiplier.Sum() / 100)));
+    }
 }

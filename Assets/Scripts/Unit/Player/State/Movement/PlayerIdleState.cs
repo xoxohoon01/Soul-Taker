@@ -1,31 +1,31 @@
-﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerIdleState : PlayerMovementState
 {
-    public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
-    {
-    }
+    public PlayerIdleState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        stateMachine.IsStop = true;
+        stateMachine.isStop = true;
         base.Enter();
-        StartAnimation(stateMachine.PlayerBehavior.AnimationData.IdleParameterHash);
+        StartAnimation(stateMachine.playerController.animationData.IdleParameterHash);
     }
-
     public override void Exit()
     {
+        stateMachine.isStop = false;
         base.Exit();
-        StopAnimation(stateMachine.PlayerBehavior.AnimationData.IdleParameterHash);
+        StopAnimation(stateMachine.playerController.animationData.IdleParameterHash);
     }
 
+    // 가상패드 조작 시 Run 상태로 전환
     public override void HandleInput()
     {
         base.HandleInput();
         if (stateMachine.MovementInput != Vector2.zero)
         {
-            stateMachine.ChangeState(stateMachine.RunState);
-            return;
+            stateMachine.ChangeState(new PlayerRunState(stateMachine));
         }
     }
 }
