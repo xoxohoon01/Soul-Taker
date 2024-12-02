@@ -1,28 +1,39 @@
+using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class UIShowDungeon : UIBase
 {
-    private string targetDungeonID;
+    [SerializeField] private Text dungeonNameTxt;
+    [SerializeField] private int targetDungeonID;
+    public void InitalizeDungeonNameText(int _targetDungeonID)
+    {
+        targetDungeonID = _targetDungeonID;
+        dungeonNameTxt.text = DatabaseManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).Name;
+    }
     public void DungeonSelect(int Index)
     {
         switch (Index)
         {
             case 0:
-                targetDungeonID = "2001"; 
                 SceneManager.sceneLoaded += OnSceneLoaded;
-                SceneManager.LoadScene("YJ");
+                SceneManager.LoadScene("TestDungeon");
                 break;
 
             case 1:
-                targetDungeonID = "2002"; 
                 SceneManager.sceneLoaded += OnSceneLoaded; 
-                SceneManager.LoadScene("YJ");
+                SceneManager.LoadScene("TestDungeon");
+                break;
+            case 2:
+                SceneManager.sceneLoaded += OnSceneLoaded;
+                SceneManager.LoadScene("TestDungeon");
                 break;
         }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "YJ")
+        if (scene.name == "TestDungeon")
         {
             DungeonManager.Instance.InitializeDungeon(targetDungeonID); // InitializeDungeon 호출
         }
