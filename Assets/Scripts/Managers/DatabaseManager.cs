@@ -9,6 +9,7 @@ public class DatabaseManager : MonoSingleton<DatabaseManager>
     public QuestDataManager Quest;
     public DungeonDataManager Dungeon;
     public SpawnerDataManager Spawner;
+    public MonsterDataManager Monster;
 
     public void Initialize()
     {
@@ -17,5 +18,6 @@ public class DatabaseManager : MonoSingleton<DatabaseManager>
         Quest = new QuestDataManager();
         Dungeon = new DungeonDataManager();
         Spawner = new SpawnerDataManager();
+        Monster = new MonsterDataManager();
     }
 }

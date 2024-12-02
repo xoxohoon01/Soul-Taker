@@ -59,6 +59,23 @@ namespace DataTable
 		public System.Int32 ID;
 		public System.String displayName;
 		public System.String description;
+		public System.Single HP;
+		public System.Single MP;
+		public System.Single Damage;
+		public System.Single Defense;
+		public System.Single MoveSpeed;
+		public System.Single AttackSpeed;
+		public System.Single HPRegeneration;
+		public System.Single MPRegeneration;
+		public System.Single HPPerLevel;
+		public System.Single MPPerLevel;
+		public System.Single DamagePerLevel;
+		public System.Single DefensePerLevel;
+		public System.Single HPRegenerationPerLevel;
+		public System.Single MPRegenerationPerLevel;
+		public System.Single AttackRange;
+		public System.Single DetectRange;
+		public System.Single FieldOfView;
   
 
 #region fuctions

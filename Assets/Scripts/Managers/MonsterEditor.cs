@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEngine.UI;
+using DataTable;
 
 public class MonsterEditor : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class MonsterEditor : MonoBehaviour
             string data = File.ReadAllText(Application.persistentDataPath + $"/Monsters/{directoryInfo.GetFiles()[i].Name}");
             MonsterData newMonster = JsonUtility.FromJson<MonsterData>(data);
             TMP_Dropdown.OptionData newOption = new TMP_Dropdown.OptionData();
-            newOption.text = newMonster.Name;
+            newOption.text = newMonster.displayName;
             Monsters.options.Add(newOption);
         }
         Monsters.value = (Monsters.options.Count > number - 1 || number == 0) ? -1 : number;
@@ -46,8 +47,8 @@ public class MonsterEditor : MonoBehaviour
     {
         string data = File.ReadAllText(Application.persistentDataPath + $"/Monsters/{Monsters.options[Monsters.value].text}.json");
         MonsterData newMonster = JsonUtility.FromJson<MonsterData>(data);
-        Name.text = newMonster.Name.ToString();
-        Description.text = newMonster.Description.ToString();
+        Name.text = newMonster.displayName.ToString();
+        Description.text = newMonster.description.ToString();
         HP.text = newMonster.HP.ToString();
         MP.text = newMonster.MP.ToString();
         Damage.text = newMonster.Damage.ToString();
@@ -61,7 +62,7 @@ public class MonsterEditor : MonoBehaviour
     public void SaveMonster()
     {
         string data = JsonUtility.ToJson(GetMonster(), true);
-        File.WriteAllText(Application.persistentDataPath + $"/Monsters/{GetMonster().Name}.json", data);
+        File.WriteAllText(Application.persistentDataPath + $"/Monsters/{GetMonster().displayName}.json", data);
         LoadMonsters();
     }
 
@@ -86,8 +87,8 @@ public class MonsterEditor : MonoBehaviour
     private MonsterData GetMonster()
     {
         MonsterData newMonster = new MonsterData();
-        newMonster.Name = Name.text;
-        newMonster.Description = Description.text;
+        newMonster.displayName = Name.text;
+        newMonster.description = Description.text;
         float.TryParse(HP.text, out newMonster.HP);
         float.TryParse(MP.text, out newMonster.MP);
         float.TryParse(Damage.text, out newMonster.Damage);

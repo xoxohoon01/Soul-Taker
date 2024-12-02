@@ -10,8 +10,9 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 
     //[SerializeField] private int CurrentDungeonID = 2001;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         SpawnerPrefab = Resources.Load<GameObject>("Spawn");
     }
 
