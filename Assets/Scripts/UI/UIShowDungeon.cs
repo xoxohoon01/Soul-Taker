@@ -1,19 +1,19 @@
 using UnityEngine.SceneManagement;
 public class UIShowDungeon : UIBase
 {
-    private string targetDungeonID;
+    private int targetDungeonID;
     public void DungeonSelect(int Index)
     {
         switch (Index)
         {
             case 0:
-                targetDungeonID = "2001"; 
+                targetDungeonID = 2001;
                 SceneManager.sceneLoaded += OnSceneLoaded;
                 SceneManager.LoadScene("YJ");
                 break;
 
             case 1:
-                targetDungeonID = "2002"; 
+                targetDungeonID = 2002;
                 SceneManager.sceneLoaded += OnSceneLoaded; 
                 SceneManager.LoadScene("YJ");
                 break;

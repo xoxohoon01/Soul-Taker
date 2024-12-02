@@ -10,8 +10,8 @@ public class DungeonDataManager : DungeonData
         return DungeonDataList;
     }
 
-    public DungeonData GetDungeonid(string id)
+    public DungeonData GetDungeonid(int DungeonId)
     {
-        return DungeonDataMap[id];
+        return DungeonDataList.Find(x => x.ID == DungeonId);
     }
 }
