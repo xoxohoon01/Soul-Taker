@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.IO;
 
-public class DatabaseManager : MonoSingleton<DatabaseManager>
+public class DatabaseManager : Singleton<DatabaseManager>
 {
     public string savePath = Application.persistentDataPath;
 
