@@ -11,6 +11,6 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     private void Start()
     {
         player = Instantiate(playerPrefab).GetComponent<Player>();
-        player.status.InitializeStatus(DatabaseManager.Instance.Character.GetCharacterid(1));
+        player.status.InitializeStatus(DataManager.Instance.Character.GetCharacterid(1));
     }
 }

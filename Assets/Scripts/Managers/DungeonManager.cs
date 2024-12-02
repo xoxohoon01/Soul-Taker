@@ -21,9 +21,9 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 
     private void CreatSpawner(int CurrentDungeonID) 
     {
-        for (int i = 0; i < DatabaseManager.Instance.Dungeon.GetDungeonid(CurrentDungeonID).Spawners.Count; i++)
+        for (int i = 0; i < DataManager.Instance.Dungeon.GetDungeonid(CurrentDungeonID).Spawners.Count; i++)
         {
-            SpawnerData spawnData = DatabaseManager.Instance.Spawner.GetSpawnerid(DatabaseManager.Instance.Dungeon.GetDungeonid(CurrentDungeonID).Spawners[i]);
+            SpawnerData spawnData = DataManager.Instance.Spawner.GetSpawnerid(DataManager.Instance.Dungeon.GetDungeonid(CurrentDungeonID).Spawners[i]);
             GameObject newSpawner = Instantiate(SpawnerPrefab, spawnData.SpawnPosition, Quaternion.identity);
             newSpawner.GetComponent<SpawnSystem>().InitializeObjectPool(spawnData); // 데이터 전달
         }

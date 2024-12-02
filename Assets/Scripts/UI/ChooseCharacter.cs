@@ -10,7 +10,7 @@ public class ChooseCharacter : MonoBehaviour
     public CharacterType type;
     public void Choose()
     {
-        CharacterData newCharacter = DatabaseManager.Instance.Character.GetCharacter()[(int)type];
+        CharacterData newCharacter = DataManager.Instance.Character.GetCharacter()[(int)type];
         CharacterCreator.Instance.nowCharacter = newCharacter;
         CharacterCreator.Instance.CreateNewCharacter();
     }

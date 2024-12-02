@@ -10,8 +10,8 @@ public class GameManager : MonoSingleton<GameManager>
     private new void Awake()
     {
         base.Awake();
-        DatabaseManager.Instance.Initialize();
+        DataManager.Instance.Initialize();
         
-        //ItemManager.Instance.Initialize(DatabaseManager.Instance.LoadData(typeof(ItemInstance).ToString()));
+        //ItemManager.Instance.Initialize(DataManager.Instance.LoadData(typeof(ItemInstance).ToString()));
     }
 }
