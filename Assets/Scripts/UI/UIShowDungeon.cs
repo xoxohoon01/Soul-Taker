@@ -9,7 +9,7 @@ public class UIShowDungeon : UIBase
     public void InitalizeDungeonNameText(int _targetDungeonID)
     {
         targetDungeonID = _targetDungeonID;
-        dungeonNameTxt.text = DatabaseManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).Name;
+        dungeonNameTxt.text = DataManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).Name;
     }
     public void DungeonSelect(int Index)
     {

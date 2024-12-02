@@ -47,7 +47,6 @@ public class MonsterChaseState : MonsterBaseState
 
     protected bool IsInAttackRange()
     {
-        //return stateMachine.Behavior.agent.remainingDistance <= stateMachine.AttackRange;
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Behavior.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
     }

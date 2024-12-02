@@ -13,7 +13,7 @@ public class SpawnSystem : MonoBehaviour
 
     private void Awake()
     {
-        TestPrefab = Resources.Load<GameObject>("Monster");
+        TestPrefab = Resources.Load<GameObject>("TestMonster");
     }
 
     //private void Start()
@@ -60,6 +60,8 @@ public class SpawnSystem : MonoBehaviour
         for (int i = 0; i < spawnData.SpawnCount; i++)
         {
             GameObject obj = Instantiate(TestPrefab);
+            obj.GetComponent<MonsterStatus>().InitializeLevel(spawnData.MonsterLevel);
+            obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawndata.MonsterID));
             obj.SetActive(false);
             obj.transform.SetParent(this.transform);
             objectPool[i] = obj;

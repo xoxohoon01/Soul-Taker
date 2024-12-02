@@ -44,7 +44,7 @@ public class QuestManager : MonoSingleton<QuestManager>
     {
         if (!processingQuests.ContainsKey(currentQuestKey) && !completedQuests.ContainsKey(currentQuestKey))
         {
-            processingQuests.Add(currentQuestKey, DatabaseManager.Instance.Quest.GetQuestDatas()[currentQuestKey]);
+            processingQuests.Add(currentQuestKey, DataManager.Instance.Quest.GetQuestDatas()[currentQuestKey]);
 
             return processingQuests[currentQuestKey];
         }
@@ -81,7 +81,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     private void Start()
     {
-        foreach (QuestData quest in DatabaseManager.Instance.Quest.GetQuestDatas())
+        foreach (QuestData quest in DataManager.Instance.Quest.GetQuestDatas())
         {
             questList.AddQuest(quest);
         }

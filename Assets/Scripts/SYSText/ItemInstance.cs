@@ -1,3 +1,4 @@
+[System.Serializable]
 public class ItemInstance
 {
     public int id;          //서버에서 발급해주는 아이템 아이디

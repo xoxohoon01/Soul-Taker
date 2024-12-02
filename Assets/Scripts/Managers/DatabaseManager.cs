@@ -1,21 +1,29 @@
-using DataTable;
-using UGS;
+using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using System.IO;
 
 public class DatabaseManager : MonoSingleton<DatabaseManager>
 {
-    // 클래스명 변경, MonoSingleton -> Mono 떼세요;
-    public CharacterDataManager Character;
-    public ItemDataManager Item;
-    public QuestDataManager Quest;
-    public DungeonDataManager Dungeon;
-    public SpawnerDataManager Spawner;
+    public string savePath = Application.persistentDataPath;
 
-    public void Initialize()
+    public void SaveData<T>(T data)
     {
-        UnityGoogleSheet.LoadAllData();
-        Item = new ItemDataManager();
-        Quest = new QuestDataManager();
-        Dungeon = new DungeonDataManager();
-        Spawner = new SpawnerDataManager();
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(savePath + $"/{typeof(T)}.txt", json);
+    }
+
+    public T LoadData<T>()
+    {
+        string loadJson = File.ReadAllText(savePath + $"/{typeof(T)}.txt");
+        return JsonUtility.FromJson<T>(loadJson);
+    }
+
+    public List<T> LoadDataList<T>()
+    {
+        string loadJson = File.ReadAllText(savePath + $"/{typeof(T)}.txt");
+        return JsonConvert.DeserializeObject<List<T>>(loadJson);
     }
 }

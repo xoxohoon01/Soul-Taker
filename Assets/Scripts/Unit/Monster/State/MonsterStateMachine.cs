@@ -12,6 +12,7 @@ public class MonsterStateMachine : StateMachine
     public MonsterAttackState AttackState { get; }
 
     public float MoveSpeed { get; private set; }
+    public float AttackSpeed { get; private set; }
     public float DetectRange { get; private set; }
     public float AttackRange { get; private set; }
     public float FieldOfView { get; private set; }
@@ -27,8 +28,8 @@ public class MonsterStateMachine : StateMachine
         ChaseState = new MonsterChaseState(this);
         AttackState = new MonsterAttackState(this);
 
-        //MoveSpeed = monsterBehavior.Status.MoveSpeed.CurrentValue;
-        MoveSpeed = 3f;
+        MoveSpeed = monsterBehavior.Status.MoveSpeed.CurrentValue;
+        AttackSpeed = monsterBehavior.Status.AttackSpeed.CurrentValue;
         DetectRange = monsterBehavior.Status.DetectRange;
         AttackRange = monsterBehavior.Status.AttackRange;
         FieldOfView = monsterBehavior.Status.FieldOfView;
