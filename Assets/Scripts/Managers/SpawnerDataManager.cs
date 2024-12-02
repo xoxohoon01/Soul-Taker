@@ -5,8 +5,12 @@ using DataTable;
 
 public class SpawnerDataManager : SpawnerData
 {
-    public Dictionary<string, SpawnerData> GetSpawnerDatas()
+    public List<SpawnerData> GetDungeon()
     {
-        return SpawnerDataMap;
+        return SpawnerDataList;
+    }
+    public SpawnerData GetSpawnerid(int SpawnerId)
+    {
+        return SpawnerDataList.Find(x => x.ID == SpawnerId);
     }
 }

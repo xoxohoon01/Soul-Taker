@@ -20,7 +20,7 @@ namespace DataTable
     public partial class SpawnerData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<SpawnerData> loadedList, Dictionary<string, SpawnerData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<SpawnerData> loadedList, Dictionary<int, SpawnerData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
@@ -29,7 +29,7 @@ namespace DataTable
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<string, SpawnerData> SpawnerDataMap = new Dictionary<string, SpawnerData>();  
+        public static Dictionary<int, SpawnerData> SpawnerDataMap = new Dictionary<int, SpawnerData>();  
         public static List<SpawnerData> SpawnerDataList = new List<SpawnerData>();   
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace DataTable
         /// Get SpawnerData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<string, SpawnerData>  GetDictionary()
+        public static Dictionary<int, SpawnerData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
            return SpawnerDataMap;
@@ -56,7 +56,9 @@ namespace DataTable
 
 /* Fields. */
 
-		public System.String ID;
+		public System.Int32 ID;
+		public System.Int32 SpawnRoom;
+		public System.Int32 SpawnType;
 		public UnityEngine.Vector3 SpawnPosition;
 		public System.Int32 MonsterID;
 		public System.Int32 SpawnCount;
@@ -87,7 +89,7 @@ namespace DataTable
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<SpawnerData>, Dictionary<string, SpawnerData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<SpawnerData>, Dictionary<int, SpawnerData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -115,8 +117,8 @@ namespace DataTable
                
 
 
-    public static (List<SpawnerData> list, Dictionary<string, SpawnerData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<string, SpawnerData> Map = new Dictionary<string, SpawnerData>();
+    public static (List<SpawnerData> list, Dictionary<int, SpawnerData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, SpawnerData> Map = new Dictionary<int, SpawnerData>();
             List<SpawnerData> List = new List<SpawnerData>();     
             TypeMap.Init();
             FieldInfo[] fields = typeof(SpawnerData).GetFields(BindingFlags.Public | BindingFlags.Instance);
