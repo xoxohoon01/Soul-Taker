@@ -45,17 +45,4 @@ public class DatabaseManager : MonoSingleton<DatabaseManager>
         string loadJson = File.ReadAllText(savePath + $"/{typeof(T)}.txt");
         return JsonConvert.DeserializeObject<List<T>>(loadJson);
     }
-    
-    /*
-    public List<ItemInstance> Parse(string FileName)
-    {
-        TextAsset jsonFile = Resources.Load<TextAsset>(FileName);
-        if (jsonFile == null)
-        {
-            Debug.LogError($"파일 {FileName}을 찾을 수 없습니다.");
-            return null;
-        }
-        ItemJSON item = JsonUtility.FromJson<ItemJSON>(jsonFile.text); // 역직렬화
-        return item.items;
-    }*/
 }
