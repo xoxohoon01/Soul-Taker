@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
     public PlayerAnimationData animationData;
+
+    public float attackDelay;
     
     private void Awake()
     {
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = transform.GetChild(0).GetComponent<Animator>();
         animationData.Initialize();
+        Input = GetComponent<PlayerInput>();
     }
 
     private void Start()
@@ -28,6 +31,8 @@ public class PlayerController : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
+        if (attackDelay > 0)
+            attackDelay = Mathf.Max(attackDelay - Time.deltaTime, 0);
     }
 
     private void FixedUpdate()
