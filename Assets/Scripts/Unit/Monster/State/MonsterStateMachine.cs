@@ -30,8 +30,8 @@ public class MonsterStateMachine : StateMachine
         AttackState = new MonsterAttackState(this);
         DeadState = new MonsterDeadState(this);
 
-        MoveSpeed = monsterBehavior.Status.MoveSpeed.CurrentValue;
-        AttackSpeed = monsterBehavior.Status.AttackSpeed.CurrentValue;
+        MoveSpeed = monsterBehavior.Status.MoveSpeed.GetValue();
+        AttackSpeed = monsterBehavior.Status.AttackSpeed.GetValue();
         MinWanderDistance = monsterBehavior.Status.MinWanderDistance;
         MaxWanderDistance = monsterBehavior.Status.MaxWanderDistance;
         WanderRate = monsterBehavior.Status.WanderRate;

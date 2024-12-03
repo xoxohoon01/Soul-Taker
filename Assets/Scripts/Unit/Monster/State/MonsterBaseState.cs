@@ -48,7 +48,17 @@ public class MonsterBaseState : IState
     {
         Vector3 directionToTarget = GetTargetDirection();
         float angle = Vector3.Angle(stateMachine.Behavior.transform.forward, directionToTarget);
-        return angle < stateMachine.FieldOfView * 0.5;
+
+        RaycastHit hit;
+        Vector3 offset = new Vector3(0, 1, 2);
+
+        if (angle < stateMachine.FieldOfView * 0.5 && !Physics.Raycast(stateMachine.Behavior.transform.position + offset,
+                directionToTarget, out hit, stateMachine.DetectRange, stateMachine.Behavior.ObstacleMask))
+        { 
+            return true;
+        }
+
+        return false;
     }
 
     protected bool IsInDetectRange()
