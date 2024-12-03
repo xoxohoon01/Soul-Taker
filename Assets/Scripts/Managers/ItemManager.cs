@@ -46,4 +46,9 @@ public class ItemManager : MonoSingleton<ItemManager>
             nextId = 0;
         }
     }
+
+    public List<ItemInstance> GetItems()
+    {
+        return _items;
+    }
 }
