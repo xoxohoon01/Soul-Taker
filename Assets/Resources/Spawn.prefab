@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6144644285373819156}
   - component: {fileID: 1364253883878975513}
   - component: {fileID: 28367961659985427}
-  - component: {fileID: 2439245297543404014}
   - component: {fileID: 1052492899534941473}
   m_Layer: 0
   m_Name: Spawn
@@ -85,27 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2439245297543404014
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8139082663765326347}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1052492899534941473
 MonoBehaviour:
   m_ObjectHideFlags: 0
