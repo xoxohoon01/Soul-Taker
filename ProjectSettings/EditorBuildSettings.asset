@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TestLobby.unity
     guid: 9ee57bc2bb0618e48a5aca0b696a7be2
   - enabled: 1
-    path: Assets/Scenes/TestDungeon.unity
+    path: Assets/Scenes/TestGoblinDungeon.unity
     guid: e06c0295c9cd63c48b82e1ccaedf12b2
   m_configObjects: {}

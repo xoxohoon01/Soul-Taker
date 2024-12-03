@@ -62,6 +62,7 @@ namespace DataTable
 		public System.Int32 Difficulty;
 		public System.Int32 PlayerLevel;
 		public System.Collections.Generic.List<Int32> Spawners;
+		public System.String Scene;
   
 
 #region fuctions

@@ -60,7 +60,7 @@ public class SpawnSystem : MonoBehaviour
         for (int i = 0; i < spawnData.SpawnCount; i++)
         {
             GameObject obj = Instantiate(TestPrefab);
-            obj.GetComponent<MonsterStatus>().InitializeLevel(spawnData.MonsterLevel);
+            //obj.GetComponent<MonsterStatus>().InitializeLevel(spawnData.MonsterLevel);
             obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawndata.MonsterID));
             obj.SetActive(false);
             obj.transform.SetParent(this.transform);

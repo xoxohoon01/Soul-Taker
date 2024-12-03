@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
+    [Tooltip("해당 포탈에 맞는 던전ID를 입력해주세요.")]
     [SerializeField] private int targetDungeonID;
+    [Tooltip("던전 UI를 연결해주세요.")]
     [SerializeField] private UIShowDungeon UIShowDungeon;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log(DataManager.Instance.Dungeon.GetDungeon()[0].ID);
-            Debug.Log("플레이어를 감지했다.");
-            UIShowDungeon.InitalizeDungeonNameText(targetDungeonID);    
+            UIShowDungeon.InitalizeDungeonNameText(targetDungeonID);
             UIManager.Instance.Show<UIShowDungeon>();
 
         }

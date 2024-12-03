@@ -62,7 +62,6 @@ namespace DataTable
 		public UnityEngine.Vector3 SpawnPosition;
 		public System.Int32 MonsterID;
 		public System.Int32 SpawnCount;
-		public System.Int32 MonsterLevel;
   
 
 #region fuctions

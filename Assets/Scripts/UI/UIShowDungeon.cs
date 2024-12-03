@@ -1,37 +1,42 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 
 public class UIShowDungeon : UIBase
 {
-    //[SerializeField] private Text dungeonNameTxt;
+    [SerializeField] private Text dungeonNameTxt;
     [SerializeField] private int targetDungeonID;
+    [SerializeField] private string targetDungeonSceneName;
     public void InitalizeDungeonNameText(int _targetDungeonID)
     {
-        Debug.Log(_targetDungeonID);
-        //targetDungeonID = _targetDungeonID;
-        //Debug.Log(DataManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).Name);
-        //dungeonNameTxt.text = DataManager.Instance.Dungeon.GetDungeonid(2001).Name;
+        targetDungeonID = _targetDungeonID;
+        targetDungeonSceneName = DataManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).Scene;
+        dungeonNameTxt.text = DataManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).Name;
+        Debug.Log(targetDungeonSceneName);
     }
-    public void DungeonSelect(int Index)
+    public void DungeonSelect()
     {
-        switch (Index)
-        {
-            case 0:
-                SceneManager.sceneLoaded += OnSceneLoaded;
-                SceneManager.LoadScene("TestDungeon");
-                break;
+        //switch (Index)
+        //{
+        //    case 0:
+        //        SceneManager.sceneLoaded += OnSceneLoaded;
+        //        SceneManager.LoadScene(targetDungeonSceneName);
+        //        break;
 
-            case 1:
-                SceneManager.sceneLoaded += OnSceneLoaded; 
-                SceneManager.LoadScene("TestDungeon");
-                break;
-            case 2:
-                SceneManager.sceneLoaded += OnSceneLoaded;
-                SceneManager.LoadScene("TestDungeon");
-                break;
-        }
+        //    case 1:
+        //        SceneManager.sceneLoaded += OnSceneLoaded;
+        //        SceneManager.LoadScene(targetDungeonSceneName);
+        //        break;
+        //    case 2:
+        //        SceneManager.sceneLoaded += OnSceneLoaded;
+        //        SceneManager.LoadScene(targetDungeonSceneName);
+        //        break;
+        //}
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene(targetDungeonSceneName);
+        UIManager.Instance.Hide<UIShowDungeon>();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
