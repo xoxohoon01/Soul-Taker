@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class UIMenu : MonoBehaviour
 {
+    private UIInventory inventory;
+    
     public void OnInventory()
     {
-        UIInventory inventory = UIManager.Instance.Show<UIInventory>();
+        inventory = UIManager.Instance.Show<UIInventory>();
         inventory.Initialize(ItemManager.Instance.GetItems());
     }
 
     public void OnClose()
     {
-        
+        inventory.Hide();
+        inventory = null;
     }
 }

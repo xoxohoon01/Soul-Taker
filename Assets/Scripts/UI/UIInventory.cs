@@ -26,4 +26,9 @@ public class UIInventory : UIBase
             obj.GetComponent<ItemCell>().Initialize(_items[i]);
         }
     }
+
+    public void OnClose()
+    {
+        Hide();
+    }
 }
