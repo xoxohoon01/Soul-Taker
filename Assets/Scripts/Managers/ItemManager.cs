@@ -40,15 +40,4 @@ public class ItemManager : MonoSingleton<ItemManager>
             nextId = 0;
         }
     }
-    
-    /*
-    private void SaveItemData()
-    {
-        ItemJSON item = new ItemJSON();
-        item.items = _items;
-        string jsonData = JsonUtility.ToJson(item, true);
-        string path = Path.Combine(Application.dataPath, $"{typeof(ItemInstance)}.json");
-        File.WriteAllText(path, jsonData);
-    }
-    */
 }
