@@ -1,20 +1,20 @@
 {
     "itemInstances": [
         {
-            "id": 0,
-            "itemId": 1001,
+            "id": 1,
+            "itemId": 1,
             "count": 1,
             "enhance": 1
         },
         {
-            "id": 1,
-            "itemId": 1002,
+            "id": 2,
+            "itemId": 2,
             "count": 2,
             "enhance": 2
         },
         {
-            "id": 2,
-            "itemId": 1003,
+            "id": 3,
+            "itemId": 3,
             "count": 3,
             "enhance": 3
         }

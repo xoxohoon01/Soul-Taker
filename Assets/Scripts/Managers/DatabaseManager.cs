@@ -18,7 +18,7 @@ public class DatabaseManager : MonoSingleton<DatabaseManager>
         File.WriteAllText(path, jsonString);
         ItemManager.Instance.Initialize(LoadItemData());
     }
-
+    
     private ItemInstanceData LoadItemData()
     {
         string path = Path.Combine(Application.dataPath, $"{fileName}.json");
