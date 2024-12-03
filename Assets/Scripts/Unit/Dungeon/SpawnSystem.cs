@@ -7,52 +7,21 @@ using DataTable;
 public class SpawnSystem : MonoBehaviour
 {
     [SerializeField] private GameObject[] objectPool;
+    [SerializeField] private GameObject TestPrefab;
+    [SerializeField] private SpawnerData spawnData;
+    [SerializeField] private int spawnerRoomID;
 
-    public SpawnerData spawnData;
-    public GameObject TestPrefab;
+    public int GetRoomId() => spawnerRoomID;
 
     private void Awake()
     {
         TestPrefab = Resources.Load<GameObject>("TestMonster");
     }
 
-    //private void Start()
-    //{
-    //    objectPool = new GameObject[spawnData.SpawnCount];
-
-    //    for (int i = 0; i < spawnData.SpawnCount; i++)
-    //    {
-    //        GameObject obj = Instantiate(TestPrefab);
-    //        obj.SetActive(false);
-    //        obj.transform.SetParent(this.transform);
-    //        objectPool[i] = obj;
-    //    }
-    //    Spawn();
-    //}
- 
-    public void MonsterSpawn() // 오브젝트 객체 활성화 
-    {
-        //if (objectPool == null || objectPool.Length == 0) // 예외 처리
-        //{
-        //    InitializeObjectPool();
-        //}
-
-        for (int i = 0; i < spawnData.SpawnCount; i++)
-        {
-            GameObject obj = objectPool[i];
-
-            if (!obj.activeInHierarchy)
-            {
-                Vector3 Position = GetGridPosition(i, spawnData.SpawnCount); 
-                obj.transform.localPosition = Position;
-                obj.SetActive(true);
-            }
-        }
-    }
     public void InitializeObjectPool(SpawnerData spawndata = null) // 오브젝트 객체 생성 
     {
         if (spawndata != null)
-        { 
+        {
             this.spawnData = spawndata;
         }
 
@@ -66,6 +35,25 @@ public class SpawnSystem : MonoBehaviour
             obj.transform.SetParent(this.transform);
             objectPool[i] = obj;
         }
+
+        spawnerRoomID = spawnData.SpawnRoom;
+        Debug.Log(spawnerRoomID);
+
+    }
+
+    public void InitializeSpawner() // 객체 초기화 (pull)
+    {
+        for (int i = 0; i < spawnData.SpawnCount; i++)
+        {
+            GameObject obj = objectPool[i];
+
+            if (!obj.activeInHierarchy)
+            {
+                Vector3 Position = GetGridPosition(i, spawnData.SpawnCount);
+                obj.transform.localPosition = Position;
+                obj.SetActive(true);
+            }
+        }
     }
 
     private Vector3 GetGridPosition(int index, int count) // 격자판에서 안 겹치도록 생성
@@ -78,33 +66,25 @@ public class SpawnSystem : MonoBehaviour
 
         float x = (col - gridSize / 2) * spacing;
         float z = (row - gridSize / 2) * spacing;
-        float y = 0; 
+        float y = 0;
 
         return new Vector3(x, y, z);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ActivateSpawner()
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log(objectPool.Length);
-            if (objectPool == null || objectPool.Length == 0)
-            {
-                return;
-            }
-
-            MonsterSpawn();
-        }
+        Debug.Log("몬스터 활성화 할 거임.");
+        InitializeSpawner();
     }
 
     public void DeactivateAllObjects()
+    {
+        foreach (GameObject obj in objectPool)
         {
-            foreach (GameObject obj in objectPool)
+            if (obj.activeInHierarchy)
             {
-                if (obj.activeInHierarchy)
-                {
-                    obj.SetActive(false);
-                }
+                obj.SetActive(false);
             }
         }
     }
+}

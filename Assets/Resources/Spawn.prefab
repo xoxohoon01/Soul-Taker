@@ -120,3 +120,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: []
   TestPrefab: {fileID: 0}
+  spawnerRoomID: 0

@@ -15,6 +15,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 
     public void InitializeDungeon(int CurrentDungeonID)
     {
+        Debug.Log("실행됨");
         CreatSpawner(CurrentDungeonID);
     }
 

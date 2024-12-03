@@ -17,23 +17,6 @@ public class UIShowDungeon : UIBase
     }
     public void DungeonSelect()
     {
-        //switch (Index)
-        //{
-        //    case 0:
-        //        SceneManager.sceneLoaded += OnSceneLoaded;
-        //        SceneManager.LoadScene(targetDungeonSceneName);
-        //        break;
-
-        //    case 1:
-        //        SceneManager.sceneLoaded += OnSceneLoaded;
-        //        SceneManager.LoadScene(targetDungeonSceneName);
-        //        break;
-        //    case 2:
-        //        SceneManager.sceneLoaded += OnSceneLoaded;
-        //        SceneManager.LoadScene(targetDungeonSceneName);
-        //        break;
-        //}
-
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(targetDungeonSceneName);
         UIManager.Instance.Hide<UIShowDungeon>();
@@ -41,7 +24,7 @@ public class UIShowDungeon : UIBase
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "TestDungeon")
+        if (scene.name == targetDungeonSceneName)
         {
             DungeonManager.Instance.InitializeDungeon(targetDungeonID); // InitializeDungeon 호출
         }
