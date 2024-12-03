@@ -9,22 +9,43 @@ public class PlayerBasicAttackState : PlayerAttackState
     public override void Enter()
     {
         base.Enter();
+        float span = 1 / stateMachine.status.AttackSpeed.GetValue(); //공격 유지 시간 (판정 오브젝트 지속시간, 캐릭터 모션 유지시간)
+        
         StartAnimation(stateMachine.playerController.animationData.BasicAttackParameterHash);
+
+        // 콤보 체크 
+        stateMachine.playerController.comboIndex += stateMachine.playerController.comboIndex < 3 ? 1 : -2;
+        stateMachine.playerController.animator.SetInteger("ComboIndex", stateMachine.playerController.comboIndex);
+
+        // 현재 애니메이션에 따라 속도 조절 (공격속도 영향받음)
+        stateMachine.playerController.animator.speed = stateMachine.playerController.animator.GetCurrentAnimatorStateInfo(0).length;
+
+        // 공격속도 계산
+        stateMachine.playerController.attackDelay = span;
+        stateMachine.playerController.CreateAttack(span);
+        stateMachine.playerController.attackSpan = span + (span * 0.1f);
+
+        if (stateMachine.playerController.coroutineCombo != null) stateMachine.playerController.StopCoroutine(stateMachine.playerController.coroutineCombo);
+        stateMachine.playerController.coroutineCombo = stateMachine.playerController.StartCoroutine("ClearCombo", span + 1.0f);
     }
 
     public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.playerController.animationData.BasicAttackParameterHash);
+        stateMachine.playerController.animator.speed = 1;
     }
 
     public override void Update()
     {
         base.Update();
-        if (stateMachine.playerController.attackDelay <= 0)
+
+        stateMachine.playerController.animator.speed = stateMachine.playerController.animator.GetCurrentAnimatorStateInfo(0).length;
+
+        if (stateMachine.playerController.attackSpan <= 0)
         {
-            stateMachine.playerController.attackDelay = 1 / stateMachine.status.AttackSpeed.GetValue();
-            GameObject attack = Resources.Load<GameObject>("PlayerAttack");
+            stateMachine.playerController.comboIndex = 0;
+            stateMachine.ChangeState(new PlayerIdleState(stateMachine));
         }
     }
 }
