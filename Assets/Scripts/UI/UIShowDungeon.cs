@@ -1,15 +1,18 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+//using UnityEngine.UI;
+
 public class UIShowDungeon : UIBase
 {
-    [SerializeField] private Text dungeonNameTxt;
+    //[SerializeField] private Text dungeonNameTxt;
     [SerializeField] private int targetDungeonID;
     public void InitalizeDungeonNameText(int _targetDungeonID)
     {
-        targetDungeonID = _targetDungeonID;
-        dungeonNameTxt.text = DataManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).Name;
+        Debug.Log(_targetDungeonID);
+        //targetDungeonID = _targetDungeonID;
+        //Debug.Log(DataManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).Name);
+        //dungeonNameTxt.text = DataManager.Instance.Dungeon.GetDungeonid(2001).Name;
     }
     public void DungeonSelect(int Index)
     {

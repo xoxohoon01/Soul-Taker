@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 1878518977984699781}
   - component: {fileID: 3330174365231933815}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: DungeonNameTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -676,6 +676,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  dungeonNameTxt: {fileID: 3330174365231933815}
+  targetDungeonID: 0
 --- !u!1 &6490790408166645793
 GameObject:
   m_ObjectHideFlags: 0
