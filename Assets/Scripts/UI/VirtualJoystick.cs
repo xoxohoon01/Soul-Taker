@@ -19,6 +19,12 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler,
     {
         canvas = GetComponentInParent<Canvas>();
         handle.anchoredPosition = Vector2.zero;
+        Invoke("Connect", 0.1f);
+    }
+
+    public void Connect()
+    {
+        PlayerManager.Instance.player.controller.Input.joystick = this;
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -1460,6 +1460,7 @@ GameObject:
   - component: {fileID: 5036748419438610265}
   - component: {fileID: -7057499367866420058}
   - component: {fileID: -2462843419323876631}
+  - component: {fileID: -6259932694922831578}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1627,6 +1628,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-6259932694922831578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059863109858162237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87804bf4727f64c4e8b16b777e5f9b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  input: {x: 0, y: 0}
 --- !u!1 &4261585035070685547
 GameObject:
   m_ObjectHideFlags: 0

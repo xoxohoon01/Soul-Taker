@@ -13,13 +13,14 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        input = joystick.Direction;
+        if (joystick != null)
+            input = joystick.Direction;
 
         //PC Test
         if (joystick == null || joystick.Direction == Vector2.zero)
         {
-            horizontal = Input.GetAxis("Horizontal");
-            vertical = Input.GetAxis("Vertical");
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
             input = (Vector2.right * horizontal + Vector2.up * vertical).normalized;
         }
     }
