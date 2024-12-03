@@ -28,6 +28,7 @@ public class ItemManager : MonoSingleton<ItemManager>
         {
             item.id = nextId;
             item.itemId = id;
+            item.count = 1;
             item.enhance = 0;
         }
         
