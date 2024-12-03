@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MonsterIdleState : MonsterBaseState
 {
-    private float patrolCoolDownTime;
+    private float wanderCoolDownTime;
 
     public MonsterIdleState(MonsterStateMachine stateMachine) : base(stateMachine)
     {
@@ -10,7 +10,7 @@ public class MonsterIdleState : MonsterBaseState
 
     public override void Enter()
     {
-        patrolCoolDownTime = 0f;
+        wanderCoolDownTime = 0f;
         stateMachine.Behavior.agent.isStopped = true;
         StartAnimation(stateMachine.Behavior.animationData.IdleParameterHash);
     }
@@ -23,7 +23,7 @@ public class MonsterIdleState : MonsterBaseState
 
     public override void Update()
     {
-        patrolCoolDownTime += Time.deltaTime;
+        wanderCoolDownTime += Time.deltaTime;
 
         if (IsTargetInFieldOfView() && IsInDetectRange())
         {
@@ -31,9 +31,9 @@ public class MonsterIdleState : MonsterBaseState
             return;
         }
 
-        if (patrolCoolDownTime > stateMachine.PatrolRate)
+        if (wanderCoolDownTime > stateMachine.WanderRate)
         {
-            stateMachine.ChangeState(stateMachine.PatrolState);
+            stateMachine.ChangeState(stateMachine.WanderState);
             return;
         }
     }

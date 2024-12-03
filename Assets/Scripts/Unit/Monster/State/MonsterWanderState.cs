@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MonsterPatrolState : MonsterBaseState
+public class MonsterWanderState : MonsterBaseState
 {
-    public MonsterPatrolState(MonsterStateMachine stateMachine) : base(stateMachine)
+    public MonsterWanderState(MonsterStateMachine stateMachine) : base(stateMachine)
     {
     }
 
@@ -12,7 +12,7 @@ public class MonsterPatrolState : MonsterBaseState
         stateMachine.Behavior.agent.isStopped = false;
         stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
         StartAnimation(stateMachine.Behavior.animationData.RunParameterHash);
-        stateMachine.Behavior.agent.SetDestination(GetPatrolLocation());
+        stateMachine.Behavior.agent.SetDestination(GetWanderLocation());
     }
 
     public override void Exit()
@@ -43,7 +43,7 @@ public class MonsterPatrolState : MonsterBaseState
         }
     }
 
-    private Vector3 GetPatrolLocation()
+    private Vector3 GetWanderLocation()
     {
         NavMeshHit hit;
        
@@ -51,8 +51,8 @@ public class MonsterPatrolState : MonsterBaseState
         do
         {
             NavMesh.SamplePosition(stateMachine.Behavior.transform.position
-            + (Random.onUnitSphere * Random.Range(stateMachine.MinPatrolDistance, stateMachine.MaxPatrolDistance)),
-            out hit, stateMachine.MaxPatrolDistance, NavMesh.AllAreas);
+                                    + (Random.onUnitSphere * Random.Range(stateMachine.MinWanderDistance, stateMachine.MaxWanderDistance)),
+                                    out hit, stateMachine.MaxWanderDistance, NavMesh.AllAreas);
             i++;
             if (i == 30) break;
         }
