@@ -18,7 +18,6 @@ public class MonsterStateMachine : StateMachine
     public float DetectRange { get; private set; }
     public float AttackRange { get; private set; }
     public float FieldOfView { get; private set; }
-    public bool IsAttacking { get; set; }
 
     public MonsterStateMachine(MonsterBehavior monsterBehavior)
     {
@@ -31,18 +30,13 @@ public class MonsterStateMachine : StateMachine
         AttackState = new MonsterAttackState(this);
         DeadState = new MonsterDeadState(this);
 
-        //MoveSpeed = monsterBehavior.Status.MoveSpeed.CurrentValue;
-        //AttackSpeed = monsterBehavior.Status.AttackSpeed.CurrentValue;
-        //MinWanderDistance = monsterBehavior.Status.MinWanderDistance;
-        //MaxWanderDistance = monsterBehavior.Status.MaxWanderDistance;
-        //WanderRate = monsterBehavior.Status.WanderRate;
-        MoveSpeed = 3f;
-        AttackSpeed = 1.5f;
-        MinWanderDistance = 3f;
-        MaxWanderDistance = 10f;
-        WanderRate = 5f;
+        MoveSpeed = monsterBehavior.Status.MoveSpeed.CurrentValue;
+        AttackSpeed = monsterBehavior.Status.AttackSpeed.CurrentValue;
+        MinWanderDistance = monsterBehavior.Status.MinWanderDistance;
+        MaxWanderDistance = monsterBehavior.Status.MaxWanderDistance;
+        WanderRate = monsterBehavior.Status.WanderRate;
         DetectRange = monsterBehavior.Status.DetectRange;
-        AttackRange = monsterBehavior.Status.AttackRange;
+        AttackRange = monsterBehavior.Status.AttackRange;    
         FieldOfView = monsterBehavior.Status.FieldOfView;
     }
 }

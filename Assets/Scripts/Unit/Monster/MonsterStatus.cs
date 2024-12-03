@@ -9,6 +9,9 @@ public class MonsterStatus : Status
     public float AttackRange;
     public float DetectRange;
     public float FieldOfView;
+    public float MinWanderDistance;
+    public float MaxWanderDistance;
+    public float WanderRate;
 
     public void InitializeStatus(MonsterData monsterData)
     {
@@ -23,6 +26,9 @@ public class MonsterStatus : Status
         AttackRange = monsterData.AttackRange;
         DetectRange = monsterData.DetectRange;
         FieldOfView = monsterData.FieldOfView;
+        //MinWanderDistance = monsterData.MinWanderDistance;
+        //MaxWanderDistance = monsterData.MaxWanderDistance;
+        //WanderRate = monsterData.WanderRate;
     }
 
     public void InitializeLevel(int level)

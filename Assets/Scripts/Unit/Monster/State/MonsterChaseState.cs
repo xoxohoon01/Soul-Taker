@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class MonsterChaseState : MonsterBaseState
 {
+    private float lastAttackTime;
+    private float attackRate;
+
     public MonsterChaseState(MonsterStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -11,6 +14,9 @@ public class MonsterChaseState : MonsterBaseState
         stateMachine.Behavior.agent.isStopped = false;
         stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
         StartAnimation(stateMachine.Behavior.animationData.RunParameterHash);
+        stateMachine.Behavior.agent.SetDestination(stateMachine.Target.transform.position);
+
+        attackRate = 1f / stateMachine.AttackSpeed;
     }
 
     public override void Exit()
@@ -30,12 +36,19 @@ public class MonsterChaseState : MonsterBaseState
             stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
-        else if (IsInAttackRange() && IsTargetInFieldOfView())
+
+        if (IsInAttackRange())
         {
-            stateMachine.Behavior.agent.SetDestination(stateMachine.Behavior.transform.position);
-            stateMachine.ChangeState(stateMachine.AttackState);
-            return;
+            stateMachine.Behavior.agent.speed = 0f;
+
+            if (CanAttack() && IsTargetInFieldOfView())
+            {
+                lastAttackTime = Time.time;                
+                stateMachine.ChangeState(stateMachine.AttackState);
+                return;
+            }
         }
+        else stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
     }
 
     public override void HandleInput()
@@ -49,5 +62,10 @@ public class MonsterChaseState : MonsterBaseState
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Behavior.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
+    }
+
+    private bool CanAttack()
+    {
+        return Time.time - lastAttackTime > attackRate;
     }
 }
