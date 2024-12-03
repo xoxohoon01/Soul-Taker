@@ -58,7 +58,7 @@ public class MonsterAttackState : MonsterBaseState
         }
         else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
         {
-            return currentInfo.normalizedTime < 1f ? true : false;
+            return currentInfo.normalizedTime < 1f;
         }
         else
         {
