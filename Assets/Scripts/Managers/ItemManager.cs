@@ -7,13 +7,19 @@ using UnityEngine;
 
 public class ItemManager : MonoSingleton<ItemManager>
 {
-    private List<ItemInstance> _items;
+    [SerializeField]private List<ItemInstance> _items;
     private int nextId;
 
     public void Initialize(List<ItemInstance> items)
     {
        _items = items;
        AddId();
+    }
+    
+    public void Initialize(ItemInstanceData items)          //인스펙터 창에서 추가한 아이템 리스트에 저장
+    {
+        _items = items.itemInstances;
+        AddId();
     }
 
     public void AddItem(int id)     //아이템 추가하는 로직
