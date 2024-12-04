@@ -7,13 +7,19 @@ using UnityEngine;
 
 public class ItemManager : MonoSingleton<ItemManager>
 {
-    private List<ItemInstance> _items;
+    [SerializeField]private List<ItemInstance> _items;
     private int nextId;
 
     public void Initialize(List<ItemInstance> items)
     {
        _items = items;
        AddId();
+    }
+    
+    public void Initialize(ItemInstanceData items)          //인스펙터 창에서 추가한 아이템 리스트에 저장
+    {
+        _items = items.itemInstances;
+        AddId();
     }
 
     public void AddItem(int id)     //아이템 추가하는 로직
@@ -22,6 +28,7 @@ public class ItemManager : MonoSingleton<ItemManager>
         {
             item.id = nextId;
             item.itemId = id;
+            item.count = 1;
             item.enhance = 0;
         }
         
@@ -40,15 +47,9 @@ public class ItemManager : MonoSingleton<ItemManager>
             nextId = 0;
         }
     }
-    
-    /*
-    private void SaveItemData()
+
+    public List<ItemInstance> GetItems()
     {
-        ItemJSON item = new ItemJSON();
-        item.items = _items;
-        string jsonData = JsonUtility.ToJson(item, true);
-        string path = Path.Combine(Application.dataPath, $"{typeof(ItemInstance)}.json");
-        File.WriteAllText(path, jsonData);
+        return _items;
     }
-    */
 }
