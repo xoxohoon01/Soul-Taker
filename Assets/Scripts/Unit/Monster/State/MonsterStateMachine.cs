@@ -18,6 +18,7 @@ public class MonsterStateMachine : StateMachine
     public float DetectRange { get; private set; }
     public float AttackRange { get; private set; }
     public float FieldOfView { get; private set; }
+    public bool IsAttacked { get; set; } = false;
 
     public MonsterStateMachine(MonsterBehavior monsterBehavior)
     {

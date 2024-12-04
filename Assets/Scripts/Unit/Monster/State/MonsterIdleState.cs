@@ -25,7 +25,7 @@ public class MonsterIdleState : MonsterBaseState
     {
         wanderCoolDownTime += Time.deltaTime;
 
-        if (IsTargetInFieldOfView() && IsInDetectRange())
+        if ((IsTargetInFieldOfView() && IsInDetectRange()) || stateMachine.IsAttacked)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;

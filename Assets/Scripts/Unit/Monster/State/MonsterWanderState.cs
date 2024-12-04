@@ -30,15 +30,15 @@ public class MonsterWanderState : MonsterBaseState
 
     public override void Update()
     {
-        if (!stateMachine.Behavior.agent.pathPending && stateMachine.Behavior.agent.remainingDistance < 0.5f)
+        if ((IsTargetInFieldOfView() && IsInDetectRange()) || stateMachine.IsAttacked)
         {
-            stateMachine.ChangeState(stateMachine.IdleState);
+            stateMachine.ChangeState(stateMachine.ChaseState);
             return;
         }
 
-        if (IsTargetInFieldOfView() && IsInDetectRange())
+        if (!stateMachine.Behavior.agent.pathPending && stateMachine.Behavior.agent.remainingDistance < 0.5f)
         {
-            stateMachine.ChangeState(stateMachine.ChaseState);
+            stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
     }
