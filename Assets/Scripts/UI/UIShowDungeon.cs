@@ -11,8 +11,8 @@ public class UIShowDungeon : UIBase
     public void InitalizeDungeonNameText(int _targetDungeonID)
     {
         targetDungeonID = _targetDungeonID;
-        targetDungeonSceneName = DataManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).Scene;
-        dungeonNameTxt.text = DataManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).Name;
+        targetDungeonSceneName = DataManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).scene;
+        dungeonNameTxt.text = DataManager.Instance.Dungeon.GetDungeonid(_targetDungeonID).name;
         Debug.Log(targetDungeonSceneName);
     }
     public void DungeonSelect()
