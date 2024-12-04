@@ -34,21 +34,27 @@ public class MonsterChaseState : MonsterBaseState
         if (!IsInDetectRange())
         {
             stateMachine.ChangeState(stateMachine.IdleState);
+            stateMachine.IsAttacked = false;
             return;
         }
 
         if (IsInAttackRange())
         {
             stateMachine.Behavior.agent.speed = 0f;
+            StopAnimation(stateMachine.Behavior.animationData.RunParameterHash);
 
             if (CanAttack() && IsTargetInFieldOfView())
             {
-                lastAttackTime = Time.time;                
+                lastAttackTime = Time.time;
                 stateMachine.ChangeState(stateMachine.AttackState);
                 return;
             }
         }
-        else stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
+        else
+        {
+            stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
+            StartAnimation(stateMachine.Behavior.animationData.RunParameterHash);
+        }
     }
 
     public override void HandleInput()

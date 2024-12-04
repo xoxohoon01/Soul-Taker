@@ -15,24 +15,20 @@ public class MonsterStatus : Status
 
     public void InitializeStatus(MonsterData monsterData)
     {
-        HP.originalValue = monsterData.HP + monsterData.HPPerLevel * Level;
-        MP.originalValue = monsterData.MP + monsterData.MPPerLevel * Level;
-        Damage.originalValue = monsterData.Damage + monsterData.DamagePerLevel * Level;
-        Defense.originalValue = monsterData.Defense + monsterData.DefensePerLevel * Level;
-        MoveSpeed.originalValue = monsterData.MoveSpeed;
-        AttackSpeed.originalValue = monsterData.AttackSpeed;
-        HPRegeneration.originalValue = monsterData.HPRegeneration + monsterData.HPRegenerationPerLevel * Level;
-        MPRegeneration.originalValue = monsterData.MPRegeneration + monsterData.MPRegenerationPerLevel * Level;
-        AttackRange = monsterData.AttackRange;
-        DetectRange = monsterData.DetectRange;
-        FieldOfView = monsterData.FieldOfView;
-        //MinWanderDistance = monsterData.MinWanderDistance;
-        //MaxWanderDistance = monsterData.MaxWanderDistance;
-        //WanderRate = monsterData.WanderRate;
-    }
-
-    public void InitializeLevel(int level)
-    {
-        Level = level;
+        Level = monsterData.level;
+        HP.originalValue = monsterData.hp + monsterData.hpPerLevel * Level;
+        MP.originalValue = monsterData.mp + monsterData.mpPerLevel * Level;
+        Damage.originalValue = monsterData.damage + monsterData.damagePerLevel * Level;
+        Defense.originalValue = monsterData.defense + monsterData.defensePerLevel * Level;
+        MoveSpeed.originalValue = monsterData.moveSpeed;
+        AttackSpeed.originalValue = monsterData.attackSpeed;
+        HPRegeneration.originalValue = monsterData.hpRegeneration + monsterData.hpRegenerationPerLevel * Level;
+        MPRegeneration.originalValue = monsterData.mpRegeneration + monsterData.mpRegenerationPerLevel * Level;
+        AttackRange = monsterData.attackRange;
+        DetectRange = monsterData.detectRange;
+        FieldOfView = monsterData.fieldOfView;
+        //MinWanderDistance = monsterData.minWanderDistance;
+        //MaxWanderDistance = monsterData.maxWanderDistance;
+        //WanderRate = monsterData.wanderRate;
     }
 }
