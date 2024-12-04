@@ -57,11 +57,11 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.Int32 SpawnRoom;
-		public System.Int32 SpawnType;
-		public UnityEngine.Vector3 SpawnPosition;
-		public System.Int32 MonsterID;
-		public System.Int32 SpawnCount;
+		public System.Int32 roomID;
+		public System.Int32 type;
+		public UnityEngine.Vector3 position;
+		public System.Int32 monsterID;
+		public System.Int32 count;
   
 
 #region fuctions

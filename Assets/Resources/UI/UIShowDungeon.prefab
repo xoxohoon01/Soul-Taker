@@ -203,7 +203,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1263457253888849504}
         m_TargetAssemblyTypeName: UIShowDungeon, Assembly-CSharp
         m_MethodName: DungeonSelect
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 6853652689884331174}
   - component: {fileID: 3632257068294894282}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 1878518977984699781}
   - component: {fileID: 3330174365231933815}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: DungeonNameTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -573,7 +573,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1263457253888849504}
         m_TargetAssemblyTypeName: UIShowDungeon, Assembly-CSharp
         m_MethodName: DungeonSelect
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -676,6 +676,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  dungeonNameTxt: {fileID: 3330174365231933815}
+  targetDungeonID: 0
+  targetDungeonSceneName: 
 --- !u!1 &6490790408166645793
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +882,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1263457253888849504}
         m_TargetAssemblyTypeName: UIShowDungeon, Assembly-CSharp
         m_MethodName: DungeonSelect
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

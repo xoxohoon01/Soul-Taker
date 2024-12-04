@@ -57,27 +57,30 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.String DisplayName;
-		public System.String Description;
-		public System.Int32 Level;
-		public System.Single HP;
-		public System.Single MP;
-		public System.Single Damage;
-		public System.Single Defense;
-		public System.Single MoveSpeed;
-		public System.Single AttackSpeed;
-		public System.Single HPRegeneration;
-		public System.Single MPRegeneration;
-		public System.Single HPPerLevel;
-		public System.Single MPPerLevel;
-		public System.Single DamagePerLevel;
-		public System.Single DefensePerLevel;
-		public System.Single HPRegenerationPerLevel;
-		public System.Single MPRegenerationPerLevel;
-		public System.Single AttackRange;
-		public System.Single DetectRange;
-		public System.Single FieldOfView;
-		public System.Collections.Generic.List<Int32> DropItems;
+		public System.String displayName;
+		public System.String description;
+		public System.Int32 level;
+		public System.Single hp;
+		public System.Single mp;
+		public System.Single damage;
+		public System.Single defense;
+		public System.Single moveSpeed;
+		public System.Single attackSpeed;
+		public System.Single hpRegeneration;
+		public System.Single mpRegeneration;
+		public System.Single hpPerLevel;
+		public System.Single mpPerLevel;
+		public System.Single damagePerLevel;
+		public System.Single defensePerLevel;
+		public System.Single hpRegenerationPerLevel;
+		public System.Single mpRegenerationPerLevel;
+		public System.Single attackRange;
+		public System.Single detectRange;
+		public System.Single fieldOfView;
+		public System.Single minWanderDistance;
+		public System.Single maxWanderDistance;
+		public System.Single wanderRate;
+		public System.Collections.Generic.List<Int32> dropItems;
   
 
 #region fuctions
