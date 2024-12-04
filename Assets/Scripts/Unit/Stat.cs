@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class Stat
 {
-    private float currentValue;
+    [SerializeField] private float currentValue;
     public float CurrentValue
     {
         get

@@ -12,6 +12,6 @@ public class GameManager : MonoSingleton<GameManager>
         base.Awake();
         DataManager.Instance.Initialize();
         
-        //ItemManager.Instance.Initialize(DataManager.Instance.LoadData(typeof(ItemInstance).ToString()));
+        ItemManager.Instance.Initialize(DatabaseManager.Instance.LoadDataList<ItemInstance>());
     }
 }

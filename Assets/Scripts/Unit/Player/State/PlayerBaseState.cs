@@ -37,6 +37,11 @@ public class PlayerBaseState : IState
         stateMachine.playerController.animator.SetBool(animationHash, false);
     }
 
+    public void SetAnimationSpeed(float speed)
+    {
+        stateMachine.playerController.animator.speed = speed;
+    }
+
     public void ReadInput()
     {
         stateMachine.MovementInput = stateMachine.playerController.Input.input;

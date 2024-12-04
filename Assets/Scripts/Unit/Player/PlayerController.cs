@@ -49,9 +49,12 @@ public class PlayerController : MonoBehaviour
     public void CreateAttack(float lifeTime)
     {
         PlayerAttack attack = Instantiate(Resources.Load<GameObject>("PlayerAttack"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<PlayerAttack>();
+        attack.sender = gameObject;
         attack.lifeTime = lifeTime;
-        attack.offset = new Vector3(0, 0, 2);
-        attack.size = new Vector3(4, 4, 4);
+        attack.offset = new Vector3(0, 0, 1);
+        attack.size = new Vector3(2, 2, 2);
+
+        attack.damage = stateMachine.status.Damage.GetValue();
     }
 
     IEnumerator ClearCombo(float time)

@@ -57,12 +57,12 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.String Name;
-		public System.String Description;
-		public System.Int32 Difficulty;
-		public System.Int32 PlayerLevel;
-		public System.Collections.Generic.List<Int32> Spawners;
-		public System.String Scene;
+		public System.String name;
+		public System.String description;
+		public System.Int32 difficulty;
+		public System.Int32 playerLevel;
+		public System.Collections.Generic.List<Int32> spawners;
+		public System.String scene;
   
 
 #region fuctions
