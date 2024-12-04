@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PlayerAttackButton : MonoBehaviour
+public class PlayerAttackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private GameObject coolDownUI;
     private Image coolDownImage;
@@ -10,30 +11,37 @@ public class PlayerAttackButton : MonoBehaviour
     [SerializeField] private float attackCoolDownTime;
     private float coolDownFilled;
 
+    [SerializeField] private bool isClick;
+
     private void Awake()
     {
-        coolDownImage = coolDownUI.GetComponent<Image>();
+        //coolDownImage = coolDownUI.GetComponent<Image>();
     }
 
     public void Attack()
     {
-        StartCoroutine(CheckCoolDown());
+        PlayerStateMachine playerStateMachine = PlayerManager.Instance.player.controller.stateMachine;
+        if (playerStateMachine.playerController.attackDelay <= 0)
+        {
+            playerStateMachine.ChangeState(new PlayerBasicAttackState(playerStateMachine));
+        }
     }
 
-    IEnumerator CheckCoolDown()
+    private void Update()
     {
-        coolDownUI.SetActive(true);
-
-        float coolDown = attackCoolDownTime;
-
-        while (coolDown >= 0)
+        if (isClick || Input.GetKey(KeyCode.X))
         {
-            coolDown -= Time.deltaTime;
-            coolDownFilled = coolDown / attackCoolDownTime;
-            coolDownImage.fillAmount = coolDownFilled;
-            yield return null;
+            Attack();
         }
+    }
 
-        coolDownUI.SetActive(false);
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        isClick = true;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        isClick = false;
     }
 }
