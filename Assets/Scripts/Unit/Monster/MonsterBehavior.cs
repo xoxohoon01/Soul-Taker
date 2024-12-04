@@ -6,7 +6,6 @@ public class MonsterBehavior : MonoBehaviour
 {
     public MonsterStateMachine stateMachine;
     public MonsterAnimationData animationData;
-    public Transform mainMesh;
     public NavMeshAgent agent;
     public LayerMask ObstacleMask;
     //public Health health;
