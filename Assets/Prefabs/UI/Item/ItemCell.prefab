@@ -260,8 +260,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2698052877665428374}
-        m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
-        m_MethodName: OnClickButton
+        m_TargetAssemblyTypeName: ItemCell, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -300,6 +300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textCount: {fileID: 825427825926623840}
   textEnhance: {fileID: 2476022061068223396}
+  itemExplanation: {fileID: 4525256086283017835, guid: 9f2e269db47a84db78959a3cf88fe8f7,
+    type: 3}
 --- !u!1 &6721474571368239660
 GameObject:
   m_ObjectHideFlags: 0

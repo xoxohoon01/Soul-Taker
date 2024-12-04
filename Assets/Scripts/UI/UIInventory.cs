@@ -9,6 +9,9 @@ public class UIInventory : UIBase
 {
     [SerializeField] private GameObject objCell;
     [SerializeField] private Transform trsParent;
+    
+    [SerializeField] private GameObject objExplanation;
+    private GameObject uiExplanation;
 
     private List<ItemInstance> _items;
 
@@ -20,10 +23,13 @@ public class UIInventory : UIBase
     
     private void Refresh()
     {
+        uiExplanation = Instantiate(objExplanation, gameObject.transform);
+        uiExplanation.SetActive(false);
+        
         for (int i = 0; i < _items.Count; i++)
         {
             GameObject obj = Instantiate(objCell, trsParent);
-            obj.GetComponent<ItemCell>().Initialize(_items[i]);
+            obj.GetComponent<ItemCell>().Initialize(_items[i], uiExplanation);
         }
     }
 

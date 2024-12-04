@@ -12,9 +12,12 @@ public class ItemCell : MonoBehaviour
 
     private ItemInstance _item;
     
-    public void Initialize(ItemInstance item)
+    private GameObject _itemExplanation;
+    
+    public void Initialize(ItemInstance item, GameObject itemExplanation)
     {
         _item = item;
+        _itemExplanation = itemExplanation;
         
         Refresh();
     }
@@ -23,5 +26,11 @@ public class ItemCell : MonoBehaviour
     {
         textCount.text = _item.count.ToString();
         textEnhance.text = _item.enhance.ToString();
+    }
+
+    public void OnClick()
+    {
+        _itemExplanation.SetActive(true); 
+        _itemExplanation.GetComponent<ItemDescription>().Initialize(_item);
     }
 }
