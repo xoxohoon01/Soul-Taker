@@ -28,7 +28,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
         Debug.Log(roomMonsterCount); // 잘 나옴 
         return roomMonsterCount;
     }
-    public void MonsterDie() // 몬스터 컨트롤러에서 참조할 예정 
+    public void MonsterDieCount() // 몬스터 컨트롤러에서 참조할 예정 
     {
         roomMonsterCount--;
     }
