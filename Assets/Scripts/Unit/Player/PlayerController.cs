@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
     public PlayerAnimationData animationData;
+
+    public Coroutine coroutineCombo;
+    public int comboIndex;
+    public float attackDelay;
+    public float attackSpan;
     
     private void Awake()
     {
@@ -17,6 +23,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = transform.GetChild(0).GetComponent<Animator>();
         animationData.Initialize();
+        Input = GetComponent<PlayerInput>();
     }
 
     private void Start()
@@ -28,10 +35,29 @@ public class PlayerController : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
+        if (attackDelay > 0)
+            attackDelay = Mathf.Max(attackDelay - Time.deltaTime, 0);
+        if (attackSpan > 0)
+            attackSpan = Mathf.Max(attackSpan - Time.deltaTime, 0);
     }
 
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+    }
+
+    public void CreateAttack(float lifeTime)
+    {
+        PlayerAttack attack = Instantiate(Resources.Load<GameObject>("PlayerAttack"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<PlayerAttack>();
+        attack.lifeTime = lifeTime;
+        attack.offset = new Vector3(0, 0, 2);
+        attack.size = new Vector3(4, 4, 4);
+    }
+
+    IEnumerator ClearCombo(float time)
+    {
+        yield return new WaitForSeconds(time);
+        comboIndex = 0;
+        animator.SetInteger("ComboIndex", 0);
     }
 }

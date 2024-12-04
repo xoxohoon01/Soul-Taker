@@ -10,7 +10,7 @@ public class PlayerMovementState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.playerController.animationData.IdleParameterHash);
+        StartAnimation(stateMachine.playerController.animationData.MovementParameterHash);
     }
 
     public override void Exit()

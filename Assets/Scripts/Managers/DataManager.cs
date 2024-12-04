@@ -5,9 +5,8 @@ using Newtonsoft.Json;
 using UGS;
 using UnityEngine;
 
-public class DataManager : MonoSingleton<DataManager>
+public class DataManager : Singleton<DataManager>
 {
-    // 클래스명 변경, MonoSingleton -> Mono 떼세요;
     public CharacterDataManager Character;
     public ItemDataManager Item;
     public QuestDataManager Quest;
