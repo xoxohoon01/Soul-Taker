@@ -25,7 +25,7 @@ public class ItemCell : MonoBehaviour
     private void Refresh()      //Update UI
     {
         textCount.text = _item.count.ToString();
-        textEnhance.text = _item.enhance.ToString();
+        textEnhance.text = $"+ {_item.enhance}";
     }
 
     public void OnClick()
