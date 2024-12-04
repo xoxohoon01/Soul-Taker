@@ -21,8 +21,8 @@ public class ItemDescription : MonoBehaviour
     private void Refresh()
     {
         ItemData data = DataManager.Instance.Item.GetItemData(_item.itemId);
-        textName.text = data.DisplayName;
-        textDescription.text = data.Description;
+        textName.text = data.displayName;
+        textDescription.text = data.description;
     }
 
     public void OnClick()

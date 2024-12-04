@@ -11,14 +11,14 @@ public class PlayerStatus : Status
 
     public void InitializeStatus(CharacterData character)
     {
-        HP.originalValue = character.HP;
-        MP.originalValue = character.MP;
-        Damage.originalValue = character.Damage;
-        Defense.originalValue = character.Defense;
-        MoveSpeed.originalValue = character.MoveSpeed;
-        AttackSpeed.originalValue = character.AttackSpeed;
-        HPRegeneration.originalValue = character.HPRegeneration;
-        MPRegeneration.originalValue = character.MPRegeneration;
+        HP.originalValue = character.hp;
+        MP.originalValue = character.mp;
+        Damage.originalValue = character.damage;
+        Defense.originalValue = character.defense;
+        MoveSpeed.originalValue = character.moveSpeed;
+        AttackSpeed.originalValue = character.attackSpeed;
+        HPRegeneration.originalValue = character.hpRegeneration;
+        MPRegeneration.originalValue = character.mpRegeneration;
     }
 
     public void EnterDungeon()

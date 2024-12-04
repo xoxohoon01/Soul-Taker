@@ -37,7 +37,7 @@ public class MonsterEditor : MonoBehaviour
             string data = File.ReadAllText(Application.persistentDataPath + $"/Monsters/{directoryInfo.GetFiles()[i].Name}");
             MonsterData newMonster = JsonUtility.FromJson<MonsterData>(data);
             TMP_Dropdown.OptionData newOption = new TMP_Dropdown.OptionData();
-            newOption.text = newMonster.DisplayName;
+            newOption.text = newMonster.displayName;
             Monsters.options.Add(newOption);
         }
         Monsters.value = (Monsters.options.Count > number - 1 || number == 0) ? -1 : number;
@@ -47,22 +47,22 @@ public class MonsterEditor : MonoBehaviour
     {
         string data = File.ReadAllText(Application.persistentDataPath + $"/Monsters/{Monsters.options[Monsters.value].text}.json");
         MonsterData newMonster = JsonUtility.FromJson<MonsterData>(data);
-        Name.text = newMonster.DisplayName.ToString();
-        Description.text = newMonster.Description.ToString();
-        HP.text = newMonster.HP.ToString();
-        MP.text = newMonster.MP.ToString();
-        Damage.text = newMonster.Damage.ToString();
-        Defense.text = newMonster.Defense.ToString();
-        MoveSpeed.text = newMonster.MoveSpeed.ToString();
-        AttackSpeed.text = newMonster.AttackSpeed.ToString();
-        HP_Regen.text = newMonster.HPRegeneration.ToString();
-        MP_Regen.text = newMonster.MPRegeneration.ToString();
+        Name.text = newMonster.displayName.ToString();
+        Description.text = newMonster.description.ToString();
+        HP.text = newMonster.hp.ToString();
+        MP.text = newMonster.mp.ToString();
+        Damage.text = newMonster.damage.ToString();
+        Defense.text = newMonster.defense.ToString();
+        MoveSpeed.text = newMonster.moveSpeed.ToString();
+        AttackSpeed.text = newMonster.attackSpeed.ToString();
+        HP_Regen.text = newMonster.hpRegeneration.ToString();
+        MP_Regen.text = newMonster.mpRegeneration.ToString();
     }
 
     public void SaveMonster()
     {
         string data = JsonUtility.ToJson(GetMonster(), true);
-        File.WriteAllText(Application.persistentDataPath + $"/Monsters/{GetMonster().DisplayName}.json", data);
+        File.WriteAllText(Application.persistentDataPath + $"/Monsters/{GetMonster().displayName}.json", data);
         LoadMonsters();
     }
 
@@ -87,16 +87,16 @@ public class MonsterEditor : MonoBehaviour
     private MonsterData GetMonster()
     {
         MonsterData newMonster = new MonsterData();
-        newMonster.DisplayName = Name.text;
-        newMonster.Description = Description.text;
-        float.TryParse(HP.text, out newMonster.HP);
-        float.TryParse(MP.text, out newMonster.MP);
-        float.TryParse(Damage.text, out newMonster.Damage);
-        float.TryParse(Defense.text, out newMonster.Defense);
-        float.TryParse(MoveSpeed.text, out newMonster.MoveSpeed);
-        float.TryParse(AttackSpeed.text, out newMonster.AttackSpeed);
-        float.TryParse(HP_Regen.text, out newMonster.HPRegeneration);
-        float.TryParse(MP_Regen.text, out newMonster.MPRegeneration);
+        newMonster.displayName = Name.text;
+        newMonster.description = Description.text;
+        float.TryParse(HP.text, out newMonster.hp);
+        float.TryParse(MP.text, out newMonster.mp);
+        float.TryParse(Damage.text, out newMonster.damage);
+        float.TryParse(Defense.text, out newMonster.defense);
+        float.TryParse(MoveSpeed.text, out newMonster.moveSpeed);
+        float.TryParse(AttackSpeed.text, out newMonster.attackSpeed);
+        float.TryParse(HP_Regen.text, out newMonster.hpRegeneration);
+        float.TryParse(MP_Regen.text, out newMonster.mpRegeneration);
         return newMonster;
     }
 

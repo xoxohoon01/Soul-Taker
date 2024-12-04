@@ -12,8 +12,8 @@ public class QuestPanel : MonoBehaviour
 
     public void Initiate()
     {
-        Name.text = Quest.Name;
-        Description.text = Quest.Description;
+        Name.text = Quest.name;
+        Description.text = Quest.description;
     }
 
     public void Select()
