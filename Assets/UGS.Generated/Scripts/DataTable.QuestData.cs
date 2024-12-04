@@ -57,15 +57,15 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.String Name;
-		public System.String Description;
-		public System.String Requirements;
-		public System.Int32 Requirements_Value;
-		public System.String Contents;
-		public System.Int32 Contents_Value;
-		public System.Single Rewards_EXP;
-		public System.Int32 Rewards_Gold;
-		public System.Collections.Generic.List<Int32> Rewards_Items;
+		public System.String name;
+		public System.String description;
+		public System.String requirement;
+		public System.Int32 requirementValue;
+		public System.String content;
+		public System.Int32 contentValue;
+		public System.Single rewardEXP;
+		public System.Int32 rewardGold;
+		public System.Collections.Generic.List<Int32> rewardItems;
   
 
 #region fuctions

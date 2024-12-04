@@ -57,21 +57,21 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.String Name;
-		public System.Single HP;
-		public System.Single MP;
-		public System.Single Damage;
-		public System.Single Defense;
-		public System.Single MoveSpeed;
-		public System.Single AttackSpeed;
-		public System.Single HPRegeneration;
-		public System.Single MPRegeneration;
-		public System.Single HPPerLevel;
-		public System.Single MPPerLevel;
-		public System.Single DamagePerLevel;
-		public System.Single DefensePerLevel;
-		public System.Single HPRegenerationPerLevel;
-		public System.Single MPRegenerationPerLevel;
+		public System.String name;
+		public System.Single hp;
+		public System.Single mp;
+		public System.Single damage;
+		public System.Single defense;
+		public System.Single moveSpeed;
+		public System.Single attackSpeed;
+		public System.Single hpRegeneration;
+		public System.Single mpRegeneration;
+		public System.Single hpPerLevel;
+		public System.Single mpPerLevel;
+		public System.Single damagePerLevel;
+		public System.Single defensePerLevel;
+		public System.Single hpRegenerationPerLevel;
+		public System.Single mpRegenerationPerLevel;
   
 
 #region fuctions
