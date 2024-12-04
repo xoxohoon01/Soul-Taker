@@ -2,7 +2,7 @@
 
 =====================================================
 
-SamuraiZ [3D Model]   < Ver 1.0 >
+ [3D Model]   < Ver 1.0 >
 
 =====================================================
 
@@ -12,16 +12,11 @@ SamuraiZ [3D Model]   < Ver 1.0 >
 
 
 ----------------------------------------------------
-Includes 14 Animations
+Includes 10 Animations
 ----------------------------------------------------
 
 
 > Idle01
-
-> Idle02
-
-> Idle03
-
 
 
 > Run
@@ -40,10 +35,6 @@ Includes 14 Animations
 > Skill01
 
 > Skill02
-
-> Skill03
-
-> Skill04
 
 
 
@@ -69,9 +60,9 @@ instructions
 ===================================================
 
 
-1.click to the  [File] > [Open Project] > [SamuraiZ] folder
+1.click to the  [File] > [Open Project] > [RabbitWarrior] folder
 
-2.Dubble click [Demo_scene] and Use Prefap file in the [Prefaps] folder
+2.Dubble click [Demo_scene] and Use Prefab file in the [Prefabs] folder
 
 3.you can use the model file ~  Too easy~~~
 
