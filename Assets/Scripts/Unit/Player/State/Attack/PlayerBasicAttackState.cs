@@ -6,11 +6,14 @@ public class PlayerBasicAttackState : PlayerAttackState
 {
     public PlayerBasicAttackState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
+    float span;
+
     public override void Enter()
     {
         base.Enter();
-        float span = 1 / stateMachine.status.AttackSpeed.GetValue(); //공격 유지 시간 (판정 오브젝트 지속시간, 캐릭터 모션 유지시간)
-        
+
+        span = 1.0f / stateMachine.status.AttackSpeed.GetValue(); //공격 유지 시간 (판정 오브젝트 지속시간, 캐릭터 모션 유지시간)
+
         StartAnimation(stateMachine.playerController.animationData.BasicAttackParameterHash);
 
         // 콤보 체크 
@@ -19,13 +22,10 @@ public class PlayerBasicAttackState : PlayerAttackState
 
         // 공격속도 계산
         stateMachine.playerController.attackDelay = span;
-        stateMachine.playerController.attackSpan = span + (span * 0.1f);
+        stateMachine.playerController.attackSpan = span + 0.1f;
 
         //공겨 판정 오브젝트 생성
         stateMachine.playerController.CreateAttack(span);
-
-        // 현재 애니메이션에 따라 속도 조절 (공격속도 영향받음)
-        stateMachine.playerController.animator.speed = stateMachine.playerController.animator.GetCurrentAnimatorStateInfo(0).length + span;
 
         // 콤보 초기화 코루틴 실행
         if (stateMachine.playerController.coroutineCombo != null) stateMachine.playerController.StopCoroutine(stateMachine.playerController.coroutineCombo);
@@ -43,8 +43,16 @@ public class PlayerBasicAttackState : PlayerAttackState
     {
         base.Update();
 
-        stateMachine.playerController.animator.speed = stateMachine.playerController.animator.GetCurrentAnimatorStateInfo(0).length;
-
+        // 공격속도에 따라 애니메이션 속도 변경
+        foreach (AnimatorClipInfo info in stateMachine.playerController.animator.GetNextAnimatorClipInfo(0))
+        {
+            if (stateMachine.playerController.animator.GetNextAnimatorStateInfo(0).IsName(info.clip.name))
+            {
+                SetAnimationSpeed(info.clip.length / span);
+                break;
+            }
+        }
+        
         if (stateMachine.playerController.attackSpan <= 0)
         {
             stateMachine.ChangeState(new PlayerIdleState(stateMachine));
