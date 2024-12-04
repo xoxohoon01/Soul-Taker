@@ -7,7 +7,6 @@ using DataTable;
 public class Spawner : MonoBehaviour
 {
     private int currentRoomID;
-    private int monsterCountInRoom;
 
     private GameObject[] objectPool;
     private GameObject testPrefab;
@@ -32,14 +31,14 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < spawnData.count; i++)
         {
             GameObject obj = Instantiate(testPrefab, GetGridPosition(i, spawnData.count, spawnData.type), Quaternion.identity);
-            // obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawnData.MonsterID));
+            obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawnData.monsterID));
             obj.transform.SetParent(this.transform); // 부모 설정
         }
     }
     private Vector3 GetGridPosition(int index, int count, int spawnType) // 생성 규칙
     {
         int gridSize = Mathf.CeilToInt(Mathf.Sqrt(count));
-        float spacing = 3f; // 기본 간격
+        float spacing = 2f; 
 
         int row = index / gridSize;
         int col = index % gridSize;

@@ -6,7 +6,10 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 {
     public bool isClear = false; // 클리어 여부 확인
     public GameObject spawnerPrefab; // 생성할 스포너 프리펩
-    public List<GameObject> spawns = new List<GameObject>();  // 생성된 스포너를 담을 배열 
+    public List<Spawner> spawns = new List<Spawner>();  // 생성된 스포너를 담을 배열 
+
+    public int dungeonMonsterCount;
+    public int RoomMonsterCount;
 
     private void Awake()
     {
@@ -22,25 +25,26 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     {
         foreach (var spawner in spawns)
         {
-            if (spawner.GetComponent<Spawner>().GetRoomId() == currentRoomID)
+            if (spawner.GetRoomId() == currentRoomID)
             {
-                Debug.Log("몬스터를 스폰합니다");
-                spawner.GetComponent<Spawner>().CreatMonster(); // 몬스터 생성
+                spawner.CreatMonster(); 
             }
         }
-    }
+    } // 몬스터 생성 
     public void ClearRoom()
     {
 
     }
 
-    private void CreatSpawner(int currentDungeonID) 
+    private void CreatSpawner(int currentDungeonID)
     {
         foreach (var spawnerID in DataManager.Instance.Dungeon.GetDungeonid(currentDungeonID).spawners)
         {
             SpawnerData spawnData = DataManager.Instance.Spawner.GetSpawnerid(spawnerID);
-            GameObject newSpawner = Instantiate(spawnerPrefab, spawnData.position, Quaternion.identity);
-            newSpawner.GetComponent<Spawner>().InitializeSpawner(spawnData); 
+            GameObject newSpawnerGO = Instantiate(spawnerPrefab, spawnData.position, Quaternion.identity);
+
+            Spawner newSpawner = newSpawnerGO.GetComponent<Spawner>();
+            newSpawner.InitializeSpawner(spawnData);
             spawns.Add(newSpawner);
         }
     }
