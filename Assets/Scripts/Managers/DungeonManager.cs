@@ -6,29 +6,26 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 {
     public bool isClear = false; // 클리어 여부 확인
     public GameObject spawnerPrefab; // 생성할 스포너 프리펩
-    public GameObject[] spawns = null; // 생성된 스포너를 담을 배열 
-
-    // 스포너를 관리할 변수 만들기 (배열... 딕셔너리... 리스트...) 
+    public List<GameObject> spawns = new List<GameObject>();  // 생성된 스포너를 담을 배열 
 
     private void Awake()
     {
         spawnerPrefab = Resources.Load<GameObject>("Spawn");
     }
 
-    public void InitializeDungeon(int CurrentDungeonID)
+    public void InitializeDungeon(int currentDungeonID)
     {
-        Debug.Log("실행됨");
-        CreatSpawner(CurrentDungeonID);
+        CreatSpawner(currentDungeonID);
     }
 
-
-    private void CreatSpawner(int CurrentDungeonID) 
+    private void CreatSpawner(int currentDungeonID) 
     {
-        for (int i = 0; i < DataManager.Instance.Dungeon.GetDungeonid(CurrentDungeonID).spawners.Count; i++)
+        foreach (var spawnerID in DataManager.Instance.Dungeon.GetDungeonid(currentDungeonID).spawners)
         {
-            SpawnerData spawnData = DataManager.Instance.Spawner.GetSpawnerid(DataManager.Instance.Dungeon.GetDungeonid(CurrentDungeonID).spawners[i]);
+            SpawnerData spawnData = DataManager.Instance.Spawner.GetSpawnerid(spawnerID);
             GameObject newSpawner = Instantiate(spawnerPrefab, spawnData.position, Quaternion.identity);
-            newSpawner.GetComponent<SpawnSystem>().InitializeObjectPool(spawnData); // 데이터 전달
+            newSpawner.GetComponent<SpawnSystem>().InitializeObjectPool(spawnData); 
+            spawns.Add(newSpawner);
         }
     }
 
