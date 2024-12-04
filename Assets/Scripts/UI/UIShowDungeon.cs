@@ -26,7 +26,7 @@ public class UIShowDungeon : UIBase
     {
         if (scene.name == targetDungeonSceneName)
         {
-            DungeonManager.Instance.InitializeDungeon(targetDungeonID); // InitializeDungeon 호출
+            DungeonManager.Instance.EnterDungeon(targetDungeonID); // InitializeDungeon 호출
         }
         SceneManager.sceneLoaded -= OnSceneLoaded; // 이벤트 해제
     }

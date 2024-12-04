@@ -4,7 +4,7 @@ using System;
 public class RoomTrigger : MonoBehaviour
 {
     [SerializeField] private int roomId; // 해당 Room ID
-    [SerializeField] private SpawnSystem[] spawners;
+    [SerializeField] private Spawner[] spawners;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,15 +12,10 @@ public class RoomTrigger : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            spawners = FindObjectsOfType<SpawnSystem>();
+            //spawners = FindObjectsOfType<Spawner>();
 
-            foreach (var spawner in spawners)
-            {
-                if (spawner.GetRoomId() == roomId)
-                {
-                    spawner.ActivateSpawner();
-                }
-            }
+            DungeonManager.Instance.EnterRoom(roomId);
+
         }
     }
 

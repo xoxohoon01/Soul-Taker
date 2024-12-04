@@ -18,16 +18,19 @@ public class Spawner : MonoBehaviour
     {
         testPrefab = Resources.Load<GameObject>("TestMonster");
     }
-    public void InitializeSpawner(SpawnerData spawndata)
+    public void InitializeSpawner(SpawnerData spawndata) // 데이터 초기화 
     {
         if (spawndata != null)
         {
             this.spawnData = spawndata;
         }
 
+        currentRoomID = spawnData.roomID; 
+    }
+    public void CreatMonster() // 몬스터 스폰 
+    { 
         for (int i = 0; i < spawnData.count; i++)
         {
-            // Instantiate로 바로 생성
             GameObject obj = Instantiate(testPrefab, GetGridPosition(i, spawnData.count, spawnData.type), Quaternion.identity);
             // obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawnData.MonsterID));
             obj.transform.SetParent(this.transform); // 부모 설정

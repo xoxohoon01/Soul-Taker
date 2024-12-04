@@ -13,9 +13,25 @@ public class DungeonManager : MonoSingleton<DungeonManager>
         spawnerPrefab = Resources.Load<GameObject>("Spawn");
     }
 
-    public void InitializeDungeon(int currentDungeonID)
+    public void EnterDungeon(int currentDungeonID)
     {
         CreatSpawner(currentDungeonID);
+    }
+
+    public void EnterRoom(int currentRoomID)
+    {
+        foreach (var spawner in spawns)
+        {
+            if (spawner.GetComponent<Spawner>().GetRoomId() == currentRoomID)
+            {
+                Debug.Log("몬스터를 스폰합니다");
+                spawner.GetComponent<Spawner>().CreatMonster(); // 몬스터 생성
+            }
+        }
+    }
+    public void ClearRoom()
+    {
+
     }
 
     private void CreatSpawner(int currentDungeonID) 
@@ -24,7 +40,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
         {
             SpawnerData spawnData = DataManager.Instance.Spawner.GetSpawnerid(spawnerID);
             GameObject newSpawner = Instantiate(spawnerPrefab, spawnData.position, Quaternion.identity);
-            newSpawner.GetComponent<SpawnSystem>().InitializeObjectPool(spawnData); 
+            newSpawner.GetComponent<Spawner>().InitializeSpawner(spawnData); 
             spawns.Add(newSpawner);
         }
     }

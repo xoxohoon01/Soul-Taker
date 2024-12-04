@@ -57,19 +57,19 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.String DisplayName;
-		public System.String Description;
-		public System.String Icon;
-		public System.Int32 ItemType;
-		public System.Int32 EquipmentType;
-		public System.Single HP;
-		public System.Single MP;
-		public System.Single Damage;
-		public System.Single Defense;
-		public System.Single MoveSpeed;
-		public System.Single AttackSpeed;
-		public System.Single Range;
-		public System.Int32 Max;
+		public System.String displayName;
+		public System.String description;
+		public System.String icon;
+		public System.Int32 itemType;
+		public System.Int32 equipmentType;
+		public System.Single hp;
+		public System.Single mp;
+		public System.Single damage;
+		public System.Single defense;
+		public System.Single moveSpeed;
+		public System.Single attackSpeed;
+		public System.Single range;
+		public System.Int32 max;
   
 
 #region fuctions
