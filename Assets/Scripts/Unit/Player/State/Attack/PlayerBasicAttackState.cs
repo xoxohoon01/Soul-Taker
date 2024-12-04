@@ -17,16 +17,19 @@ public class PlayerBasicAttackState : PlayerAttackState
         stateMachine.playerController.comboIndex += stateMachine.playerController.comboIndex < 3 ? 1 : -2;
         stateMachine.playerController.animator.SetInteger("ComboIndex", stateMachine.playerController.comboIndex);
 
-        // 현재 애니메이션에 따라 속도 조절 (공격속도 영향받음)
-        stateMachine.playerController.animator.speed = stateMachine.playerController.animator.GetCurrentAnimatorStateInfo(0).length;
-
         // 공격속도 계산
         stateMachine.playerController.attackDelay = span;
-        stateMachine.playerController.CreateAttack(span);
         stateMachine.playerController.attackSpan = span + (span * 0.1f);
 
+        //공겨 판정 오브젝트 생성
+        stateMachine.playerController.CreateAttack(span);
+
+        // 현재 애니메이션에 따라 속도 조절 (공격속도 영향받음)
+        stateMachine.playerController.animator.speed = stateMachine.playerController.animator.GetCurrentAnimatorStateInfo(0).length + span;
+
+        // 콤보 초기화 코루틴 실행
         if (stateMachine.playerController.coroutineCombo != null) stateMachine.playerController.StopCoroutine(stateMachine.playerController.coroutineCombo);
-        stateMachine.playerController.coroutineCombo = stateMachine.playerController.StartCoroutine("ClearCombo", span + 1.0f);
+        stateMachine.playerController.coroutineCombo = stateMachine.playerController.StartCoroutine("ClearCombo", span + 0.5f);
     }
 
     public override void Exit()
@@ -44,7 +47,6 @@ public class PlayerBasicAttackState : PlayerAttackState
 
         if (stateMachine.playerController.attackSpan <= 0)
         {
-            stateMachine.playerController.comboIndex = 0;
             stateMachine.ChangeState(new PlayerIdleState(stateMachine));
         }
     }

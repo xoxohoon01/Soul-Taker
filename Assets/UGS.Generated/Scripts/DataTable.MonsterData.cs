@@ -59,6 +59,7 @@ namespace DataTable
 		public System.Int32 ID;
 		public System.String DisplayName;
 		public System.String Description;
+		public System.Int32 Level;
 		public System.Single HP;
 		public System.Single MP;
 		public System.Single Damage;
