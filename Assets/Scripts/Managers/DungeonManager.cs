@@ -6,9 +6,9 @@ using System.Linq;
 
 public class DungeonManager : MonoSingleton<DungeonManager>
 {
-    public bool isDungeonClear = false; // 클리어 여부 확인
-    public GameObject spawnerPrefab; // 생성할 스포너 프리펩
-    public List<Spawner> spawns = new List<Spawner>();  // 생성된 스포너를 담을 배열 
+    public bool isDungeonClear = false; 
+    public GameObject spawnerPrefab; 
+    public List<Spawner> spawns = new List<Spawner>();   
     public RoomCollider[] roomColliders;
 
     private int roomMonsterCount;
@@ -54,6 +54,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
             }
         }
 
+        // 콜라이더를 배열로 가지고 있는 룸 트리거를 넘겨준다 
     } 
     public void RoomClear()
     {
@@ -61,7 +62,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
         {
             if (roomcolliders.GetComponent<RoomCollider>().GetRoomColliderID() == currentRoomID)
             {
-                roomcolliders.DestroyObject();
+                roomcolliders.DestroyObject(); // 삭제 말고 콜라이더만 끄는 건? 
             }
         }
         
@@ -70,7 +71,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     private void DungeonClear()
     {
         isDungeonClear = true;
-        //UIManager.Instance.Show<UIDungeonClear>;
+        UIManager.Instance.Show<UIClearDuneon>();
     }
     private void CreatSpawner(int currentDungeonID)
     {
