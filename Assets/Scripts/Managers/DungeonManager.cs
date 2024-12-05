@@ -13,7 +13,6 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 
     private int roomMonsterCount;
     private int currentRoomID;
-
     private void Awake()
     {
         spawnerPrefab = Resources.Load<GameObject>("Spawn");
