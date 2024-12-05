@@ -7,7 +7,6 @@ using DataTable;
 public class Spawner : MonoBehaviour
 {
     private int currentRoomID;
-    private int monsterCountInRoom;
 
     private GameObject[] objectPool;
     private GameObject testPrefab;
@@ -25,21 +24,24 @@ public class Spawner : MonoBehaviour
             this.spawnData = spawndata;
         }
 
-        currentRoomID = spawnData.roomID; 
+        currentRoomID = spawnData.roomID;
+        DungeonManager.Instance.RoomMonsterCount(spawnData.count);
+        //MonsterPrefab = Resources.Load<GameObject>(DataManager.Instance.Monster.GetMonster(spawnData.monsterID).Prefab); 
+        //몬스터 프리펩 변수 추가 시 사용하면 됨. 
     }
     public void CreatMonster() // 몬스터 스폰 
     { 
         for (int i = 0; i < spawnData.count; i++)
         {
             GameObject obj = Instantiate(testPrefab, GetGridPosition(i, spawnData.count, spawnData.type), Quaternion.identity);
-            // obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawnData.MonsterID));
+            obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawnData.monsterID));
             obj.transform.SetParent(this.transform); // 부모 설정
         }
     }
     private Vector3 GetGridPosition(int index, int count, int spawnType) // 생성 규칙
     {
         int gridSize = Mathf.CeilToInt(Mathf.Sqrt(count));
-        float spacing = 3f; // 기본 간격
+        float spacing = 2f; 
 
         int row = index / gridSize;
         int col = index % gridSize;
@@ -85,54 +87,9 @@ public class Spawner : MonoBehaviour
         return new Vector3(x, y, z);
 
     }
-    //public void InitializeObjectPool(SpawnerData spawndata = null) // 스포너 초기화 
-    //{
-    //    if (spawndata != null) 
-    //    {
-    //        this.spawnData = spawndata;
-    //    }
 
-    //    objectPool = new GameObject[spawnData.count];
-
-
-    //    for (int i = 0; i < spawnData.count; i++)
-    //    {
-
-    //        GameObject obj = Instantiate(testPrefab);
-    //        //obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawndata.MonsterID));
-    //        obj.SetActive(false);
-    //        obj.transform.SetParent(this.transform);
-    //        objectPool[i] = obj;
-    //    }
-
-    //    currentRoomID = spawnData.roomID;
-    //}
-    //public void InitializeSpawner() // 객체 활성화 
-    //{
-    //    for (int i = 0; i < spawnData.count; i++)
-    //    {
-    //        GameObject obj = objectPool[i];
-
-    //        if (!obj.activeInHierarchy)
-    //        {
-    //            Vector3 Position = GetGridPosition(i, spawnData.count, spawnData.type);
-    //            obj.transform.localPosition = Position;
-    //            obj.SetActive(true);
-    //        }
-    //    }
-    //}
-    //public void ActivateSpawner()
-    //{
-    //    InitializeSpawner();
-    //}
-    //public void DeactivateAllObjects()
-    //{
-    //    foreach (GameObject obj in objectPool)
-    //    {
-    //        if (obj.activeInHierarchy)
-    //        {
-    //            obj.SetActive(false);
-    //        }
-    //    }
-    //}
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
 }
