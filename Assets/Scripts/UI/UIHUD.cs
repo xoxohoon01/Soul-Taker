@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIMenu : MonoBehaviour
+public class UIHUD : MonoBehaviour
 {
     private UIInventory inventory;
     
