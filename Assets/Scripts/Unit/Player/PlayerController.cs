@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
-    public void CreateAttack(float lifeTime)
+    public void CreateAttack(float lifeTime) // 공격 판정 오브젝트 생성
     {
         PlayerAttack attack = Instantiate(Resources.Load<GameObject>("PlayerAttack"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<PlayerAttack>();
         attack.sender = gameObject;
