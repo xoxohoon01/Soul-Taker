@@ -6,7 +6,7 @@ public class PlayerStateMachine : StateMachine
 {
     public PlayerStateMachine(PlayerController controller)
     {
-        this.playerController = controller;
+        playerController = controller;
     }
 
     public PlayerController playerController { get; }

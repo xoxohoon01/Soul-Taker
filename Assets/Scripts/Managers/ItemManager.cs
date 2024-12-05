@@ -8,6 +8,7 @@ using UnityEngine;
 public class ItemManager : MonoSingleton<ItemManager>
 {
     [SerializeField]private List<ItemInstance> _items;
+    
     private int nextId;
 
     public void Initialize(List<ItemInstance> items)
