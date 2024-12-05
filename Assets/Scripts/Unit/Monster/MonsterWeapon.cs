@@ -24,7 +24,7 @@ public class MonsterWeapon : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Status status = other.GetComponent<Status>();
-            status.HP.CurrentValue -= Mathf.Max(damage - status.Defense.GetValue());
+            status.HP.CurrentValue -= Mathf.Max(damage - status.Defense.GetValue(), damage * 0.2f);
             myCollider.enabled = false;
         }
     }
