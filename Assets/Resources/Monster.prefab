@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2443154683804071264}
   - component: {fileID: 1590173145169851411}
   - component: {fileID: 3599856903867387975}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
