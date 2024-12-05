@@ -8,6 +8,7 @@ public class MonsterBehavior : MonoBehaviour
     public MonsterAnimationData animationData;
     public NavMeshAgent agent;
     public LayerMask ObstacleMask;
+    public MonsterWeapon monsterWeapon;
     public MonsterStatus Status { get; set; }
     public Animator Animator { get; private set; }
     private void Awake()
@@ -19,6 +20,7 @@ public class MonsterBehavior : MonoBehaviour
 
     private void Start()
     {
+        monsterWeapon = GetComponentInChildren<MonsterWeapon>();
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
     }

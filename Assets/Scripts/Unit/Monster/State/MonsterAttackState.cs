@@ -21,6 +21,7 @@ public class MonsterAttackState : MonsterBaseState
         }
 
         StartAnimation(stateMachine.Behavior.animationData.AttackParameterHash);
+        stateMachine.Behavior.monsterWeapon.UseWeapon(stateMachine.Behavior.Status.Damage.GetValue());
     }
 
     public override void Exit()

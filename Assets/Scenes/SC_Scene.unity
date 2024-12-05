@@ -917,6 +917,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5036748419438610265, guid: a8d4bf9067ae1c14897061e26665f4b6,
+        type: 3}
+      propertyPath: HP.currentValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036748419438610265, guid: a8d4bf9067ae1c14897061e26665f4b6,
+        type: 3}
+      propertyPath: Defense.currentValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036748419438610265, guid: a8d4bf9067ae1c14897061e26665f4b6,
+        type: 3}
+      propertyPath: Defense.originalValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6785052444041942920, guid: a8d4bf9067ae1c14897061e26665f4b6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1041,6 +1056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8277443614631115111}
   - component: {fileID: 5157721055407179093}
+  - component: {fileID: 8277443614631115112}
   m_Layer: 7
   m_Name: GripR
   m_TagString: Untagged
@@ -3695,6 +3711,7 @@ MonoBehaviour:
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 256
+  monsterWeapon: {fileID: 0}
 --- !u!4 &5109417369327417052
 Transform:
   m_ObjectHideFlags: 0
@@ -4474,7 +4491,7 @@ MonoBehaviour:
     multiplier: []
   AttackSpeed:
     currentValue: 0
-    originalValue: 1
+    originalValue: 0.5
     addition: []
     subtraction: []
     multiplier: []
@@ -4497,7 +4514,7 @@ MonoBehaviour:
     subtraction: []
     multiplier: []
   Level: 0
-  AttackRange: 2
+  AttackRange: 3
   DetectRange: 10
   FieldOfView: 120
   MinWanderDistance: 2
@@ -5532,6 +5549,18 @@ Transform:
   - {fileID: 3101493750886790437}
   m_Father: {fileID: 6359434514255238367}
   m_LocalEulerAnglesHint: {x: 0, y: -0.0000027385063, z: 0}
+--- !u!114 &8277443614631115112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130536000936902720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf35e0c07f2bbb64780cca90f42ee6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8279197489690597979
 GameObject:
   m_ObjectHideFlags: 0
