@@ -40,8 +40,8 @@ public class MonsterChaseState : MonsterBaseState
 
         if (IsInAttackRange())
         {
+            RotateToTarget();
             stateMachine.Behavior.agent.speed = 0f;
-            StopAnimation(stateMachine.Behavior.animationData.RunParameterHash);
 
             if (CanAttack() && IsTargetInFieldOfView())
             {
@@ -53,7 +53,6 @@ public class MonsterChaseState : MonsterBaseState
         else
         {
             stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
-            StartAnimation(stateMachine.Behavior.animationData.RunParameterHash);
         }
     }
 
@@ -73,5 +72,12 @@ public class MonsterChaseState : MonsterBaseState
     private bool CanAttack()
     {
         return Time.time - lastAttackTime > attackRate;
+    }
+
+    private void RotateToTarget()
+    {
+        Vector3 directionToTarget = GetTargetDirection();
+        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
+        stateMachine.Behavior.transform.rotation = Quaternion.Slerp(stateMachine.Behavior.transform.rotation, targetRotation, 10f * Time.deltaTime);
     }
 }

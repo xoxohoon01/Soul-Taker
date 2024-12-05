@@ -14,12 +14,12 @@ public class MonsterBehavior : MonoBehaviour
     private void Awake()
     {
         animationData.Initialize();
-        Animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
 
     private void Start()
     {
+        Animator = GetComponentInChildren<Animator>();
         monsterWeapon = GetComponentInChildren<MonsterWeapon>();
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
