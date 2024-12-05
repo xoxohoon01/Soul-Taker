@@ -27,8 +27,8 @@ public class MonsterStatus : Status
         AttackRange = monsterData.attackRange;
         DetectRange = monsterData.detectRange;
         FieldOfView = monsterData.fieldOfView;
-        //MinWanderDistance = monsterData.minWanderDistance;
-        //MaxWanderDistance = monsterData.maxWanderDistance;
-        //WanderRate = monsterData.wanderRate;
+        MinWanderDistance = monsterData.minWanderDistance;
+        MaxWanderDistance = monsterData.maxWanderDistance;
+        WanderRate = monsterData.wanderRate;
     }
 }

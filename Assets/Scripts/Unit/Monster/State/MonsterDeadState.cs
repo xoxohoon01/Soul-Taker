@@ -10,24 +10,25 @@ public class MonsterDeadState : MonsterBaseState
     public override void Enter()
     {
         stateMachine.Behavior.agent.isStopped = true;
-        StartAnimation(stateMachine.Behavior.animationData.DieParameterHash);
+        stateMachine.Behavior.Animator.SetTrigger(stateMachine.Behavior.animationData.DieParameterHash);
     }
 
     public override void Update()
     {
         if (IsDieAnimationEnd(stateMachine.Behavior.Animator, "Die"))
         {
-            //SpawnSystem.DeactivateAllObjects()
+            DungeonManager.Instance.MonsterDieCount();
             stateMachine.Behavior.gameObject.SetActive(false);
             return;
         }
     }
 
-    private bool IsDieAnimationEnd(Animator animator, string tag)
+    private bool IsDieAnimationEnd(Animator animator, string name)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if (currentInfo.IsTag(tag))
+
+        if (currentInfo.IsName(name))
         {
             return currentInfo.normalizedTime >= 1f;
         }

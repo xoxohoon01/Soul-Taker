@@ -30,6 +30,7 @@ public class MonsterWanderState : MonsterBaseState
 
     public override void Update()
     {
+        base.Update();
         if ((IsTargetInFieldOfView() && IsInDetectRange()) || stateMachine.IsAttacked)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);

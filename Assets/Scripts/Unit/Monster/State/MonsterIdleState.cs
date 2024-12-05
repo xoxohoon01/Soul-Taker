@@ -23,6 +23,8 @@ public class MonsterIdleState : MonsterBaseState
 
     public override void Update()
     {
+        base.Update();
+
         wanderCoolDownTime += Time.deltaTime;
 
         if ((IsTargetInFieldOfView() && IsInDetectRange()) || stateMachine.IsAttacked)

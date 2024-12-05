@@ -26,6 +26,11 @@ public class MonsterBaseState : IState
 
     public virtual void Update()
     {
+        if (stateMachine.Behavior.Status.HP.CurrentValue <= 0)
+        {
+            stateMachine.ChangeState(stateMachine.DeadState);
+            return;
+        }
     }
 
     protected void StartAnimation(int animationHash)
