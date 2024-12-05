@@ -81,6 +81,8 @@ namespace DataTable
 		public System.Single maxWanderDistance;
 		public System.Single wanderRate;
 		public System.Collections.Generic.List<Int32> dropItems;
+		public System.String parentPrefabName;
+		public System.String modelPrefabName;
   
 
 #region fuctions

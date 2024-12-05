@@ -59,6 +59,13 @@ namespace DataTable
 		public System.Int32 ID;
 		public System.String name;
 		public System.String description;
+		public UnityEngine.Vector3 offset;
+		public UnityEngine.Vector3 size;
+		public System.Single lifeTime;
+		public System.Single speed;
+		public System.Int32 targetCount;
+		public System.Int32 maxHitCount;
+		public System.Single hitDelay;
   
 
 #region fuctions

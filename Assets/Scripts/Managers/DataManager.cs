@@ -24,5 +24,6 @@ public class DataManager : Singleton<DataManager>
         Dungeon = new DungeonDataManager();
         Spawner = new SpawnerDataManager();
         Monster = new MonsterDataManager();
+        Skill = new SkillDataManager();
     }
 }

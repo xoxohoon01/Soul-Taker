@@ -49,10 +49,7 @@ public class PlayerController : MonoBehaviour
     public void CreateAttack(float lifeTime) // 공격 판정 오브젝트 생성
     {
         PlayerAttack attack = Instantiate(Resources.Load<GameObject>("PlayerAttack"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<PlayerAttack>();
-        attack.sender = gameObject;
-        attack.lifeTime = lifeTime;
-        attack.offset = new Vector3(0, 0, 1);
-        attack.size = new Vector3(2, 2, 2);
+        attack.Initialize(5001, gameObject);
 
         attack.damage = stateMachine.status.Damage.GetValue();
     }
