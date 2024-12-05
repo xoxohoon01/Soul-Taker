@@ -17,39 +17,39 @@ using UnityEngine;
 namespace DataTable
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class MonsterData : ITable
+    public partial class SkillData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<MonsterData> loadedList, Dictionary<int, MonsterData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<SkillData> loadedList, Dictionary<int, SkillData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
-        static string sheetID = "843192040"; // it is sheet id
+        static string sheetID = "414618239"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, MonsterData> MonsterDataMap = new Dictionary<int, MonsterData>();  
-        public static List<MonsterData> MonsterDataList = new List<MonsterData>();   
+        public static Dictionary<int, SkillData> SkillDataMap = new Dictionary<int, SkillData>();  
+        public static List<SkillData> SkillDataList = new List<SkillData>();   
 
         /// <summary>
-        /// Get MonsterData List 
+        /// Get SkillData List 
         /// Auto Load
         /// </summary>
-        public static List<MonsterData> GetList()
+        public static List<SkillData> GetList()
         {{
            if (isLoaded == false) Load();
-           return MonsterDataList;
+           return SkillDataList;
         }}
 
         /// <summary>
-        /// Get MonsterData Dictionary, keyType is your sheet A1 field type.
+        /// Get SkillData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, MonsterData>  GetDictionary()
+        public static Dictionary<int, SkillData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return MonsterDataMap;
+           return SkillDataMap;
         }}
 
     
@@ -57,32 +57,15 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.String displayName;
+		public System.String name;
 		public System.String description;
-		public System.Int32 level;
-		public System.Single hp;
-		public System.Single mp;
-		public System.Single damage;
-		public System.Single defense;
-		public System.Single moveSpeed;
-		public System.Single attackSpeed;
-		public System.Single hpRegeneration;
-		public System.Single mpRegeneration;
-		public System.Single hpPerLevel;
-		public System.Single mpPerLevel;
-		public System.Single damagePerLevel;
-		public System.Single defensePerLevel;
-		public System.Single hpRegenerationPerLevel;
-		public System.Single mpRegenerationPerLevel;
-		public System.Single attackRange;
-		public System.Single detectRange;
-		public System.Single fieldOfView;
-		public System.Single minWanderDistance;
-		public System.Single maxWanderDistance;
-		public System.Single wanderRate;
-		public System.Collections.Generic.List<Int32> dropItems;
-		public System.String parentPrefabName;
-		public System.String modelPrefabName;
+		public UnityEngine.Vector3 offset;
+		public UnityEngine.Vector3 size;
+		public System.Single lifeTime;
+		public System.Single speed;
+		public System.Int32 targetCount;
+		public System.Int32 maxHitCount;
+		public System.Single hitDelay;
   
 
 #region fuctions
@@ -93,7 +76,7 @@ namespace DataTable
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("MonsterData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("SkillData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -109,7 +92,7 @@ namespace DataTable
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<MonsterData>, Dictionary<int, MonsterData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<SkillData>, Dictionary<int, SkillData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -137,14 +120,14 @@ namespace DataTable
                
 
 
-    public static (List<MonsterData> list, Dictionary<int, MonsterData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, MonsterData> Map = new Dictionary<int, MonsterData>();
-            List<MonsterData> List = new List<MonsterData>();     
+    public static (List<SkillData> list, Dictionary<int, SkillData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, SkillData> Map = new Dictionary<int, SkillData>();
+            List<SkillData> List = new List<SkillData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(MonsterData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(SkillData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["MonsterData"];
+            var sheet = jsonObject["SkillData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -163,7 +146,7 @@ namespace DataTable
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            MonsterData instance = new MonsterData();
+                            SkillData instance = new SkillData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -204,8 +187,8 @@ namespace DataTable
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            MonsterDataList = List;
-                            MonsterDataMap = Map;
+                            SkillDataList = List;
+                            SkillDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -215,10 +198,10 @@ namespace DataTable
 
  
 
-        public static void Write(MonsterData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(SkillData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(MonsterData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(SkillData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

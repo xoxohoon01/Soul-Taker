@@ -13,6 +13,8 @@ public class GameManager : MonoSingleton<GameManager>
         DataManager.Instance.Initialize();
         
         ItemManager.Instance.Initialize(DatabaseManager.Instance.LoadDataList<ItemInstance>());
+        
+        UIManager.Instance.Show<HUD>();     //HUD 생성하는 코드 / 추후 위치가 바뀔 예정
     }
 
     private void InitalizeMainUI() // 게임 시작 버튼이 눌렸을 때 실행되도록 

@@ -13,6 +13,7 @@ public class DataManager : Singleton<DataManager>
     public DungeonDataManager Dungeon;
     public SpawnerDataManager Spawner;
     public MonsterDataManager Monster;
+    public SkillDataManager Skill;
 
     public void Initialize()
     {
@@ -23,5 +24,6 @@ public class DataManager : Singleton<DataManager>
         Dungeon = new DungeonDataManager();
         Spawner = new SpawnerDataManager();
         Monster = new MonsterDataManager();
+        Skill = new SkillDataManager();
     }
 }

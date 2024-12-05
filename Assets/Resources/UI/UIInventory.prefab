@@ -396,7 +396,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   objCell: {fileID: 6018572625500441870, guid: 2fe16d46d7f9f4cbf802c0fa916de818, type: 3}
   trsParent: {fileID: 5389869762839037978}
-  objExplanation: {fileID: 4525256086283017835, guid: 9f2e269db47a84db78959a3cf88fe8f7,
+  objDescription: {fileID: 4525256086283017835, guid: 9f2e269db47a84db78959a3cf88fe8f7,
     type: 3}
 --- !u!1 &6780320725211355260
 GameObject:

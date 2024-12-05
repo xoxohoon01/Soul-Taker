@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIMenu : MonoBehaviour
+public class HUD : UIBase
 {
     private UIInventory inventory;
     
@@ -10,11 +10,5 @@ public class UIMenu : MonoBehaviour
     {
         inventory = UIManager.Instance.Show<UIInventory>();
         inventory.Initialize(ItemManager.Instance.GetItems());
-    }
-
-    public void OnClose()
-    {
-        inventory.Hide();
-        inventory = null;
     }
 }

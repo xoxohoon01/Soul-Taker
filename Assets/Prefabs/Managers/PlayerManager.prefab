@@ -47,4 +47,4 @@ MonoBehaviour:
   isDontDestroyOnLoad: 0
   playerPrefab: {fileID: 4059863109858162237, guid: a8d4bf9067ae1c14897061e26665f4b6,
     type: 3}
-  player: {fileID: 4713026537176392100, guid: a8d4bf9067ae1c14897061e26665f4b6, type: 3}
+  player: {fileID: 0}

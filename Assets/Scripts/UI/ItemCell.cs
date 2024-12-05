@@ -12,7 +12,7 @@ public class ItemCell : MonoBehaviour
 
     private ItemInstance _item;
     
-    private GameObject _itemExplanation;
+    private GameObject _itemExplanation;            //동적생성한 데이터를 넘겨주기 위해서 가져옴
     
     public void Initialize(ItemInstance item, GameObject itemExplanation)
     {

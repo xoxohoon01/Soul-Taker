@@ -24,7 +24,7 @@ public class PlayerBasicAttackState : PlayerAttackState
         stateMachine.playerController.attackDelay = span;
         stateMachine.playerController.attackSpan = span + 0.1f;
 
-        //공겨 판정 오브젝트 생성
+        // 공격 판정 오브젝트 생성
         stateMachine.playerController.CreateAttack(span);
 
         // 콤보 초기화 코루틴 실행
