@@ -5,12 +5,6 @@
             "itemId": 1001,
             "count": 1,
             "enhance": 1
-        },
-        {
-            "id": 2,
-            "itemId": 1002,
-            "count": 2,
-            "enhance": 2
         }
     ]
 }
