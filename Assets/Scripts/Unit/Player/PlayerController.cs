@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     public void CreateAttack() // 공격 판정 오브젝트 생성
     {
-        PlayerAttack attack = Instantiate(Resources.Load<GameObject>("PlayerAttack"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<PlayerAttack>();
+        Skill attack = Instantiate(Resources.Load<GameObject>("PlayerAttack"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
         attack.Initialize(5002, gameObject, stateMachine.status.Damage.GetValue());
     }
 
