@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public PlayerStateMachine stateMachine;
 
-    public Animator animator;
-    public PlayerAnimationData animationData;
+    [HideInInspector] public Animator animator;
 
     public Coroutine coroutineCombo;
     public int comboIndex;
@@ -22,7 +21,6 @@ public class PlayerController : MonoBehaviour
         stateMachine = new PlayerStateMachine(this);
         rb = GetComponent<Rigidbody>();
         animator = transform.GetChild(0).GetComponent<Animator>();
-        animationData.Initialize();
         Input = GetComponent<PlayerInput>();
     }
 

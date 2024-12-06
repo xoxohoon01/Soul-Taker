@@ -10,13 +10,13 @@ public class PlayerMovementState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.playerController.animationData.MovementParameterHash);
+        StartAnimation(HashDataManager.movementParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.playerController.animationData.MovementParameterHash);
+        StopAnimation(HashDataManager.movementParameterHash);
     }
 
     public override void HandleInput()
