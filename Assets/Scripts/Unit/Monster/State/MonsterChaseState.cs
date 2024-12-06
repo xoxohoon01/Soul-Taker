@@ -13,7 +13,6 @@ public class MonsterChaseState : MonsterBaseState
     {
         stateMachine.Monster.agent.isStopped = false;
         stateMachine.Monster.agent.speed = stateMachine.MoveSpeed;
-        StartAnimation(stateMachine.Monster.animationData.RunParameterHash);
         stateMachine.Monster.agent.SetDestination(stateMachine.Target.transform.position);
 
         attackRate = 1f / stateMachine.AttackSpeed;
@@ -41,11 +40,14 @@ public class MonsterChaseState : MonsterBaseState
         if (IsInAttackRange())
         {
             RotateToTarget();
-            stateMachine.Monster.agent.speed = 0f;
+            stateMachine.Monster.agent.SetDestination(stateMachine.Monster.transform.position);
+            StopAnimation(stateMachine.Monster.animationData.RunParameterHash);
+            StartAnimation(stateMachine.Monster.animationData.IdleParameterHash);
 
             if (CanAttack() && IsTargetInFieldOfView())
             {
                 lastAttackTime = Time.time;
+                StopAnimation(stateMachine.Monster.animationData.IdleParameterHash);
                 stateMachine.ChangeState(stateMachine.AttackState);
                 return;
             }
@@ -53,6 +55,8 @@ public class MonsterChaseState : MonsterBaseState
         else
         {
             stateMachine.Monster.agent.speed = stateMachine.MoveSpeed;
+            StopAnimation(stateMachine.Monster.animationData.IdleParameterHash);
+            StartAnimation(stateMachine.Monster.animationData.RunParameterHash);
         }
     }
 
