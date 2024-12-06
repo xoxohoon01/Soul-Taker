@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
+public class VirtualJoystick : UIBase, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     private Vector2 input = Vector2.zero;
     public Vector2 Direction { get { return input; } }

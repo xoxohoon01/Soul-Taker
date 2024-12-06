@@ -9,9 +9,11 @@ public class Spawner : MonoBehaviour
     private int currentRoomID;
 
     private GameObject[] objectPool;
-    private GameObject testPrefab;
+    private GameObject testPrefab; // 최상위 몬스터 프리펩으로 차후 변경 
     private SpawnerData spawnData;
+    private bool isClear = false;
     public int GetRoomId() => currentRoomID;
+    public bool GetIsClear() => isClear;    
 
     private void Awake() // 테스트 프리펩 초기화, 차후 삭제 
     {
@@ -34,9 +36,12 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < spawnData.count; i++)
         {
             GameObject obj = Instantiate(testPrefab, GetGridPosition(i, spawnData.count, spawnData.type), Quaternion.identity);
-            obj.GetComponent<Monster>().SetMonsterData(DataManager.Instance.Monster.GetMonster(spawnData.monsterID));
+            //obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawnData.monsterID));
+            // 최상위로 몬스터 프리펩을 아예 가져오고, 자식으로 모델 생성 
             obj.transform.SetParent(this.transform); // 부모 설정
         }
+
+        isClear = true;
     }
     private Vector3 GetGridPosition(int index, int count, int spawnType) // 생성 규칙
     {
