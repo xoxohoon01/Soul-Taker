@@ -4,10 +4,8 @@ using UnityEngine;
 using DataTable;
 using System.Linq;
 
-public class PlayerAttack : MonoBehaviour
+public class Skill : MonoBehaviour
 {
-    
-
     public Rigidbody rb;
 
     #region sender에서 초기화할 것들
