@@ -9,15 +9,15 @@ public class MonsterWanderState : MonsterBaseState
 
     public override void Enter()
     {
-        stateMachine.Behavior.agent.isStopped = false;
-        stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
-        StartAnimation(stateMachine.Behavior.animationData.RunParameterHash);
-        stateMachine.Behavior.agent.SetDestination(GetWanderLocation());
+        stateMachine.Monster.agent.isStopped = false;
+        stateMachine.Monster.agent.speed = stateMachine.MoveSpeed;
+        StartAnimation(stateMachine.Monster.animationData.RunParameterHash);
+        stateMachine.Monster.agent.SetDestination(GetWanderLocation());
     }
 
     public override void Exit()
     {
-        StopAnimation(stateMachine.Behavior.animationData.RunParameterHash);
+        StopAnimation(stateMachine.Monster.animationData.RunParameterHash);
     }
 
     public override void HandleInput()
@@ -37,7 +37,7 @@ public class MonsterWanderState : MonsterBaseState
             return;
         }
 
-        if (!stateMachine.Behavior.agent.pathPending && stateMachine.Behavior.agent.remainingDistance < 0.5f)
+        if (!stateMachine.Monster.agent.pathPending && stateMachine.Monster.agent.remainingDistance < 0.5f)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
             return;
@@ -51,13 +51,13 @@ public class MonsterWanderState : MonsterBaseState
         int i = 0;
         do
         {
-            NavMesh.SamplePosition(stateMachine.Behavior.transform.position
+            NavMesh.SamplePosition(stateMachine.Monster.transform.position
                                     + (Random.onUnitSphere * Random.Range(stateMachine.MinWanderDistance, stateMachine.MaxWanderDistance)),
                                     out hit, stateMachine.MaxWanderDistance, NavMesh.AllAreas);
             i++;
             if (i == 30) break;
         }
-        while ((Vector3.Distance(stateMachine.Behavior.transform.position, hit.position) < stateMachine.DetectRange));
+        while ((Vector3.Distance(stateMachine.Monster.transform.position, hit.position) < stateMachine.DetectRange));
 
         return hit.position;
     }

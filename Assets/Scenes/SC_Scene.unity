@@ -214,17 +214,17 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.currentValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
@@ -239,22 +239,22 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Damage.originalValue
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Defense.originalValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MoveSpeed.originalValue
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: AttackSpeed.originalValue
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -351,17 +351,17 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.currentValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
@@ -376,22 +376,22 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Damage.originalValue
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Defense.originalValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MoveSpeed.originalValue
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: AttackSpeed.originalValue
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -982,17 +982,17 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.currentValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
@@ -1007,22 +1007,22 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Damage.originalValue
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Defense.originalValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MoveSpeed.originalValue
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: AttackSpeed.originalValue
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1295,17 +1295,17 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.currentValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
@@ -1320,22 +1320,22 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Damage.originalValue
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Defense.originalValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MoveSpeed.originalValue
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: AttackSpeed.originalValue
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1449,17 +1449,17 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.currentValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
@@ -1474,22 +1474,22 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Damage.originalValue
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Defense.originalValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MoveSpeed.originalValue
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: AttackSpeed.originalValue
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1810,17 +1810,17 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.currentValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: HP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MP.originalValue
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
@@ -1835,22 +1835,22 @@ PrefabInstance:
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Damage.originalValue
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: Defense.originalValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: MoveSpeed.originalValue
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985155337251260765, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: AttackSpeed.originalValue
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

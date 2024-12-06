@@ -26,7 +26,7 @@ public class MonsterBaseState : IState
 
     public virtual void Update()
     {
-        if (stateMachine.Behavior.Status.HP.CurrentValue <= 0)
+        if (stateMachine.Monster.status.HP.CurrentValue <= 0)
         {
             stateMachine.ChangeState(stateMachine.DeadState);
             return;
@@ -35,30 +35,30 @@ public class MonsterBaseState : IState
 
     protected void StartAnimation(int animationHash)
     {
-        stateMachine.Behavior.Animator.SetBool(animationHash, true);
+        stateMachine.Monster.animator.SetBool(animationHash, true);
     }
 
     protected void StopAnimation(int animationHash)
     {
-        stateMachine.Behavior.Animator.SetBool(animationHash, false);
+        stateMachine.Monster.animator.SetBool(animationHash, false);
     }
 
     protected Vector3 GetTargetDirection()
     {
-        Vector3 directionToTarget = stateMachine.Target.transform.position - stateMachine.Behavior.transform.position;
+        Vector3 directionToTarget = stateMachine.Target.transform.position - stateMachine.Monster.transform.position;
         return directionToTarget;
     }
 
     protected bool IsTargetInFieldOfView()
     {
         Vector3 directionToTarget = GetTargetDirection();
-        float angle = Vector3.Angle(stateMachine.Behavior.transform.forward, directionToTarget);
+        float angle = Vector3.Angle(stateMachine.Monster.transform.forward, directionToTarget);
 
         RaycastHit hit;
         Vector3 offset = new Vector3(0, 1, 2);
 
-        if (angle < stateMachine.FieldOfView * 0.5 && !Physics.Raycast(stateMachine.Behavior.transform.position + offset,
-                directionToTarget, out hit, stateMachine.DetectRange, stateMachine.Behavior.ObstacleMask))
+        if (angle < stateMachine.FieldOfView * 0.5 && !Physics.Raycast(stateMachine.Monster.transform.position + offset,
+                directionToTarget, out hit, stateMachine.DetectRange, stateMachine.Monster.obstacleMask))
         { 
             return true;
         }
@@ -68,7 +68,7 @@ public class MonsterBaseState : IState
 
     protected bool IsInDetectRange()
     {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Behavior.transform.position).sqrMagnitude;
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.DetectRange * stateMachine.DetectRange;
     }
 }

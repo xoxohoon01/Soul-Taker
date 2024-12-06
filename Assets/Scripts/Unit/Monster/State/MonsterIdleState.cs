@@ -11,14 +11,14 @@ public class MonsterIdleState : MonsterBaseState
     public override void Enter()
     {
         wanderCoolDownTime = 0f;
-        stateMachine.Behavior.agent.isStopped = true;
-        StartAnimation(stateMachine.Behavior.animationData.IdleParameterHash);
+        stateMachine.Monster.agent.isStopped = true;
+        StartAnimation(stateMachine.Monster.animationData.IdleParameterHash);
     }
 
     public override void Exit()
     {
-        stateMachine.Behavior.agent.isStopped = false;
-        StopAnimation(stateMachine.Behavior.animationData.IdleParameterHash);
+        stateMachine.Monster.agent.isStopped = false;
+        StopAnimation(stateMachine.Monster.animationData.IdleParameterHash);
     }
 
     public override void Update()

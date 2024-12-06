@@ -11,25 +11,25 @@ public class MonsterChaseState : MonsterBaseState
 
     public override void Enter()
     {
-        stateMachine.Behavior.agent.isStopped = false;
-        stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
-        StartAnimation(stateMachine.Behavior.animationData.RunParameterHash);
-        stateMachine.Behavior.agent.SetDestination(stateMachine.Target.transform.position);
+        stateMachine.Monster.agent.isStopped = false;
+        stateMachine.Monster.agent.speed = stateMachine.MoveSpeed;
+        StartAnimation(stateMachine.Monster.animationData.RunParameterHash);
+        stateMachine.Monster.agent.SetDestination(stateMachine.Target.transform.position);
 
         attackRate = 1f / stateMachine.AttackSpeed;
     }
 
     public override void Exit()
     {
-        stateMachine.Behavior.agent.isStopped = true;
-        StopAnimation(stateMachine.Behavior.animationData.RunParameterHash);
+        stateMachine.Monster.agent.isStopped = true;
+        StopAnimation(stateMachine.Monster.animationData.RunParameterHash);
     }
 
     public override void Update()
     {
         base.Update();
 
-        stateMachine.Behavior.agent.SetDestination(stateMachine.Target.transform.position);
+        stateMachine.Monster.agent.SetDestination(stateMachine.Target.transform.position);
 
         if (!IsInDetectRange())
         {
@@ -41,7 +41,7 @@ public class MonsterChaseState : MonsterBaseState
         if (IsInAttackRange())
         {
             RotateToTarget();
-            stateMachine.Behavior.agent.speed = 0f;
+            stateMachine.Monster.agent.speed = 0f;
 
             if (CanAttack() && IsTargetInFieldOfView())
             {
@@ -52,7 +52,7 @@ public class MonsterChaseState : MonsterBaseState
         }
         else
         {
-            stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
+            stateMachine.Monster.agent.speed = stateMachine.MoveSpeed;
         }
     }
 
@@ -65,7 +65,7 @@ public class MonsterChaseState : MonsterBaseState
 
     protected bool IsInAttackRange()
     {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Behavior.transform.position).sqrMagnitude;
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
     }
 
@@ -78,6 +78,6 @@ public class MonsterChaseState : MonsterBaseState
     {
         Vector3 directionToTarget = GetTargetDirection();
         Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
-        stateMachine.Behavior.transform.rotation = Quaternion.Slerp(stateMachine.Behavior.transform.rotation, targetRotation, 10f * Time.deltaTime);
+        stateMachine.Monster.transform.rotation = Quaternion.Slerp(stateMachine.Monster.transform.rotation, targetRotation, 10f * Time.deltaTime);
     }
 }

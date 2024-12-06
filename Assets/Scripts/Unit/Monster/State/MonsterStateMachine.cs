@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MonsterStateMachine : StateMachine
 {
-    public MonsterBehavior Behavior { get; }
+    public Monster Monster { get; }
     public GameObject Target { get; private set; }
     public MonsterIdleState IdleState { get; }
     public MonsterWanderState WanderState { get; }
@@ -20,9 +20,9 @@ public class MonsterStateMachine : StateMachine
     public float FieldOfView { get; private set; }
     public bool IsAttacked { get; set; } = false;
 
-    public MonsterStateMachine(MonsterBehavior monsterBehavior)
+    public MonsterStateMachine(Monster monster)
     {
-        Behavior = monsterBehavior;
+        Monster = monster;
         Target = GameObject.FindGameObjectWithTag("Player");
         
         IdleState = new MonsterIdleState(this);
@@ -31,13 +31,13 @@ public class MonsterStateMachine : StateMachine
         AttackState = new MonsterAttackState(this);
         DeadState = new MonsterDeadState(this);
 
-        MoveSpeed = monsterBehavior.Status.MoveSpeed.GetValue();
-        AttackSpeed = monsterBehavior.Status.AttackSpeed.GetValue();
-        MinWanderDistance = monsterBehavior.Status.MinWanderDistance;
-        MaxWanderDistance = monsterBehavior.Status.MaxWanderDistance;
-        WanderRate = monsterBehavior.Status.WanderRate;
-        DetectRange = monsterBehavior.Status.DetectRange;
-        AttackRange = monsterBehavior.Status.AttackRange;    
-        FieldOfView = monsterBehavior.Status.FieldOfView;
+        MoveSpeed = monster.status.MoveSpeed.GetValue();
+        AttackSpeed = monster.status.AttackSpeed.GetValue();
+        MinWanderDistance = monster.monsterData.minWanderDistance;
+        MaxWanderDistance = monster.monsterData.maxWanderDistance;
+        WanderRate = monster.monsterData.wanderRate;
+        DetectRange = monster.monsterData.detectRange;
+        AttackRange = monster.monsterData.attackRange;
+        FieldOfView = monster.monsterData.fieldOfView;
     }
 }

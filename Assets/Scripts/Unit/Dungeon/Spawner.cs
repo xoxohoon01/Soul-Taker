@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < spawnData.count; i++)
         {
             GameObject obj = Instantiate(testPrefab, GetGridPosition(i, spawnData.count, spawnData.type), Quaternion.identity);
-            obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawnData.monsterID));
+            obj.GetComponent<Monster>().SetMonsterData(DataManager.Instance.Monster.GetMonster(spawnData.monsterID));
             obj.transform.SetParent(this.transform); // 부모 설정
         }
     }

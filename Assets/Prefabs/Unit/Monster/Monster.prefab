@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4718345530549531906}
   - component: {fileID: 6248473547491984581}
   - component: {fileID: 8985155337251260765}
-  - component: {fileID: 7927535441754831634}
   m_Layer: 7
   m_Name: Monster
   m_TagString: Enemy
@@ -121,8 +120,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b38def7e56ebc4ca54ac4fd4b51b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Status: {fileID: 0}
-  Behavior: {fileID: 0}
+  status: {fileID: 0}
+  animationData:
+    idleParameterName: Idle
+    runParameterName: Run
+    attackParameterName: Attack
+    dieParameterName: Die
+  monsterWeapon: {fileID: 0}
+  animator: {fileID: 0}
+  agent: {fileID: 0}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!114 &8985155337251260765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,31 +199,3 @@ MonoBehaviour:
     subtraction: []
     multiplier: []
   Level: 0
-  AttackRange: 0
-  DetectRange: 0
-  FieldOfView: 0
-  MinWanderDistance: 0
-  MaxWanderDistance: 0
-  WanderRate: 0
---- !u!114 &7927535441754831634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1365720655451759640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30e3f55f80314245994baf62c577035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationData:
-    idleParameterName: Idle
-    runParameterName: Run
-    attackParameterName: Attack
-    dieParameterName: Die
-  agent: {fileID: 0}
-  ObstacleMask:
-    serializedVersion: 2
-    m_Bits: 256
-  monsterWeapon: {fileID: 0}
