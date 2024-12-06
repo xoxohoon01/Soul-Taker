@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterDeadState : MonsterBaseState
@@ -9,25 +7,26 @@ public class MonsterDeadState : MonsterBaseState
     }
     public override void Enter()
     {
-        stateMachine.Behavior.agent.isStopped = true;
-        StartAnimation(stateMachine.Behavior.animationData.DieParameterHash);
+        stateMachine.Monster.agent.isStopped = true;
+        stateMachine.Monster.animator.SetTrigger(HashDataManager.dieParameterHash);
     }
 
     public override void Update()
     {
-        if (IsDieAnimationEnd(stateMachine.Behavior.Animator, "Die"))
+        if (IsDieAnimationEnd(stateMachine.Monster.animator, "Die"))
         {
-            //SpawnSystem.DeactivateAllObjects()
-            stateMachine.Behavior.gameObject.SetActive(false);
+            DungeonManager.Instance.MonsterDieCount();
+            stateMachine.Monster.gameObject.SetActive(false);
             return;
         }
     }
 
-    private bool IsDieAnimationEnd(Animator animator, string tag)
+    private bool IsDieAnimationEnd(Animator animator, string name)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if (currentInfo.IsTag(tag))
+
+        if (currentInfo.IsName(name))
         {
             return currentInfo.normalizedTime >= 1f;
         }

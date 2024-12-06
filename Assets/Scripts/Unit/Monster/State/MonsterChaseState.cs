@@ -11,25 +11,24 @@ public class MonsterChaseState : MonsterBaseState
 
     public override void Enter()
     {
-        stateMachine.Behavior.agent.isStopped = false;
-        stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
-        StartAnimation(stateMachine.Behavior.animationData.RunParameterHash);
-        stateMachine.Behavior.agent.SetDestination(stateMachine.Target.transform.position);
+        stateMachine.Monster.agent.isStopped = false;
+        stateMachine.Monster.agent.speed = stateMachine.Monster.status.MoveSpeed.GetValue();
+        stateMachine.Monster.agent.SetDestination(stateMachine.Target.transform.position);
 
-        attackRate = 1f / stateMachine.AttackSpeed;
+        attackRate = 1f / stateMachine.Monster.status.AttackSpeed.GetValue();
     }
 
     public override void Exit()
     {
-        stateMachine.Behavior.agent.isStopped = true;
-        StopAnimation(stateMachine.Behavior.animationData.RunParameterHash);
+        stateMachine.Monster.agent.isStopped = true;
+        StopAnimation(HashDataManager.runParameterHash);
     }
 
     public override void Update()
     {
         base.Update();
 
-        stateMachine.Behavior.agent.SetDestination(stateMachine.Target.transform.position);
+        stateMachine.Monster.agent.SetDestination(stateMachine.Target.transform.position);
 
         if (!IsInDetectRange())
         {
@@ -40,20 +39,24 @@ public class MonsterChaseState : MonsterBaseState
 
         if (IsInAttackRange())
         {
-            stateMachine.Behavior.agent.speed = 0f;
-            StopAnimation(stateMachine.Behavior.animationData.RunParameterHash);
+            RotateToTarget();
+            stateMachine.Monster.agent.SetDestination(stateMachine.Monster.transform.position);
+            StopAnimation(HashDataManager.runParameterHash);
+            StartAnimation(HashDataManager.idleParameterHash);
 
             if (CanAttack() && IsTargetInFieldOfView())
             {
                 lastAttackTime = Time.time;
+                StopAnimation(HashDataManager.idleParameterHash);
                 stateMachine.ChangeState(stateMachine.AttackState);
                 return;
             }
         }
         else
         {
-            stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
-            StartAnimation(stateMachine.Behavior.animationData.RunParameterHash);
+            stateMachine.Monster.agent.speed = stateMachine.Monster.status.MoveSpeed.GetValue();
+            StopAnimation(HashDataManager.idleParameterHash);
+            StartAnimation(HashDataManager.runParameterHash);
         }
     }
 
@@ -62,12 +65,6 @@ public class MonsterChaseState : MonsterBaseState
     }
     public override void PhysicsUpdate()
     {
-    }
-
-    protected bool IsInAttackRange()
-    {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Behavior.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
     }
 
     private bool CanAttack()

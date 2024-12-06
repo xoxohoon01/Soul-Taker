@@ -11,18 +11,20 @@ public class MonsterIdleState : MonsterBaseState
     public override void Enter()
     {
         wanderCoolDownTime = 0f;
-        stateMachine.Behavior.agent.isStopped = true;
-        StartAnimation(stateMachine.Behavior.animationData.IdleParameterHash);
+        stateMachine.Monster.agent.isStopped = true;
+        StartAnimation(HashDataManager.idleParameterHash);
     }
 
     public override void Exit()
     {
-        stateMachine.Behavior.agent.isStopped = false;
-        StopAnimation(stateMachine.Behavior.animationData.IdleParameterHash);
+        stateMachine.Monster.agent.isStopped = false;
+        StopAnimation(HashDataManager.idleParameterHash);
     }
 
     public override void Update()
     {
+        base.Update();
+
         wanderCoolDownTime += Time.deltaTime;
 
         if ((IsTargetInFieldOfView() && IsInDetectRange()) || stateMachine.IsAttacked)
@@ -31,7 +33,7 @@ public class MonsterIdleState : MonsterBaseState
             return;
         }
 
-        if (wanderCoolDownTime > stateMachine.WanderRate)
+        if (wanderCoolDownTime > stateMachine.Monster.monsterData.wanderRate)
         {
             stateMachine.ChangeState(stateMachine.WanderState);
             return;
