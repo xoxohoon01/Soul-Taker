@@ -9,7 +9,6 @@ public class MonsterStateMachine : StateMachine
     public MonsterChaseState ChaseState { get; }
     public MonsterAttackState AttackState { get; }
     public MonsterDeadState DeadState { get; }
-
     public bool IsAttacked { get; set; } = false;
 
     public MonsterStateMachine(Monster monster)

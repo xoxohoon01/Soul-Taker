@@ -71,4 +71,17 @@ public class MonsterBaseState : IState
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.Monster.monsterData.detectRange * stateMachine.Monster.monsterData.detectRange;
     }
+
+    protected bool IsInAttackRange()
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= stateMachine.Monster.monsterData.attackRange * stateMachine.Monster.monsterData.attackRange;
+    }
+
+    protected void RotateToTarget()
+    {
+        Vector3 directionToTarget = GetTargetDirection();
+        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
+        stateMachine.Monster.transform.rotation = Quaternion.Slerp(stateMachine.Monster.transform.rotation, targetRotation, 10f * Time.deltaTime);
+    }
 }

@@ -21,7 +21,7 @@ public class MonsterChaseState : MonsterBaseState
     public override void Exit()
     {
         stateMachine.Monster.agent.isStopped = true;
-        StopAnimation(stateMachine.Monster.animationData.RunParameterHash);
+        StopAnimation(HashDataManager.runParameterHash);
     }
 
     public override void Update()
@@ -41,13 +41,13 @@ public class MonsterChaseState : MonsterBaseState
         {
             RotateToTarget();
             stateMachine.Monster.agent.SetDestination(stateMachine.Monster.transform.position);
-            StopAnimation(stateMachine.Monster.animationData.RunParameterHash);
-            StartAnimation(stateMachine.Monster.animationData.IdleParameterHash);
+            StopAnimation(HashDataManager.runParameterHash);
+            StartAnimation(HashDataManager.idleParameterHash);
 
             if (CanAttack() && IsTargetInFieldOfView())
             {
                 lastAttackTime = Time.time;
-                StopAnimation(stateMachine.Monster.animationData.IdleParameterHash);
+                StopAnimation(HashDataManager.idleParameterHash);
                 stateMachine.ChangeState(stateMachine.AttackState);
                 return;
             }
@@ -55,8 +55,8 @@ public class MonsterChaseState : MonsterBaseState
         else
         {
             stateMachine.Monster.agent.speed = stateMachine.Monster.status.MoveSpeed.GetValue();
-            StopAnimation(stateMachine.Monster.animationData.IdleParameterHash);
-            StartAnimation(stateMachine.Monster.animationData.RunParameterHash);
+            StopAnimation(HashDataManager.idleParameterHash);
+            StartAnimation(HashDataManager.runParameterHash);
         }
     }
 
@@ -67,21 +67,8 @@ public class MonsterChaseState : MonsterBaseState
     {
     }
 
-    protected bool IsInAttackRange()
-    {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= stateMachine.Monster.monsterData.attackRange * stateMachine.Monster.monsterData.attackRange;
-    }
-
     private bool CanAttack()
     {
         return Time.time - lastAttackTime > attackRate;
-    }
-
-    private void RotateToTarget()
-    {
-        Vector3 directionToTarget = GetTargetDirection();
-        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
-        stateMachine.Monster.transform.rotation = Quaternion.Slerp(stateMachine.Monster.transform.rotation, targetRotation, 10f * Time.deltaTime);
     }
 }

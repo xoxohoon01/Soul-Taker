@@ -6,7 +6,6 @@ public class Monster : MonoBehaviour
 {
     public MonsterData monsterData;
     public MonsterStatus status;
-    public MonsterAnimationData animationData;
     public MonsterStateMachine stateMachine;
     public MonsterWeapon monsterWeapon;
 
@@ -16,7 +15,6 @@ public class Monster : MonoBehaviour
 
     private void Awake()
     {
-        animationData.Initialize();
         agent = GetComponent<NavMeshAgent>();
         status = GetComponent<MonsterStatus>();
     }

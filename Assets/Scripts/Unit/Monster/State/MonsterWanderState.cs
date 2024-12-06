@@ -11,13 +11,13 @@ public class MonsterWanderState : MonsterBaseState
     {
         stateMachine.Monster.agent.isStopped = false;
         stateMachine.Monster.agent.speed = stateMachine.Monster.status.MoveSpeed.GetValue();
-        StartAnimation(stateMachine.Monster.animationData.RunParameterHash);
+        StartAnimation(HashDataManager.runParameterHash);
         stateMachine.Monster.agent.SetDestination(GetWanderLocation());
     }
 
     public override void Exit()
     {
-        StopAnimation(stateMachine.Monster.animationData.RunParameterHash);
+        StopAnimation(HashDataManager.runParameterHash);
     }
 
     public override void HandleInput()

@@ -20,14 +20,14 @@ public class MonsterAttackState : MonsterBaseState
             stateMachine.Monster.animator.SetFloat("AttackSpeed", 1);
         }
 
-        StartAnimation(stateMachine.Monster.animationData.AttackParameterHash);
-        stateMachine.Monster.monsterWeapon.UseWeapon(stateMachine.Monster.status.Damage.GetValue());
+        StartAnimation(HashDataManager.basicAttackParameterHash);
+        //stateMachine.Monster.monsterWeapon.UseWeapon(stateMachine.Monster.status.Damage.GetValue());
     }
 
     public override void Exit()
     {
         stateMachine.Monster.agent.isStopped = false;
-        StopAnimation(stateMachine.Monster.animationData.AttackParameterHash);
+        StopAnimation(HashDataManager.basicAttackParameterHash);
     }
 
     public override void Update()

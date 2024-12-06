@@ -8,7 +8,7 @@ public class MonsterDeadState : MonsterBaseState
     public override void Enter()
     {
         stateMachine.Monster.agent.isStopped = true;
-        stateMachine.Monster.animator.SetTrigger(stateMachine.Monster.animationData.DieParameterHash);
+        stateMachine.Monster.animator.SetTrigger(HashDataManager.dieParameterHash);
     }
 
     public override void Update()
