@@ -271,9 +271,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDontDestroyOnLoad: 0
-  isClear: 0
+  isDungeonClear: 0
   spawnerPrefab: {fileID: 0}
   spawns: []
+  roomColliders: []
 --- !u!4 &481576771
 Transform:
   m_ObjectHideFlags: 0
@@ -513,7 +514,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomId: 1
-  spawners: []
 --- !u!1001 &1816485596926868337
 PrefabInstance:
   m_ObjectHideFlags: 0

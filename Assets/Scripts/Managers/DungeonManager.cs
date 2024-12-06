@@ -1,43 +1,50 @@
 using DataTable;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Linq;
 
 public class DungeonManager : MonoSingleton<DungeonManager>
 {
-    public bool isDungeonClear = false; // 클리어 여부 확인
-    public GameObject spawnerPrefab; // 생성할 스포너 프리펩
-    public List<Spawner> spawns = new List<Spawner>();  // 생성된 스포너를 담을 배열 
+    public bool isDungeonClear = false; 
+    public GameObject spawnerPrefab; 
+    public List<Spawner> spawns = new List<Spawner>();   
+    public RoomCollider[] roomColliders;
 
-    public int dungeonMonsterCount;
     private int roomMonsterCount;
-
+    private int currentRoomID;
     private void Awake()
     {
         spawnerPrefab = Resources.Load<GameObject>("Spawn");
+        roomColliders = FindObjectsOfType<RoomCollider>(); // 위치 안 될 수도 있어서 체크해보자. 
     }
-    private void Update()
+    public int RoomMonsterCount(int _spawnerMonsterCount)
     {
-        if (roomMonsterCount <= 0 && spawns.Count == 0)
-        {
-            DungeonClear();
-        }
-    }
-    public int RoomMonsterCount(int spawnerMonsterCount)
-    {
-        roomMonsterCount += spawnerMonsterCount;
-        Debug.Log(roomMonsterCount); // 잘 나옴 
+        roomMonsterCount += _spawnerMonsterCount;
         return roomMonsterCount;
     }
-    public void MonsterDieCount() // 몬스터 컨트롤러에서 참조할 예정 
+    public void MonsterDieCount() 
     {
         roomMonsterCount--;
+
+        if (roomMonsterCount <= 0)
+        {
+            RoomClear();
+
+            if (spawns.All(spawner => spawner.GetIsClear()))
+            {
+                DungeonClear();
+            }
+        }
     }
     public void EnterDungeon(int currentDungeonID)
     {
         CreatSpawner(currentDungeonID);
     }
-    public void EnterRoom(int currentRoomID)
+    public void RoomEnter(int _currentRoomID)
     {
+        currentRoomID = _currentRoomID;
+
         foreach (var spawner in spawns)
         {
             if (spawner.GetRoomId() == currentRoomID)
@@ -46,34 +53,25 @@ public class DungeonManager : MonoSingleton<DungeonManager>
             }
         }
 
-        if (roomMonsterCount <= 0)
-        {
-            ClearRoom(currentRoomID);
-        }
-    } // 몬스터 생성 
-    public void ClearRoom(int currentRoomID)
+        // 콜라이더를 배열로 가지고 있는 룸 트리거를 넘겨준다 
+    } 
+    public void RoomClear()
     {
-        Debug.Log(currentRoomID + "번 룸을 클리어 했습니다.");
-
-        foreach (var spawner in spawns)
+        foreach (var roomcolliders in roomColliders) 
         {
-            if (spawner.GetRoomId() == currentRoomID)
+            if (roomcolliders.GetComponent<RoomCollider>().GetRoomColliderID() == currentRoomID)
             {
-                spawner.DestroyObject();
-                // 룸 트리거도 없애야 될까? 
+                roomcolliders.DestroyObject(); // 삭제 말고 콜라이더만 끄는 건? 
             }
         }
-
-        // currentRoomID에 맞는 콜라이더를 제거하거나 길 생성. 
-        currentRoomID = 0; 
-
+        
+        currentRoomID = 0;
     }
     private void DungeonClear()
     {
         isDungeonClear = true;
-        //UIManager.Instance.Show<UIDungeonClear>;
+        UIManager.Instance.Show<UIClearDuneon>();
     }
-
     private void CreatSpawner(int currentDungeonID)
     {
         foreach (var spawnerID in DataManager.Instance.Dungeon.GetDungeonid(currentDungeonID).spawners)
@@ -86,11 +84,5 @@ public class DungeonManager : MonoSingleton<DungeonManager>
             spawns.Add(newSpawner);
         }
     }
-
-    private void DungeonExit()
-    {
-
-    }
-
 }
 
