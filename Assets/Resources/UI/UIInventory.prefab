@@ -120,19 +120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 970910675829371464}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6058664922672352466}
-        m_TargetAssemblyTypeName: UIInventory, Assembly-CSharp
-        m_MethodName: OnClose
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1360070484236912261
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,19 +241,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8984898928789146998}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6058664922672352466}
-        m_TargetAssemblyTypeName: UIInventory, Assembly-CSharp
-        m_MethodName: OnMisc
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1917928337367015409
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,11 +913,10 @@ MonoBehaviour:
   canvas: {fileID: 0}
   objCell: {fileID: 6018572625500441870, guid: 2fe16d46d7f9f4cbf802c0fa916de818, type: 3}
   trsParent: {fileID: 5389869762839037978}
-  objDescription: {fileID: 4525256086283017835, guid: 9f2e269db47a84db78959a3cf88fe8f7,
-    type: 3}
   equipment: {fileID: 5542618424961958916}
   consumption: {fileID: 240400152644007110}
   misc: {fileID: 4449102229931581275}
+  closeButton: {fileID: 8752967721609061236}
 --- !u!1 &6780320725211355260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,19 +1097,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6932078677809831784}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6058664922672352466}
-        m_TargetAssemblyTypeName: UIInventory, Assembly-CSharp
-        m_MethodName: OnConsumption
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7637807069591152029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,16 +1218,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1367359482137509230}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6058664922672352466}
-        m_TargetAssemblyTypeName: UIInventory, Assembly-CSharp
-        m_MethodName: OnEquipment
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

@@ -8,12 +8,6 @@
         },
         {
             "id": 2,
-            "itemId": 1002,
-            "count": 2,
-            "enhance": 2
-        },
-        {
-            "id": 3,
             "itemId": 1301,
             "count": 4,
             "enhance": 0

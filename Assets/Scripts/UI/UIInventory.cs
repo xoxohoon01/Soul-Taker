@@ -14,28 +14,16 @@ public class UIInventory : UIBase
     [SerializeField] private Button equipment;
     [SerializeField] private Button consumption;
     [SerializeField] private Button misc;
+    [SerializeField] private Button closeButton;
 
     private List<ItemInstance> _items;
 
     public void Initialize(List<ItemInstance> items)
     {
         _items = items;
-        OnEquipment();
-    }
-
-    public void OnEquipment()
-    {
         Refresh(ItemType.Equipment);
-    }
-    
-    public void OnConsumption()
-    {
-        Refresh(ItemType.Consumption);
-    }
-    
-    public void OnMisc()
-    {
-        Refresh(ItemType.Misc);
+
+        ButtonInitialize();
     }
     
     public void Refresh(ItemType type)
@@ -52,9 +40,12 @@ public class UIInventory : UIBase
         }
     }
 
-    public void OnClose()
+    private void ButtonInitialize()
     {
-        Hide();
+        equipment.onClick.AddListener(() => Refresh(ItemType.Equipment));
+        consumption.onClick.AddListener(() => Refresh(ItemType.Consumption));
+        misc.onClick.AddListener(() => Refresh(ItemType.Misc));
+        closeButton.onClick.AddListener(() => Hide());
     }
 
     private void DeleteCell()
