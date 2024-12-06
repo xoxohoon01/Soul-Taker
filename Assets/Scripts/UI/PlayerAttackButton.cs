@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PlayerAttackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class PlayerAttackButton : UIBase, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private GameObject coolDownUI;
     private Image coolDownImage;
