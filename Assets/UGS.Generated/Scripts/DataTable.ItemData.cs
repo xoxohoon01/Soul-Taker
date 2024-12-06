@@ -60,7 +60,7 @@ namespace DataTable
 		public System.String displayName;
 		public System.String description;
 		public System.String icon;
-		public System.Int32 itemType;
+		public ItemType itemType;
 		public System.Int32 equipmentType;
 		public System.Single hp;
 		public System.Single mp;

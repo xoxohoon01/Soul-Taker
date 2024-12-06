@@ -12,12 +12,11 @@ public class ItemCell : MonoBehaviour
 
     private ItemInstance _item;
     
-    private GameObject _itemExplanation;            //동적생성한 데이터를 넘겨주기 위해서 가져옴
+    private ItemDescription _itemDescription;
     
-    public void Initialize(ItemInstance item, GameObject itemExplanation)
+    public void Initialize(ItemInstance item)
     {
         _item = item;
-        _itemExplanation = itemExplanation;
         
         Refresh();
     }
@@ -30,7 +29,7 @@ public class ItemCell : MonoBehaviour
 
     public void OnClick()
     {
-        _itemExplanation.SetActive(true); 
-        _itemExplanation.GetComponent<ItemDescription>().Initialize(_item);
+        _itemDescription = UIManager.Instance.Show<ItemDescription>();
+        _itemDescription.GetComponent<ItemDescription>().Initialize(_item);
     }
 }

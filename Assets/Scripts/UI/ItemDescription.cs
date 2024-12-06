@@ -4,7 +4,7 @@ using DataTable;
 using TMPro;
 using UnityEngine;
 
-public class ItemDescription : MonoBehaviour
+public class ItemDescription : UIBase            //UIManager 통해 생성하기
 {
     [SerializeField] private TextMeshProUGUI textName;
     [SerializeField] private TextMeshProUGUI textDescription;
@@ -27,6 +27,6 @@ public class ItemDescription : MonoBehaviour
 
     public void OnClick()
     {
-        gameObject.SetActive(false);
+        Hide();
     }
 }
