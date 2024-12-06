@@ -12,10 +12,10 @@ public class MonsterChaseState : MonsterBaseState
     public override void Enter()
     {
         stateMachine.Monster.agent.isStopped = false;
-        stateMachine.Monster.agent.speed = stateMachine.MoveSpeed;
+        stateMachine.Monster.agent.speed = stateMachine.Monster.status.MoveSpeed.GetValue();
         stateMachine.Monster.agent.SetDestination(stateMachine.Target.transform.position);
 
-        attackRate = 1f / stateMachine.AttackSpeed;
+        attackRate = 1f / stateMachine.Monster.status.AttackSpeed.GetValue();
     }
 
     public override void Exit()
@@ -54,7 +54,7 @@ public class MonsterChaseState : MonsterBaseState
         }
         else
         {
-            stateMachine.Monster.agent.speed = stateMachine.MoveSpeed;
+            stateMachine.Monster.agent.speed = stateMachine.Monster.status.MoveSpeed.GetValue();
             StopAnimation(stateMachine.Monster.animationData.IdleParameterHash);
             StartAnimation(stateMachine.Monster.animationData.RunParameterHash);
         }
@@ -70,7 +70,7 @@ public class MonsterChaseState : MonsterBaseState
     protected bool IsInAttackRange()
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
+        return playerDistanceSqr <= stateMachine.Monster.monsterData.attackRange * stateMachine.Monster.monsterData.attackRange;
     }
 
     private bool CanAttack()

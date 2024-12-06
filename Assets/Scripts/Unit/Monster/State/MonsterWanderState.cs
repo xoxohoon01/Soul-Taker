@@ -10,7 +10,7 @@ public class MonsterWanderState : MonsterBaseState
     public override void Enter()
     {
         stateMachine.Monster.agent.isStopped = false;
-        stateMachine.Monster.agent.speed = stateMachine.MoveSpeed;
+        stateMachine.Monster.agent.speed = stateMachine.Monster.status.MoveSpeed.GetValue();
         StartAnimation(stateMachine.Monster.animationData.RunParameterHash);
         stateMachine.Monster.agent.SetDestination(GetWanderLocation());
     }
@@ -48,17 +48,9 @@ public class MonsterWanderState : MonsterBaseState
     {
         NavMeshHit hit;
        
-        int i = 0;
-        do
-        {
-            NavMesh.SamplePosition(stateMachine.Monster.transform.position
-                                    + (Random.onUnitSphere * Random.Range(stateMachine.MinWanderDistance, stateMachine.MaxWanderDistance)),
-                                    out hit, stateMachine.MaxWanderDistance, NavMesh.AllAreas);
-            i++;
-            if (i == 30) break;
-        }
-        while ((Vector3.Distance(stateMachine.Monster.transform.position, hit.position) < stateMachine.DetectRange));
-
+        NavMesh.SamplePosition(stateMachine.Monster.transform.position
+                            + (Random.onUnitSphere * Random.Range(stateMachine.Monster.monsterData.minWanderDistance, stateMachine.Monster.monsterData.maxWanderDistance)),
+                            out hit, stateMachine.Monster.monsterData.maxWanderDistance, NavMesh.AllAreas);
         return hit.position;
     }
 }

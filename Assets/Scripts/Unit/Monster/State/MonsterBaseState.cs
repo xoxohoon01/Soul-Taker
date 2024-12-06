@@ -57,8 +57,8 @@ public class MonsterBaseState : IState
         RaycastHit hit;
         Vector3 offset = new Vector3(0, 1, 2);
 
-        if (angle < stateMachine.FieldOfView * 0.5 && !Physics.Raycast(stateMachine.Monster.transform.position + offset,
-                directionToTarget, out hit, stateMachine.DetectRange, stateMachine.Monster.obstacleMask))
+        if (angle < stateMachine.Monster.monsterData.fieldOfView * 0.5 && !Physics.Raycast(stateMachine.Monster.transform.position + offset,
+                directionToTarget, out hit, stateMachine.Monster.monsterData.detectRange, stateMachine.Monster.obstacleMask))
         { 
             return true;
         }
@@ -69,6 +69,6 @@ public class MonsterBaseState : IState
     protected bool IsInDetectRange()
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= stateMachine.DetectRange * stateMachine.DetectRange;
+        return playerDistanceSqr <= stateMachine.Monster.monsterData.detectRange * stateMachine.Monster.monsterData.detectRange;
     }
 }

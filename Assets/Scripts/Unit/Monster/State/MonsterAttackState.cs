@@ -11,9 +11,9 @@ public class MonsterAttackState : MonsterBaseState
         stateMachine.Monster.agent.isStopped = true;
         
         // Apply AttackSpeed to Animation Speed
-        if (stateMachine.AttackSpeed > 1f)
+        if (stateMachine.Monster.status.AttackSpeed.GetValue() > 1f)
         {
-            stateMachine.Monster.animator.SetFloat("AttackSpeed", stateMachine.AttackSpeed);
+            stateMachine.Monster.animator.SetFloat("AttackSpeed", stateMachine.Monster.status.AttackSpeed.GetValue());
         }
         else
         {
