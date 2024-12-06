@@ -26,7 +26,7 @@ public class UIInventory : UIBase
         ButtonInitialize();
     }
     
-    public void Refresh(ItemType type)
+    private void Refresh(ItemType type)
     {
         DeleteCell();
         
