@@ -28,15 +28,17 @@ public class PlayerAttack : MonoBehaviour
 
     private class HitInfo
     {
-        public int hitCount; // 타격 횟수
-        public bool canHit; // 타격 가능 여부
+        public int hitCount = 0; // 타격 횟수
+        public bool canHit = true; // 타격 가능 여부
     }
 
-    public void Initialize(int id, GameObject sender)
+    public void Initialize(int id, GameObject sender, float damage)
     {
         currentSkill = DataManager.Instance.Skill.GetSkill(id);
 
         this.sender = sender;
+
+        this.damage = damage * (currentSkill.damage / 100.0f);
 
         lifeTime = currentSkill.lifeTime;
         transform.localScale = currentSkill.size;
@@ -59,22 +61,17 @@ public class PlayerAttack : MonoBehaviour
         foreach (Collider collider in colliders)
         {
             // 적을 타격할 수 있는지 판단 후, hitInfoMap과 canHit를 반환
-            if (hitInfoMap.Count < currentSkill.targetCount &&
+            if (((hitInfoMap.Count < currentSkill.targetCount) || (currentSkill.targetCount == 0)) &&
                 collider.TryGetComponent(out Status status))
             {
-                Debug.Log("스테이터스 넘어옴");
-                if (hitInfoMap.ContainsKey(collider.gameObject))
+                if (!hitInfoMap.TryGetValue(collider.gameObject, out HitInfo info))
                 {
                     hitInfoMap.Add(collider.gameObject, new HitInfo());
                 }
-                if (hitInfoMap.TryGetValue(collider.gameObject, out HitInfo info))
-                {
 
-                }
                 // 적의 hitCount와 canHit 값에 따라 타격 가능한 상태인지 판단
                 if (hitInfoMap[collider.gameObject].hitCount < currentSkill.maxHitCount && hitInfoMap[collider.gameObject].canHit)
                 {
-                    Debug.Log("공격 됨");
                     #region 공격 로직
                     if (Random.Range(0.0f, 100.0f) > critChance) // 크리티컬 실패시 치명타데미지 계수 1로 조정
                     {
@@ -90,11 +87,6 @@ public class PlayerAttack : MonoBehaviour
                         StartCoroutine(CoRestoreMultiHit(collider.gameObject, currentSkill.hitDelay));
 
                 }
-            }
-
-            else
-            {
-                return;
             }
         }
 
