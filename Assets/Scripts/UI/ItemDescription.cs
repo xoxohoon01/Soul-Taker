@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using DataTable;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemDescription : UIBase            //UIManager 통해 생성하기
 {
     [SerializeField] private TextMeshProUGUI textName;
     [SerializeField] private TextMeshProUGUI textDescription;
+    [SerializeField] private TextMeshProUGUI textItemDescriptionTitle;
+    [SerializeField] private Image itemImage;
     
     private ItemInstance _item;
 
