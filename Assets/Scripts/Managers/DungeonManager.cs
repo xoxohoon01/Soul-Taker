@@ -16,7 +16,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     private void Awake()
     {
         spawnerPrefab = Resources.Load<GameObject>("Spawn");
-        roomColliders = FindObjectsOfType<RoomCollider>().ToList(); // 위치 안 될 수도 있어서 체크해보자. 
+        roomColliders = FindObjectsOfType<RoomCollider>().ToList(); 
     }
     public int RoomMonsterCount(int _spawnerMonsterCount)
     {
@@ -53,8 +53,6 @@ public class DungeonManager : MonoSingleton<DungeonManager>
                 spawner.CreatMonster(); 
             }
         }
-
-        // 콜라이더를 배열로 가지고 있는 룸 트리거를 넘겨준다 
     } 
     public void RoomClear()
     {
@@ -72,7 +70,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     private void DungeonClear()
     {
         isDungeonClear = true;
-        UIManager.Instance.Show<UIClearDuneon>();
+        UIManager.Instance.Show<UIClearDungeon>();
     }
     private void CreateSpawner(int currentDungeonID)
     {
