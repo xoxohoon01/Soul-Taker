@@ -20,14 +20,15 @@ public class Spawner : MonoBehaviour
         {
             this.spawnData = spawndata;
         }
-
         currentRoomID = spawnData.roomID;
-        DungeonManager.Instance.RoomMonsterCount(spawnData.count);
+        
         //MonsterPrefab = Resources.Load<GameObject>(DataManager.Instance.Monster.GetMonster(spawnData.monsterID).Prefab); 
         //몬스터 프리펩 변수 추가 시 사용하면 됨. 
     }
     public void CreatMonster() // 몬스터 스폰 
     {
+        DungeonManager.Instance.RoomMonsterCount(spawnData.count);
+
         MonsterData monsterData = DataManager.Instance.Monster.GetMonster(spawnData.monsterID);
         GameObject monsterPrefab = Resources.Load<GameObject>($"Monster/{monsterData.parentPrefabName}");
         for (int i = 0; i < spawnData.count; i++)

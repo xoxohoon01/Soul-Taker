@@ -62,6 +62,7 @@ public class Skill : MonoBehaviour
             if (((hitInfoMap.Count < currentSkill.targetCount) || (currentSkill.targetCount == 0)) &&
                 collider.TryGetComponent(out Status status))
             {
+                Debug.Log(collider.name);
                 if (!hitInfoMap.TryGetValue(collider.gameObject, out HitInfo info))
                 {
                     hitInfoMap.Add(collider.gameObject, new HitInfo());

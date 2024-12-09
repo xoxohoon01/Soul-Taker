@@ -19,5 +19,4 @@ public class GameManager : MonoSingleton<GameManager>
         HUD.Instance.Initialize();
         /* UIManager.Instance.Initialize();*/ // 캔버스 동적 생성할 거라면
     }
-
 }
