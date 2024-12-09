@@ -31,7 +31,6 @@ public class ItemManager : MonoSingleton<ItemManager>
             item.itemId = itemId;
             item.count = 1;
             item.enhance = 0;
-            item.equip = false;
         }
         
         _items.Add(item);

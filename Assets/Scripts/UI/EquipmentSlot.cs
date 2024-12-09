@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EquipmentSlot : MonoBehaviour
+public class EquipmentSlot : UIBase
 {
-    [SerializeField] private Image equipment;
-    
     private ItemInstance _item;
     
     public void Initialize(ItemInstance item)
@@ -14,10 +12,16 @@ public class EquipmentSlot : MonoBehaviour
         _item = item;
         
         Refresh();
+        ButtonInitialize();
     }
     
     private void Refresh()      //Update UI
     {
-        //equipment.sprite = _item
+        //gameObject.GetComponent<SpriteRenderer>().sprite = 
+    }
+
+    private void ButtonInitialize()
+    {
+        gameObject.GetComponent<Button>().onClick.AddListener(() => UIManager.Instance.Show<ItemDescription>().Initialize(_item));
     }
 }

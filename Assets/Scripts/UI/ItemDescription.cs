@@ -34,19 +34,53 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         ItemData data = DataManager.Instance.Item.GetItemData(_item.itemId);
         textName.text = data.displayName;
         textDescription.text = data.description;
+
+        if (DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Equipment)
+        {
+            useButton.gameObject.SetActive(false);
+            if (_item.equip == false)
+            {
+                unEquipButton.gameObject.SetActive(false);
+            }
+        }
+        else if(DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Consumption)
+        {
+            equipButton.gameObject.SetActive(false);
+            unEquipButton.gameObject.SetActive(false);
+        }
+        
     }
     
     private void ButtonInitialize()
     {
         closeButton.onClick.AddListener(() => Hide());
         //useButton.onClick.AddListener(() => );
-        //equipButton.onClick.AddListener(() => );
+        equipButton.onClick.AddListener(() =>
+        {
+            _item.equip = true;
+            UIManager.Instance.Show<EquipmentSlot>().Initialize(_item);
+            DeleteItem();
+        });
         //unEquipButton.onClick.AddListener(() => );
         destructionButton.onClick.AddListener(() =>
         {
-            ItemManager.Instance.DeleteItem(_item.id);
-            Hide();
-            HUD.Instance.OnInventory();
-        } );
+            if (_item.count >= 2)
+            {
+                _item.count--;
+                Hide();
+                HUD.Instance.OnInventory();
+            }
+            else
+            {
+                DeleteItem();
+            }
+        });
+    }
+
+    private void DeleteItem()
+    {
+        ItemManager.Instance.DeleteItem(_item.id);
+        Hide();
+        HUD.Instance.OnInventory();
     }
 }
