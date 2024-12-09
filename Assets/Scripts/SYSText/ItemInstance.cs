@@ -7,6 +7,7 @@ public class ItemInstance
     public int itemId;      //기획 데이터에 있는 아이템 아이디
     public int count;
     public int enhance;     //강화 횟수
+    public bool equip;      //아이템 장착
 }
 
 [System.Serializable]

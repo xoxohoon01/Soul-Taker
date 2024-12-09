@@ -4,13 +4,22 @@
             "id": 1,
             "itemId": 1001,
             "count": 1,
-            "enhance": 1
+            "enhance": 1,
+            "equip": false
         },
         {
             "id": 2,
-            "itemId": 1301,
-            "count": 3,
-            "enhance": 4
+            "itemId": 1002,
+            "count": 2,
+            "enhance": 3,
+            "equip": false
+        },
+        {
+            "id": 3,
+            "itemId": 1003,
+            "count": 4,
+            "enhance": 5,
+            "equip": false
         }
     ]
 }

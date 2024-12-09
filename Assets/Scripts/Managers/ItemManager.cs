@@ -23,14 +23,15 @@ public class ItemManager : MonoSingleton<ItemManager>
         AddId();
     }
 
-    public void AddItem(int id)     //아이템 추가하는 로직
+    public void AddItem(int itemId)     //아이템 추가하는 로직
     {
         var item = new ItemInstance();
         {
             item.id = nextId;
-            item.itemId = id;
+            item.itemId = itemId;
             item.count = 1;
             item.enhance = 0;
+            item.equip = false;
         }
         
         _items.Add(item);
@@ -52,5 +53,10 @@ public class ItemManager : MonoSingleton<ItemManager>
     public List<ItemInstance> GetItems()
     {
         return _items;
+    }
+
+    public void DeleteItem(int id)
+    {
+        _items.Remove(_items.Find(x => x.id == id));
     }
 }
