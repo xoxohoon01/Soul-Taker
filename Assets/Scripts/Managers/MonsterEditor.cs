@@ -81,7 +81,7 @@ public class MonsterEditor : MonoBehaviour
     public void InstantiateMonster()
     {
         GameObject newMonster = Instantiate(MonsterPrefab);
-        newMonster.GetComponent<Monster>().Status.InitializeStatus(GetMonster());
+        newMonster.GetComponent<Monster>().SetMonsterData(GetMonster());
     }
 
     private MonsterData GetMonster()

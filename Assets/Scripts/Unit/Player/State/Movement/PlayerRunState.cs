@@ -9,14 +9,14 @@ public class PlayerRunState : PlayerMovementState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.playerController.animationData.RunParameterHash);
+        StartAnimation(HashDataManager.runParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
         stateMachine.playerController.rb.velocity = Vector3.zero;
-        StopAnimation(stateMachine.playerController.animationData.RunParameterHash);
+        StopAnimation(HashDataManager.runParameterHash);
     }
 
     public override void HandleInput()

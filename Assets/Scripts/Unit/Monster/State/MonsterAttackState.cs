@@ -8,32 +8,33 @@ public class MonsterAttackState : MonsterBaseState
 
     public override void Enter()
     {
-        stateMachine.Behavior.agent.isStopped = true;
+        stateMachine.Monster.agent.isStopped = true;
         
         // Apply AttackSpeed to Animation Speed
-        if (stateMachine.AttackSpeed > 1f)
+        if (stateMachine.Monster.status.AttackSpeed.GetValue() > 1f)
         {
-            stateMachine.Behavior.Animator.SetFloat("AttackSpeed", stateMachine.AttackSpeed);
+            stateMachine.Monster.animator.SetFloat("AttackSpeed", stateMachine.Monster.status.AttackSpeed.GetValue());
         }
         else
         {
-            stateMachine.Behavior.Animator.SetFloat("AttackSpeed", 1);
+            stateMachine.Monster.animator.SetFloat("AttackSpeed", 1);
         }
 
-        StartAnimation(stateMachine.Behavior.animationData.AttackParameterHash);
+        StartAnimation(HashDataManager.basicAttackParameterHash);
+        //stateMachine.Monster.monsterWeapon.UseWeapon(stateMachine.Monster.status.Damage.GetValue());
     }
 
     public override void Exit()
     {
-        stateMachine.Behavior.agent.isStopped = false;
-        StopAnimation(stateMachine.Behavior.animationData.AttackParameterHash);
+        stateMachine.Monster.agent.isStopped = false;
+        StopAnimation(HashDataManager.basicAttackParameterHash);
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (!IsAttackAnimation(stateMachine.Behavior.Animator, "Attack"))
+        if (!IsAttackAnimation(stateMachine.Monster.animator, "Attack"))
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;

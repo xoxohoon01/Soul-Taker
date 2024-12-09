@@ -14,7 +14,7 @@ public class PlayerBasicAttackState : PlayerAttackState
 
         span = 1.0f / stateMachine.status.AttackSpeed.GetValue(); //공격 유지 시간 (판정 오브젝트 지속시간, 캐릭터 모션 유지시간)
 
-        StartAnimation(stateMachine.playerController.animationData.BasicAttackParameterHash);
+        StartAnimation(HashDataManager.basicAttackParameterHash);
 
         // 콤보 체크 
         stateMachine.playerController.comboIndex += stateMachine.playerController.comboIndex < 3 ? 1 : -2;
@@ -35,7 +35,7 @@ public class PlayerBasicAttackState : PlayerAttackState
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.playerController.animationData.BasicAttackParameterHash);
+        StopAnimation(HashDataManager.basicAttackParameterHash);
         stateMachine.playerController.animator.speed = 1;
     }
 
