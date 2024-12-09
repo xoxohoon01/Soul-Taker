@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public PlayerStateMachine stateMachine;
 
-    public Animator animator;
-    public PlayerAnimationData animationData;
+    [HideInInspector] public Animator animator;
 
     public Coroutine coroutineCombo;
     public int comboIndex;
@@ -22,7 +21,6 @@ public class PlayerController : MonoBehaviour
         stateMachine = new PlayerStateMachine(this);
         rb = GetComponent<Rigidbody>();
         animator = transform.GetChild(0).GetComponent<Animator>();
-        animationData.Initialize();
         Input = GetComponent<PlayerInput>();
     }
 
@@ -48,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     public void CreateAttack() // 공격 판정 오브젝트 생성
     {
-        Skill attack = Instantiate(Resources.Load<GameObject>("PlayerAttack"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
+        Skill attack = Instantiate(Resources.Load<GameObject>("Skill"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
         attack.Initialize(5002, gameObject, stateMachine.status.Damage.GetValue());
     }
 
