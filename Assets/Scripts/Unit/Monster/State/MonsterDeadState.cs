@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MonsterDeadState : MonsterBaseState
 {
+    private bool isDead = false;
+
     public MonsterDeadState(MonsterStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -13,17 +15,18 @@ public class MonsterDeadState : MonsterBaseState
 
     public override void Update()
     {
-        if (IsDieAnimationEnd(stateMachine.Monster.animator, "Die"))
+        if (IsDieAnimationEnd("Die") && isDead == false)
         {
+            isDead = true;
             DungeonManager.Instance.MonsterDieCount();
             stateMachine.Monster.gameObject.SetActive(false);
             return;
         }
     }
 
-    private bool IsDieAnimationEnd(Animator animator, string name)
+    private bool IsDieAnimationEnd(string name)
     {
-        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo currentInfo = stateMachine.Monster.animator.GetCurrentAnimatorStateInfo(0);
 
 
         if (currentInfo.IsName(name))

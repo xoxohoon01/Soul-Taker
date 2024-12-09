@@ -9,14 +9,14 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     public bool isDungeonClear = false; 
     public GameObject spawnerPrefab; 
     public List<Spawner> spawns = new List<Spawner>();   
-    public RoomCollider[] roomColliders;
+    public List<RoomCollider> roomColliders;
 
-    private int roomMonsterCount;
-    private int currentRoomID;
+    [SerializeField] private int roomMonsterCount;
+    [SerializeField] private int currentRoomID;
     private void Awake()
     {
         spawnerPrefab = Resources.Load<GameObject>("Spawn");
-        roomColliders = FindObjectsOfType<RoomCollider>(); // 위치 안 될 수도 있어서 체크해보자. 
+        roomColliders = FindObjectsOfType<RoomCollider>().ToList(); // 위치 안 될 수도 있어서 체크해보자. 
     }
     public int RoomMonsterCount(int _spawnerMonsterCount)
     {
@@ -29,17 +29,18 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 
         if (roomMonsterCount <= 0)
         {
-            RoomClear();
+            RoomClear(); // 콜라이더 삭제
 
             if (spawns.All(spawner => spawner.GetIsClear()))
             {
-                DungeonClear();
+                DungeonClear(); // 클리어 UI 표시
             }
         }
     }
     public void EnterDungeon(int currentDungeonID)
     {
-        CreatSpawner(currentDungeonID);
+        CreateSpawner(currentDungeonID);
+        PlayerManager.Instance.SpawnPlayer(new Vector3(0, 1, 0));
     }
     public void RoomEnter(int _currentRoomID)
     {
@@ -57,11 +58,12 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     } 
     public void RoomClear()
     {
-        foreach (var roomcolliders in roomColliders) 
+        foreach (var collider in roomColliders) 
         {
-            if (roomcolliders.GetComponent<RoomCollider>().GetRoomColliderID() == currentRoomID)
+            if (collider.GetComponent<RoomCollider>().GetRoomColliderID() == currentRoomID)
             {
-                roomcolliders.DestroyObject(); // 삭제 말고 콜라이더만 끄는 건? 
+                collider.DestroyObject(); // 삭제 말고 콜라이더만 끄는 건? 
+                roomColliders.Remove(collider);
             }
         }
         
@@ -72,7 +74,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
         isDungeonClear = true;
         UIManager.Instance.Show<UIClearDuneon>();
     }
-    private void CreatSpawner(int currentDungeonID)
+    private void CreateSpawner(int currentDungeonID)
     {
         foreach (var spawnerID in DataManager.Instance.Dungeon.GetDungeonid(currentDungeonID).spawners)
         {

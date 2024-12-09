@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class HUD : Singleton<HUD>
+public class HUD : MonoSingleton<HUD>
 {
-    [SerializeField] private Canvas _canvas;
-
     private Canvas _hudCanvasPrefab;
-    private Canvas _hudCanvas;
+    public Canvas _hudCanvas;
 
     private GameObject _hudPrefab;
+    public GameObject _hud;
+    
     private GameObject _joyStickPrefab;
-
-    private GameObject _hud;
-    private GameObject _joyStick;
+    public GameObject _joyStick;
 
     private UIInventory inventory;
 
@@ -22,6 +20,7 @@ public class HUD : Singleton<HUD>
         {
             _hudCanvasPrefab = Resources.Load<Canvas>("UI/HUDCanvas");
             _hudCanvas = Object.Instantiate(_hudCanvasPrefab);
+            DontDestroyOnLoad(_hudCanvas);
         }
 
         if (_hudPrefab == null)
