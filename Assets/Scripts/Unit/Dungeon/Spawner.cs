@@ -9,16 +9,11 @@ public class Spawner : MonoBehaviour
     private int currentRoomID;
 
     private GameObject[] objectPool;
-    private GameObject testPrefab; // 최상위 몬스터 프리펩으로 차후 변경 
     private SpawnerData spawnData;
     private bool isClear = false;
     public int GetRoomId() => currentRoomID;
     public bool GetIsClear() => isClear;    
 
-    private void Awake() // 테스트 프리펩 초기화, 차후 삭제 
-    {
-        testPrefab = Resources.Load<GameObject>("TestMonster");
-    }
     public void InitializeSpawner(SpawnerData spawndata) // 데이터 초기화 
     {
         if (spawndata != null)
@@ -32,13 +27,15 @@ public class Spawner : MonoBehaviour
         //몬스터 프리펩 변수 추가 시 사용하면 됨. 
     }
     public void CreatMonster() // 몬스터 스폰 
-    { 
+    {
+        MonsterData monsterData = DataManager.Instance.Monster.GetMonster(spawnData.monsterID);
+        GameObject monsterPrefab = Resources.Load<GameObject>($"Monster/{monsterData.parentPrefabName}");
         for (int i = 0; i < spawnData.count; i++)
         {
-            GameObject obj = Instantiate(testPrefab, GetGridPosition(i, spawnData.count, spawnData.type), Quaternion.identity);
-            //obj.GetComponent<MonsterStatus>().InitializeStatus(DataManager.Instance.Monster.GetMonster(spawnData.monsterID));
-            // 최상위로 몬스터 프리펩을 아예 가져오고, 자식으로 모델 생성 
-            obj.transform.SetParent(this.transform); // 부모 설정
+            GameObject monsterObj = Instantiate(monsterPrefab, GetGridPosition(i, spawnData.count, spawnData.type), Quaternion.identity);
+            monsterObj.GetComponent<Monster>().SetMonsterData(monsterData);
+            monsterObj.transform.SetParent(this.transform); // 부모 설정
+            GameObject modelObj = Instantiate(Resources.Load<GameObject>($"Monster/{monsterData.modelPrefabName}"), monsterObj.transform);
         }
 
         isClear = true;
