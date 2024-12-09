@@ -14,7 +14,7 @@ public class PlayerBasicAttackState : PlayerAttackState
 
         span = 1.0f / stateMachine.status.AttackSpeed.GetValue(); //공격 유지 시간 (판정 오브젝트 지속시간, 캐릭터 모션 유지시간)
 
-        StartAnimation(stateMachine.playerController.animationData.BasicAttackParameterHash);
+        StartAnimation(HashDataManager.basicAttackParameterHash);
 
         // 콤보 체크 
         stateMachine.playerController.comboIndex += stateMachine.playerController.comboIndex < 3 ? 1 : -2;
@@ -25,7 +25,7 @@ public class PlayerBasicAttackState : PlayerAttackState
         stateMachine.playerController.attackSpan = span + 0.1f;
 
         // 공격 판정 오브젝트 생성
-        stateMachine.playerController.CreateAttack(span);
+        stateMachine.playerController.CreateAttack();
 
         // 콤보 초기화 코루틴 실행
         if (stateMachine.playerController.coroutineCombo != null) stateMachine.playerController.StopCoroutine(stateMachine.playerController.coroutineCombo);
@@ -35,7 +35,7 @@ public class PlayerBasicAttackState : PlayerAttackState
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.playerController.animationData.BasicAttackParameterHash);
+        StopAnimation(HashDataManager.basicAttackParameterHash);
         stateMachine.playerController.animator.speed = 1;
     }
 

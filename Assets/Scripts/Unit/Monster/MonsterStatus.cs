@@ -6,29 +6,16 @@ using DataTable;
 public class MonsterStatus : Status
 {
     public float Level;
-    public float AttackRange;
-    public float DetectRange;
-    public float FieldOfView;
-    public float MinWanderDistance;
-    public float MaxWanderDistance;
-    public float WanderRate;
 
-    public void InitializeStatus(MonsterData monsterData)
+    public void InitializeCurrentValue()
     {
-        Level = monsterData.level;
-        HP.originalValue = monsterData.hp + monsterData.hpPerLevel * Level;
-        MP.originalValue = monsterData.mp + monsterData.mpPerLevel * Level;
-        Damage.originalValue = monsterData.damage + monsterData.damagePerLevel * Level;
-        Defense.originalValue = monsterData.defense + monsterData.defensePerLevel * Level;
-        MoveSpeed.originalValue = monsterData.moveSpeed;
-        AttackSpeed.originalValue = monsterData.attackSpeed;
-        HPRegeneration.originalValue = monsterData.hpRegeneration + monsterData.hpRegenerationPerLevel * Level;
-        MPRegeneration.originalValue = monsterData.mpRegeneration + monsterData.mpRegenerationPerLevel * Level;
-        AttackRange = monsterData.attackRange;
-        DetectRange = monsterData.detectRange;
-        FieldOfView = monsterData.fieldOfView;
-        //MinWanderDistance = monsterData.minWanderDistance;
-        //MaxWanderDistance = monsterData.maxWanderDistance;
-        //WanderRate = monsterData.wanderRate;
+        HP.CurrentValue = HP.GetValue();
+        MP.CurrentValue = MP.GetValue();
+        Damage.CurrentValue = Damage.GetValue();
+        Defense.CurrentValue = Defense.GetValue();
+        MoveSpeed.CurrentValue = MoveSpeed.GetValue();
+        AttackSpeed.CurrentValue = AttackSpeed.GetValue();
+        HPRegeneration.CurrentValue = HPRegeneration.GetValue();
+        MPRegeneration.CurrentValue = MPRegeneration.GetValue();
     }
 }

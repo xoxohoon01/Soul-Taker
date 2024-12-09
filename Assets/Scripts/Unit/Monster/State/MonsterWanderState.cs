@@ -9,15 +9,15 @@ public class MonsterWanderState : MonsterBaseState
 
     public override void Enter()
     {
-        stateMachine.Behavior.agent.isStopped = false;
-        stateMachine.Behavior.agent.speed = stateMachine.MoveSpeed;
-        StartAnimation(stateMachine.Behavior.animationData.RunParameterHash);
-        stateMachine.Behavior.agent.SetDestination(GetWanderLocation());
+        stateMachine.Monster.agent.isStopped = false;
+        stateMachine.Monster.agent.speed = stateMachine.Monster.status.MoveSpeed.GetValue();
+        StartAnimation(HashDataManager.runParameterHash);
+        stateMachine.Monster.agent.SetDestination(GetWanderLocation());
     }
 
     public override void Exit()
     {
-        StopAnimation(stateMachine.Behavior.animationData.RunParameterHash);
+        StopAnimation(HashDataManager.runParameterHash);
     }
 
     public override void HandleInput()
@@ -30,13 +30,14 @@ public class MonsterWanderState : MonsterBaseState
 
     public override void Update()
     {
+        base.Update();
         if ((IsTargetInFieldOfView() && IsInDetectRange()) || stateMachine.IsAttacked)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;
         }
 
-        if (!stateMachine.Behavior.agent.pathPending && stateMachine.Behavior.agent.remainingDistance < 0.5f)
+        if (!stateMachine.Monster.agent.pathPending && stateMachine.Monster.agent.remainingDistance < 0.5f)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
             return;
@@ -47,17 +48,9 @@ public class MonsterWanderState : MonsterBaseState
     {
         NavMeshHit hit;
        
-        int i = 0;
-        do
-        {
-            NavMesh.SamplePosition(stateMachine.Behavior.transform.position
-                                    + (Random.onUnitSphere * Random.Range(stateMachine.MinWanderDistance, stateMachine.MaxWanderDistance)),
-                                    out hit, stateMachine.MaxWanderDistance, NavMesh.AllAreas);
-            i++;
-            if (i == 30) break;
-        }
-        while ((Vector3.Distance(stateMachine.Behavior.transform.position, hit.position) < stateMachine.DetectRange));
-
+        NavMesh.SamplePosition(stateMachine.Monster.transform.position
+                            + (Random.onUnitSphere * Random.Range(stateMachine.Monster.monsterData.minWanderDistance, stateMachine.Monster.monsterData.maxWanderDistance)),
+                            out hit, stateMachine.Monster.monsterData.maxWanderDistance, NavMesh.AllAreas);
         return hit.position;
     }
 }

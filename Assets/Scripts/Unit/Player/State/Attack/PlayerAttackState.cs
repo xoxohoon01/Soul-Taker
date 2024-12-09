@@ -10,12 +10,12 @@ public class PlayerAttackState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.playerController.animationData.AttackParameterHash);
+        StartAnimation(HashDataManager.attackParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.playerController.animationData.AttackParameterHash);
+        StopAnimation(HashDataManager.attackParameterHash);
     }
 }

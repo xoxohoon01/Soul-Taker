@@ -10,13 +10,13 @@ public class PlayerIdleState : PlayerMovementState
     {
         stateMachine.isStop = true;
         base.Enter();
-        StartAnimation(stateMachine.playerController.animationData.IdleParameterHash);
+        StartAnimation(HashDataManager.idleParameterHash);
     }
     public override void Exit()
     {
         stateMachine.isStop = false;
         base.Exit();
-        StopAnimation(stateMachine.playerController.animationData.IdleParameterHash);
+        StopAnimation(HashDataManager.idleParameterHash);
     }
 
     // 가상패드 조작 시 Run 상태로 전환
