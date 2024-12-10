@@ -210,6 +210,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1365720655451759640, guid: 6c8f71c54730c1b40aef6fea710678e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1643762242205973239, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -493,6 +498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Monster (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365720655451759640, guid: 6c8f71c54730c1b40aef6fea710678e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1643762242205973239, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
@@ -788,6 +798,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1365720655451759640, guid: 6c8f71c54730c1b40aef6fea710678e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1643762242205973239, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -977,6 +992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Monster (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365720655451759640, guid: 6c8f71c54730c1b40aef6fea710678e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1643762242205973239, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
@@ -1369,6 +1389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Monster (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365720655451759640, guid: 6c8f71c54730c1b40aef6fea710678e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1643762242205973239, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
@@ -1766,6 +1791,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1365720655451759640, guid: 6c8f71c54730c1b40aef6fea710678e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1643762242205973239, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2040,6 +2070,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1365720655451759640, guid: 6c8f71c54730c1b40aef6fea710678e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1643762242205973239, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2141,6 +2176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Monster (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365720655451759640, guid: 6c8f71c54730c1b40aef6fea710678e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1643762242205973239, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}
@@ -2532,6 +2572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Monster (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365720655451759640, guid: 6c8f71c54730c1b40aef6fea710678e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1643762242205973239, guid: 6c8f71c54730c1b40aef6fea710678e7,
         type: 3}

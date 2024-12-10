@@ -56,4 +56,11 @@ public class Monster : MonoBehaviour
 
         status.InitializeCurrentValue();
     }
+
+    public void SelectSkillIndex()
+    {
+        // Test : 스킬 인덱스로 해당 스킬 애니메이션 적용
+        // skillIndex로 SkillID를 얻어 SkillData 가져와 Skill에 적용
+        skillIndex = Random.Range(0, 4);
+    }
 }

@@ -21,6 +21,7 @@ public class MonsterAttackState : MonsterBaseState
         }
 
         StartAnimation(HashDataManager.basicAttackParameterHash);
+        stateMachine.Monster.animator.SetInteger("SkillIndex", stateMachine.Monster.skillIndex);
         //int skillDataIndex = DataManager.Instance.Skill.GetSkill(stateMachine.Monster.monsterData.skillList[stateMachine.Monster.skillIndex]);
         //stateMachine.Monster.CreateSkill(skillDataIndex);
     }
