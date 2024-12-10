@@ -23,11 +23,24 @@ public class UIInventory : UIBase
 
     private List<ItemInstance> _items;
 
+    private int page = 0;
+
     public void Initialize(List<ItemInstance> items)
     {
         _items = items;
 
-        Refresh(ItemType.Weapon);
+        switch (page)
+        {
+            case 0:
+                EquipmentRefresh();
+                break;
+            case 1:
+                Refresh(ItemType.Consumption);
+                break;
+            case 2:
+                Refresh(ItemType.Misc);
+                break;
+        }
         ButtonInitialize();
     }
     
@@ -37,12 +50,7 @@ public class UIInventory : UIBase
         
         for (int i = 0; i < _items.Count; i++)
         {
-            if (DataManager.Instance.Item.Equipment(_items[i].itemId))
-            {
-                GameObject obj = Instantiate(objCell, trsParent);
-                obj.GetComponent<ItemCell>().Initialize(_items[i]);   
-            }
-            else if (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType == type)
+            if (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType == type)
             {
                 GameObject obj = Instantiate(objCell, trsParent);
                 obj.GetComponent<ItemCell>().Initialize(_items[i]);   
@@ -50,11 +58,37 @@ public class UIInventory : UIBase
         }
     }
 
+    private void EquipmentRefresh()
+    {
+        DeleteCell();
+
+        for (int i = 0; i < _items.Count; i++)
+        {
+            if (DataManager.Instance.Item.Equipment(_items[i].itemId))
+            {
+                GameObject obj = Instantiate(objCell, trsParent);
+                obj.GetComponent<ItemCell>().Initialize(_items[i]);
+            }
+        }
+    }
+
     private void ButtonInitialize()
     {
-        equipment.onClick.AddListener(() => Refresh(ItemType.Head));
-        consumption.onClick.AddListener(() => Refresh(ItemType.Consumption));
-        misc.onClick.AddListener(() => Refresh(ItemType.Misc));
+        equipment.onClick.AddListener(() =>
+        {
+            page = 0;
+            EquipmentRefresh();
+        });
+        consumption.onClick.AddListener(() =>
+        {
+            page = 1;
+            Refresh(ItemType.Consumption);
+        });
+        misc.onClick.AddListener(() =>
+        {
+            page = 2;
+            Refresh(ItemType.Misc);
+        });
         closeButton.onClick.AddListener(() => Hide());
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DataTable;
@@ -20,13 +21,14 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     [SerializeField] private Button destructionButton;
     
     private ItemInstance _item;
+    public Action<ItemInstance> OnItemSelected;
 
     public void Initialize(ItemInstance item)
     {
         _item = item;
         
-        Refresh();
         ButtonInitialize();
+        Refresh();
     }
 
     private void Refresh()
@@ -35,20 +37,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         textName.text = data.displayName;
         textDescription.text = data.description;
 
-        if (DataManager.Instance.Item.Equipment(_item.itemId))
-        {
-            useButton.gameObject.SetActive(false);
-            if (_item.equip == false)
-            {
-                unEquipButton.gameObject.SetActive(false);
-            }
-        }
-        else if(DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Consumption)
-        {
-            equipButton.gameObject.SetActive(false);
-            unEquipButton.gameObject.SetActive(false);
-        }
-        
+        SetButton();
     }
     
     private void ButtonInitialize()
@@ -57,19 +46,50 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         useButton.onClick.AddListener(() => ItemInitializeCount());
         equipButton.onClick.AddListener(() =>
         {
-            _item.equip = true;
+            ItemManager.Instance.RefreshListEquip(_item.id);
             UIManager.Instance.Show<EquipmentSlot>().Initialize(_item);
             ItemManager.Instance.DeleteItem(_item.id);
             DeleteItem();
         });
         unEquipButton.onClick.AddListener(() =>
         {
-            _item.equip = false;
+            ItemManager.Instance.RefreshListEquip(_item.id);
             ItemManager.Instance.AddList(_item);
             UIManager.Instance.Hide<EquipmentSlot>();
             DeleteItem();
         });
         destructionButton.onClick.AddListener(() => ItemInitializeCount());
+    }
+
+    private void SetButton()
+    {
+        useButton.gameObject.SetActive(false);
+        equipButton.gameObject.SetActive(false);
+        unEquipButton.gameObject.SetActive(false);
+        
+        var data = DataManager.Instance.Item.GetItemData(_item.itemId);
+
+        if (data.itemType == ItemType.Consumption)
+        {
+            useButton.gameObject.SetActive(true);
+            return;
+        }
+
+        if (data.itemType == ItemType.Misc)
+        {
+            return;
+        }
+        
+        if (ItemManager.Instance.FindItemEquip(data.itemType))
+        {
+            unEquipButton.gameObject.SetActive(true);
+            Debug.Log("unEquipButton 활성화");
+        }
+        else 
+        {
+            equipButton.gameObject.SetActive(true);
+            Debug.Log("equipButton 활성화");
+        }
     }
 
     private void DeleteItem()

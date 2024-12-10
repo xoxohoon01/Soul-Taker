@@ -63,4 +63,33 @@ public class ItemManager : MonoSingleton<ItemManager>
     {
         _items.Add(item);
     }
+    
+    public bool FindItemEquip(ItemType type)     //아이템 타입을 찾아서 해당 아이템이 장착 중이면 true/ 아이템이 없으면 false      (장착 버튼을 기준으로 생각)
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            if (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType == type)
+            {
+                if (_items[i].equip)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public void RefreshListEquip(int id)
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            if (_items[i].id == id)
+            {
+                var item = _items[i];
+                item.equip = !item.equip;
+                Debug.Log($"아이템 장착 불값 변경{item.equip}");
+            }
+        }
+    }
 }

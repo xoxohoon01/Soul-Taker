@@ -6,9 +6,9 @@ using UnityEditor;
 
 public class ItemDataManager : ItemData
 {
-    public ItemData GetItemData(int id)
+    public ItemData GetItemData(int itemId)
     {
-        return ItemDataMap[id];
+        return ItemDataMap[itemId];
     }
 
     public List<ItemData> GetItemDataListByType()
