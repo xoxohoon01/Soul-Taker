@@ -49,6 +49,7 @@ public class Skill : MonoBehaviour
             (transform.forward * currentSkill.offset.z) +
             (Vector3.up * (currentSkill.size.y / 2.0f));
         rb.velocity = transform.forward * currentSkill.speed;
+        Instantiate(Resources.Load<GameObject>($"Skill/{currentSkill.modelPath}"), transform);
     }
 
     private void Attack()

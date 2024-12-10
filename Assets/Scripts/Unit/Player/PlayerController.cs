@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -46,8 +47,23 @@ public class PlayerController : MonoBehaviour
 
     public void CreateAttack() // 공격 판정 오브젝트 생성
     {
-        Skill attack = Instantiate(Resources.Load<GameObject>("Skill"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
-        attack.Initialize(5001, gameObject, stateMachine.status.Damage.GetValue());
+        Skill attack = new Skill();
+        switch (comboIndex)
+        {
+            default:
+            case 1:
+                attack = Instantiate(Resources.Load<GameObject>("Skill"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
+                attack.Initialize(5001, gameObject, stateMachine.status.Damage.GetValue());
+                break;
+            case 2:
+                attack = Instantiate(Resources.Load<GameObject>("Skill"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
+                attack.Initialize(5002, gameObject, stateMachine.status.Damage.GetValue());
+                break;
+            case 3:
+                attack = Instantiate(Resources.Load<GameObject>("Skill"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
+                attack.Initialize(5003, gameObject, stateMachine.status.Damage.GetValue());
+                break;
+        }
     }
 
     IEnumerator ClearCombo(float time)
