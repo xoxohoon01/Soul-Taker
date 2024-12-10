@@ -3,8 +3,15 @@
         {
             "id": 1,
             "itemId": 1001,
-            "count": 2,
-            "enhance": 3,
+            "count": 1,
+            "enhance": 2,
+            "equip": false
+        },
+        {
+            "id": 1,
+            "itemId": 1002,
+            "count": 1,
+            "enhance": 2,
             "equip": false
         }
     ]

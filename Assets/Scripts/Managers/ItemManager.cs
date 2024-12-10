@@ -58,4 +58,15 @@ public class ItemManager : MonoSingleton<ItemManager>
     {
         _items.Remove(_items.Find(x => x.id == id));
     }
+
+    public void AddList(ItemInstance item)
+    {
+        _items.Add(item);
+    }
+
+    public bool Equipment(int id)
+    {
+        //if()
+        return true;
+    }
 }

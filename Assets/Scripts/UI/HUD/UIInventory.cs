@@ -15,13 +15,18 @@ public class UIInventory : UIBase
     [SerializeField] private Button consumption;
     [SerializeField] private Button misc;
     [SerializeField] private Button closeButton;
+    
+    [SerializeField] private Transform head;
+    [SerializeField] private Transform body;
+    [SerializeField] private Transform belt;
+    [SerializeField] private Transform foot;
 
     private List<ItemInstance> _items;
 
     public void Initialize(List<ItemInstance> items)
     {
         _items = items;
-        Refresh(ItemType.Equipment);
+        //Refresh(ItemType.Equipment);
 
         ButtonInitialize();
     }
@@ -42,7 +47,7 @@ public class UIInventory : UIBase
 
     private void ButtonInitialize()
     {
-        equipment.onClick.AddListener(() => Refresh(ItemType.Equipment));
+        //equipment.onClick.AddListener(() => Refresh(ItemType.Equipment));
         consumption.onClick.AddListener(() => Refresh(ItemType.Consumption));
         misc.onClick.AddListener(() => Refresh(ItemType.Misc));
         closeButton.onClick.AddListener(() => Hide());

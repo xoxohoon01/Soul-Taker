@@ -35,7 +35,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         textName.text = data.displayName;
         textDescription.text = data.description;
 
-        if (DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Equipment)
+        //if (DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Equipment)
         {
             useButton.gameObject.SetActive(false);
             if (_item.equip == false)
@@ -43,7 +43,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
                 unEquipButton.gameObject.SetActive(false);
             }
         }
-        else if(DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Consumption)
+        //else if(DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Consumption)
         {
             equipButton.gameObject.SetActive(false);
             unEquipButton.gameObject.SetActive(false);
@@ -54,33 +54,42 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     private void ButtonInitialize()
     {
         closeButton.onClick.AddListener(() => Hide());
-        //useButton.onClick.AddListener(() => );
+        useButton.onClick.AddListener(() => ItemInitializeCount());
         equipButton.onClick.AddListener(() =>
         {
             _item.equip = true;
             UIManager.Instance.Show<EquipmentSlot>().Initialize(_item);
+            ItemManager.Instance.DeleteItem(_item.id);
             DeleteItem();
         });
-        //unEquipButton.onClick.AddListener(() => );
-        destructionButton.onClick.AddListener(() =>
+        unEquipButton.onClick.AddListener(() =>
         {
-            if (_item.count >= 2)
-            {
-                _item.count--;
-                Hide();
-                HUD.Instance.OnInventory();
-            }
-            else
-            {
-                DeleteItem();
-            }
+            _item.equip = false;
+            ItemManager.Instance.AddList(_item);
+            UIManager.Instance.Hide<EquipmentSlot>();
+            DeleteItem();
         });
+        destructionButton.onClick.AddListener(() => ItemInitializeCount());
     }
 
     private void DeleteItem()
     {
-        ItemManager.Instance.DeleteItem(_item.id);
         Hide();
         HUD.Instance.OnInventory();
+    }
+
+    private void ItemInitializeCount()
+    {
+        if (_item.count >= 2)
+        {
+            _item.count--;
+            Hide();
+            HUD.Instance.OnInventory();
+        }
+        else
+        {
+            ItemManager.Instance.DeleteItem(_item.id);
+            DeleteItem();
+        }
     }
 }

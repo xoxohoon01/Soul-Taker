@@ -24,7 +24,7 @@ public class ItemCell : MonoBehaviour
 
     private void Refresh()      //Update UI
     {
-        if (DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Equipment)
+        if (DataManager.Instance.Item.GetItemData(_item.itemId).itemType != ItemType.Consumption && DataManager.Instance.Item.GetItemData(_item.itemId).itemType != ItemType.Misc)
         {
             Equipment();
         }
