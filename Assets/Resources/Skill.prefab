@@ -73,6 +73,9 @@ MonoBehaviour:
   damage: 0
   critChance: 0
   critDamage: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 136
 --- !u!54 &5950307649597780599
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ public class Skill : MonoBehaviour
     private SkillData currentSkill; // 스킬데이터
     private Dictionary<GameObject, HitInfo> hitInfoMap = new Dictionary<GameObject, HitInfo>(); // 타격 여부 및 타격 횟수 저장
 
+    private LayerMask targetLayer;
+
     private class HitInfo
     {
         public int hitCount = 0; // 타격 횟수
@@ -36,7 +38,7 @@ public class Skill : MonoBehaviour
 
         this.sender = sender;
 
-        this.damage = damage * (currentSkill.damage / 100.0f);
+        this.damage = damage * currentSkill.damage;
 
         lifeTime = currentSkill.lifeTime;
         transform.localScale = currentSkill.size;
@@ -52,7 +54,7 @@ public class Skill : MonoBehaviour
     private void Attack()
     {
         // OverlapBox로 충돌 감지 후, 가까운 순으로 정렬
-        Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.Euler(transform.eulerAngles), LayerMask.GetMask("Enemy"))
+        Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.Euler(transform.eulerAngles), targetLayer)
             .OrderBy(target => Vector3.Distance(transform.position, target.transform.position))
             .ToArray();
 
@@ -60,7 +62,7 @@ public class Skill : MonoBehaviour
         {
             // 적을 타격할 수 있는지 판단 후, hitInfoMap과 canHit를 반환
             if (((hitInfoMap.Count < currentSkill.targetCount) || (currentSkill.targetCount == 0)) &&
-                collider.TryGetComponent(out Status status))
+                collider.TryGetComponent(out Status status) && status.gameObject.layer != sender.layer)
             {
                 Debug.Log(collider.name);
                 if (!hitInfoMap.TryGetValue(collider.gameObject, out HitInfo info))
@@ -112,6 +114,7 @@ public class Skill : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        targetLayer.value = LayerMask.GetMask("Player", "Enemy");
     }
 
     private void Update()
