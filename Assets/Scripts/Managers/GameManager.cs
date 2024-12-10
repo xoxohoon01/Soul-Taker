@@ -4,9 +4,12 @@ using System.IO;
 using DataTable;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public GameObject _joyStick;
+
     private new void Awake()
     {
         base.Awake();
@@ -16,7 +19,17 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void Start()
     {
-        HUD.Instance.Initialize();
-        /* UIManager.Instance.Initialize();*/ // 캔버스 동적 생성할 거라면
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        GameObject hudPrefab = Resources.Load<GameObject>("UI/HUD");
+        if (hudPrefab != null)
+            Instantiate(hudPrefab);
+
+        GameObject joyStickPrefab = Resources.Load<GameObject>("UI/Joystick");
+        if (joyStickPrefab != null)
+            _joyStick = Instantiate(joyStickPrefab, HUD.Instance.transform);
     }
 }

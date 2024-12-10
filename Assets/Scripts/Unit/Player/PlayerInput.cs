@@ -27,6 +27,6 @@ public class PlayerInput : MonoBehaviour
 
     public void ConnectJoyStick()
     {
-        joystick = HUD.Instance._joyStick.GetComponent<VirtualJoystick>();
+        joystick = VirtualJoystick.Instance;
     }
 }

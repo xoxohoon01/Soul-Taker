@@ -23,12 +23,12 @@ public class ItemManager : MonoSingleton<ItemManager>
         AddId();
     }
 
-    public void AddItem(int id)     //아이템 추가하는 로직
+    public void AddItem(int itemId)     //아이템 추가하는 로직
     {
         var item = new ItemInstance();
         {
             item.id = nextId;
-            item.itemId = id;
+            item.itemId = itemId;
             item.count = 1;
             item.enhance = 0;
         }
@@ -52,5 +52,46 @@ public class ItemManager : MonoSingleton<ItemManager>
     public List<ItemInstance> GetItems()
     {
         return _items;
+    }
+
+    public void DeleteItem(int id)
+    {
+        _items.Remove(_items.Find(x => x.id == id));
+    }
+
+    public void AddList(ItemInstance item)
+    {
+        _items.Add(item);
+    }
+    
+    public bool FindItemEquip(ItemType type)     //아이템 타입을 찾아서 해당 아이템이 장착 중이면 true/ 아이템이 없으면 false      (장착 버튼을 기준으로 생각)
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            Debug.Log($"for문 시작");
+            if (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType == type)
+            {
+                Debug.Log($"첫번째 if문 입장{_items[i].itemId} & 장착여부{_items[i].equip}");
+                if (_items[i].equip)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public void RefreshListEquip(int id)        //for문으로 아이템을 찾는게 맞나요????
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            if (_items[i].id == id)
+            {
+                var item = _items[i];
+                item.equip = !item.equip;
+                Debug.Log($"아이템 장착 불값 변경{item.equip}");
+            }
+        }
     }
 }
