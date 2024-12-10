@@ -57,6 +57,12 @@ public class Monster : MonoBehaviour
         status.InitializeCurrentValue();
     }
 
+    public void CreateSkill(int skillID)
+    {
+        Skill skill = Instantiate(Resources.Load<GameObject>("Skill"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
+        skill.Initialize(skillID, gameObject, status.Damage.GetValue());
+    }
+
     public void SelectSkillIndex()
     {
         // Test : 스킬 인덱스로 해당 스킬 애니메이션 적용
