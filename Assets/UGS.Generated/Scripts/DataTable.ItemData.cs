@@ -61,7 +61,6 @@ namespace DataTable
 		public System.String description;
 		public System.String icon;
 		public ItemType itemType;
-		public System.Int32 equipmentType;
 		public System.Single hp;
 		public System.Single mp;
 		public System.Single damage;
