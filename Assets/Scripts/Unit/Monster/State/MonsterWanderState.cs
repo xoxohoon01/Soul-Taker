@@ -20,14 +20,6 @@ public class MonsterWanderState : MonsterBaseState
         StopAnimation(HashDataManager.runParameterHash);
     }
 
-    public override void HandleInput()
-    {
-    }
-
-    public override void PhysicsUpdate()
-    {
-    }
-
     public override void Update()
     {
         base.Update();

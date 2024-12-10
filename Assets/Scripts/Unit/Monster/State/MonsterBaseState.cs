@@ -59,7 +59,7 @@ public class MonsterBaseState : IState
 
         if (angle < stateMachine.Monster.monsterData.fieldOfView * 0.5 && !Physics.Raycast(stateMachine.Monster.transform.position + offset,
                 directionToTarget, out hit, stateMachine.Monster.monsterData.detectRange, stateMachine.Monster.obstacleMask))
-        { 
+        {
             return true;
         }
 

@@ -7,11 +7,13 @@ public class Monster : MonoBehaviour
     public MonsterData monsterData;
     public MonsterStatus status;
     public MonsterStateMachine stateMachine;
-    public MonsterWeapon monsterWeapon;
 
     public Animator animator;
     public NavMeshAgent agent;
     public LayerMask obstacleMask;
+
+    //MonsterData의 스킬 리스트의 index
+    public int skillIndex;
 
     private void Awake()
     {
@@ -26,7 +28,6 @@ public class Monster : MonoBehaviour
 
         if (monsterData != null) InitializeStatus();
         animator = GetComponentInChildren<Animator>();
-        monsterWeapon = GetComponentInChildren<MonsterWeapon>();
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
     }

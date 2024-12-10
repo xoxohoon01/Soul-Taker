@@ -21,12 +21,12 @@ public class MonsterAttackState : MonsterBaseState
         }
 
         StartAnimation(HashDataManager.basicAttackParameterHash);
-        //stateMachine.Monster.monsterWeapon.UseWeapon(stateMachine.Monster.status.Damage.GetValue());
+        //int skillDataIndex = DataManager.Instance.Skill.GetSkill(stateMachine.Monster.monsterData.skillList[stateMachine.Monster.skillIndex]);
+        //stateMachine.Monster.CreateSkill(skillDataIndex);
     }
 
     public override void Exit()
     {
-        stateMachine.Monster.agent.isStopped = false;
         StopAnimation(HashDataManager.basicAttackParameterHash);
     }
 
@@ -34,18 +34,11 @@ public class MonsterAttackState : MonsterBaseState
     {
         base.Update();
 
-        if (!IsAttackAnimation(stateMachine.Monster.animator, "Attack"))
+        if (!IsAttackAnimation(stateMachine.Monster.animator, "Skill"))
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;
         }
-    }
-
-    public override void HandleInput()
-    {
-    }
-    public override void PhysicsUpdate()
-    {
     }
 
     protected bool IsAttackAnimation(Animator animator, string tag)
