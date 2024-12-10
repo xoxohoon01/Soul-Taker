@@ -21,7 +21,6 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     [SerializeField] private Button destructionButton;
     
     private ItemInstance _item;
-    public Action<ItemInstance> OnItemSelected;
 
     public void Initialize(ItemInstance item)
     {
@@ -47,15 +46,11 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         equipButton.onClick.AddListener(() =>
         {
             ItemManager.Instance.RefreshListEquip(_item.id);
-            UIManager.Instance.Show<EquipmentSlot>().Initialize(_item);
-            ItemManager.Instance.DeleteItem(_item.id);
             DeleteItem();
         });
         unEquipButton.onClick.AddListener(() =>
         {
             ItemManager.Instance.RefreshListEquip(_item.id);
-            ItemManager.Instance.AddList(_item);
-            UIManager.Instance.Hide<EquipmentSlot>();
             DeleteItem();
         });
         destructionButton.onClick.AddListener(() => ItemInitializeCount());

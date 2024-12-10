@@ -68,8 +68,10 @@ public class ItemManager : MonoSingleton<ItemManager>
     {
         for (int i = 0; i < _items.Count; i++)
         {
+            Debug.Log($"for문 시작");
             if (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType == type)
             {
+                Debug.Log($"첫번째 if문 입장{_items[i].itemId} & 장착여부{_items[i].equip}");
                 if (_items[i].equip)
                 {
                     return true;
@@ -80,7 +82,7 @@ public class ItemManager : MonoSingleton<ItemManager>
         return false;
     }
 
-    public void RefreshListEquip(int id)
+    public void RefreshListEquip(int id)        //for문으로 아이템을 찾는게 맞나요????
     {
         for (int i = 0; i < _items.Count; i++)
         {

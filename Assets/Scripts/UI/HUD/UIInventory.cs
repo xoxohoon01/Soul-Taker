@@ -16,7 +16,7 @@ public class UIInventory : UIBase
     [SerializeField] private Button misc;
     [SerializeField] private Button closeButton;
     
-    [SerializeField] private Transform head;
+    [SerializeField] private Transform weapon;
     [SerializeField] private Transform body;
     [SerializeField] private Transform belt;
     [SerializeField] private Transform foot;
@@ -24,7 +24,8 @@ public class UIInventory : UIBase
     private List<ItemInstance> _items;
 
     private int page = 0;
-
+    
+    
     public void Initialize(List<ItemInstance> items)
     {
         _items = items;
@@ -62,12 +63,22 @@ public class UIInventory : UIBase
     {
         DeleteCell();
 
+        GameObject obj;
+
         for (int i = 0; i < _items.Count; i++)
         {
             if (DataManager.Instance.Item.Equipment(_items[i].itemId))
             {
-                GameObject obj = Instantiate(objCell, trsParent);
-                obj.GetComponent<ItemCell>().Initialize(_items[i]);
+                if (_items[i].equip)                                        //장비가 장착했으면 장착한 곳에서 생성
+                {
+                    obj = Instantiate(objCell, weapon);
+                    obj.GetComponent<ItemCell>().Initialize(_items[i]);
+                }
+                else
+                {
+                    obj = Instantiate(objCell, trsParent);
+                    obj.GetComponent<ItemCell>().Initialize(_items[i]);
+                }
             }
         }
     }
@@ -95,6 +106,11 @@ public class UIInventory : UIBase
     private void DeleteCell()
     {
         foreach (Transform child in trsParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Transform child in weapon)
         {
             Destroy(child.gameObject);
         }

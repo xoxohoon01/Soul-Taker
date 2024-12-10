@@ -991,8 +991,10 @@ MonoBehaviour:
   consumption: {fileID: 240400152644007110}
   misc: {fileID: 4449102229931581275}
   closeButton: {fileID: 8752967721609061236}
-  head: {fileID: 0}
-  body: {fileID: 0}
+  weapon: {fileID: 6609009734661467360}
+  body: {fileID: 1146662373088899630}
+  belt: {fileID: 6390755626569134382}
+  foot: {fileID: 1654944868563148775}
 --- !u!1 &6780320725211355260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6609009734661467360}
   m_Layer: 5
-  m_Name: Head
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1241,7 +1243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -320, y: 200}
+  m_AnchoredPosition: {x: -507, y: 46}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7637807069591152029
