@@ -73,11 +73,13 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     private void DungeonClear()
     {
         isDungeonClear = true;
+
         GameObject reward = Resources.Load<GameObject>("Reward");
         if (reward != null)
             Instantiate(reward, DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).rewardpostion, Quaternion.identity);
 
-        //UIManager.Instance.Show<UIClearDungeon>();
+        reward.GetComponent<Reward>().Initalize(_currentDungeonID);
+        // 해당 던전 ID에 맞는 리워드 데이터를 전달해줘야 됨 
     }
     private void CreateSpawner(int currentDungeonID)
     {
