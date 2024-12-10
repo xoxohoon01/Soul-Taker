@@ -7,6 +7,7 @@ using System.Linq;
 public class DungeonManager : MonoSingleton<DungeonManager>
 {
     public bool isDungeonClear = false; 
+    private int _currentDungeonID;
     public GameObject spawnerPrefab; 
     public List<Spawner> spawns = new List<Spawner>();   
     public List<RoomCollider> roomColliders;
@@ -39,7 +40,9 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     }
     public void EnterDungeon(int currentDungeonID)
     {
-        CreateSpawner(currentDungeonID);
+        _currentDungeonID = currentDungeonID;
+
+        CreateSpawner(_currentDungeonID);
         PlayerManager.Instance.SpawnPlayer(new Vector3(0, 1, 0));
     }
     public void RoomEnter(int _currentRoomID)
@@ -70,7 +73,11 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     private void DungeonClear()
     {
         isDungeonClear = true;
-        UIManager.Instance.Show<UIClearDungeon>();
+        GameObject reward = Resources.Load<GameObject>("Reward");
+        if (reward != null)
+            Instantiate(reward, DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).rewardpostion, Quaternion.identity);
+
+        //UIManager.Instance.Show<UIClearDungeon>();
     }
     private void CreateSpawner(int currentDungeonID)
     {
