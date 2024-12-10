@@ -13,9 +13,7 @@ public class MonsterWaitingAttackState : MonsterBaseState
     public override void Enter()
     {
         stateMachine.Monster.agent.isStopped = true;
-        stateMachine.Monster.agent.SetDestination(stateMachine.Monster.transform.position);
         attackRate = 1f / stateMachine.Monster.status.AttackSpeed.GetValue();
-        stateMachine.Monster.SelectSkillIndex();
 
         if (CanAttack() && IsTargetInFieldOfView())
         {

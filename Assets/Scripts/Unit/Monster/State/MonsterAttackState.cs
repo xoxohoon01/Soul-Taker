@@ -9,7 +9,8 @@ public class MonsterAttackState : MonsterBaseState
     public override void Enter()
     {
         stateMachine.Monster.agent.isStopped = true;
-        
+        stateMachine.Monster.SelectSkillIndex();
+
         // Apply AttackSpeed to Animation Speed
         if (stateMachine.Monster.status.AttackSpeed.GetValue() > 1f)
         {
