@@ -35,7 +35,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         textName.text = data.displayName;
         textDescription.text = data.description;
 
-        //if (DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Equipment)
+        if (DataManager.Instance.Item.Equipment(_item.itemId))
         {
             useButton.gameObject.SetActive(false);
             if (_item.equip == false)
@@ -43,7 +43,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
                 unEquipButton.gameObject.SetActive(false);
             }
         }
-        //else if(DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Consumption)
+        else if(DataManager.Instance.Item.GetItemData(_item.itemId).itemType == ItemType.Consumption)
         {
             equipButton.gameObject.SetActive(false);
             unEquipButton.gameObject.SetActive(false);

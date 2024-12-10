@@ -26,8 +26,8 @@ public class UIInventory : UIBase
     public void Initialize(List<ItemInstance> items)
     {
         _items = items;
-        //Refresh(ItemType.Equipment);
 
+        Refresh(ItemType.Weapon);
         ButtonInitialize();
     }
     
@@ -37,7 +37,12 @@ public class UIInventory : UIBase
         
         for (int i = 0; i < _items.Count; i++)
         {
-            if (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType == type)
+            if (DataManager.Instance.Item.Equipment(_items[i].itemId))
+            {
+                GameObject obj = Instantiate(objCell, trsParent);
+                obj.GetComponent<ItemCell>().Initialize(_items[i]);   
+            }
+            else if (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType == type)
             {
                 GameObject obj = Instantiate(objCell, trsParent);
                 obj.GetComponent<ItemCell>().Initialize(_items[i]);   
@@ -47,7 +52,7 @@ public class UIInventory : UIBase
 
     private void ButtonInitialize()
     {
-        //equipment.onClick.AddListener(() => Refresh(ItemType.Equipment));
+        equipment.onClick.AddListener(() => Refresh(ItemType.Head));
         consumption.onClick.AddListener(() => Refresh(ItemType.Consumption));
         misc.onClick.AddListener(() => Refresh(ItemType.Misc));
         closeButton.onClick.AddListener(() => Hide());

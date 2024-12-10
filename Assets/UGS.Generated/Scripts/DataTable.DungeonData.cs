@@ -63,6 +63,7 @@ namespace DataTable
 		public System.Int32 playerLevel;
 		public System.Collections.Generic.List<Int32> spawners;
 		public System.String scene;
+		public System.Collections.Generic.List<Int32> reward;
 		public UnityEngine.Vector3 rewardpostion;
   
 

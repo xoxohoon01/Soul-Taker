@@ -63,10 +63,4 @@ public class ItemManager : MonoSingleton<ItemManager>
     {
         _items.Add(item);
     }
-
-    public bool Equipment(int id)
-    {
-        //if()
-        return true;
-    }
 }

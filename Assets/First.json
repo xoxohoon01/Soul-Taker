@@ -8,10 +8,17 @@
             "equip": false
         },
         {
-            "id": 1,
-            "itemId": 1002,
+            "id": 2,
+            "itemId": 1003,
             "count": 1,
-            "enhance": 2,
+            "enhance": 3,
+            "equip": false
+        },
+        {
+            "id": 3,
+            "itemId": 1301,
+            "count": 5,
+            "enhance": 6,
             "equip": false
         }
     ]
