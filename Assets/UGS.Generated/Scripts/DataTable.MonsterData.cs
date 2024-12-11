@@ -83,6 +83,7 @@ namespace DataTable
 		public System.Collections.Generic.List<Int32> dropItems;
 		public System.String parentPrefabName;
 		public System.String modelPrefabName;
+		public System.Collections.Generic.List<Int32> skillList;
   
 
 #region fuctions
