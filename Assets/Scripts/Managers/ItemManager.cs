@@ -44,6 +44,7 @@ public class ItemManager : MonoSingleton<ItemManager>
         
         _items.Add(item);
         DatabaseManager.Instance.SaveData(_items);
+        AddId();
     }
 
     public ItemInstance AddItem(int itemId, int itemCount)     //아이템 추가하는 로직
@@ -58,7 +59,7 @@ public class ItemManager : MonoSingleton<ItemManager>
 
         _items.Add(item);
         DatabaseManager.Instance.SaveData(_items);
-        
+        AddId();
         return item;
     }
 
