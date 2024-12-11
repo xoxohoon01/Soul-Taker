@@ -15,9 +15,10 @@ public class MonsterWaitingAttackState : MonsterBaseState
         stateMachine.Monster.agent.isStopped = true;
         attackRate = 1f / stateMachine.Monster.status.AttackSpeed.GetValue();
 
-        if (CanAttack() && IsTargetInFieldOfView())
+        if (CanAttack() && IsTargetInFieldOfView() && !stateMachine.IsAttacking)
         {
             lastAttackTime = Time.time;
+            stateMachine.IsAttacking = true;
             stateMachine.ChangeState(stateMachine.AttackState);
             return;
         }
@@ -34,15 +35,16 @@ public class MonsterWaitingAttackState : MonsterBaseState
     {
         base.Update();
 
-        if (IsInAnimationTransition()) return;
+        if (stateMachine.Monster.animator.IsInTransition(0) || stateMachine.IsAttacking) return;
 
         if (IsInAttackRange())
         {
             RotateToTarget();
 
-            if (CanAttack() && IsTargetInFieldOfView())
+            if (CanAttack() && IsTargetInFieldOfView() && !stateMachine.IsAttacking)
             {
                 lastAttackTime = Time.time;
+                stateMachine.IsAttacking = true;
                 stateMachine.ChangeState(stateMachine.AttackState);
                 return;
             }

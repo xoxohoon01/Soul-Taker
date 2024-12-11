@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class Monster : MonoBehaviour
 {
-    public MonsterData monsterData;
+    public MonsterData data;
     public MonsterStatus status;
     public MonsterStateMachine stateMachine;
 
@@ -24,9 +24,9 @@ public class Monster : MonoBehaviour
     private void Start()
     {
         //Test
-        monsterData = DataManager.Instance.Monster.GetMonster(101);
+        data = DataManager.Instance.Monster.GetMonster(101);
 
-        if (monsterData != null) InitializeStatus();
+        if (data != null) InitializeStatus();
         animator = GetComponentInChildren<Animator>();
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
@@ -39,20 +39,20 @@ public class Monster : MonoBehaviour
 
     public void SetMonsterData(MonsterData monsterData)
     {
-        this.monsterData = monsterData;
+        data = monsterData;
     }
 
     public void InitializeStatus()
     {
-        status.Level = monsterData.level;
-        status.HP.originalValue = monsterData.hp + monsterData.hpPerLevel * status.Level;
-        status.MP.originalValue = monsterData.mp + monsterData.mpPerLevel * status.Level;
-        status.Damage.originalValue = monsterData.damage + monsterData.damagePerLevel * status.Level;
-        status.Defense.originalValue = monsterData.defense + monsterData.defensePerLevel * status.Level;
-        status.MoveSpeed.originalValue = monsterData.moveSpeed;
-        status.AttackSpeed.originalValue = monsterData.attackSpeed;
-        status.HPRegeneration.originalValue = monsterData.hpRegeneration + monsterData.hpRegenerationPerLevel * status.Level;
-        status.MPRegeneration.originalValue = monsterData.mpRegeneration + monsterData.mpRegenerationPerLevel * status.Level;
+        status.Level = data.level;
+        status.HP.originalValue = data.hp + data.hpPerLevel * status.Level;
+        status.MP.originalValue = data.mp + data.mpPerLevel * status.Level;
+        status.Damage.originalValue = data.damage + data.damagePerLevel * status.Level;
+        status.Defense.originalValue = data.defense + data.defensePerLevel * status.Level;
+        status.MoveSpeed.originalValue = data.moveSpeed;
+        status.AttackSpeed.originalValue = data.attackSpeed;
+        status.HPRegeneration.originalValue = data.hpRegeneration + data.hpRegenerationPerLevel * status.Level;
+        status.MPRegeneration.originalValue = data.mpRegeneration + data.mpRegenerationPerLevel * status.Level;
 
         status.InitializeCurrentValue();
     }
@@ -67,6 +67,7 @@ public class Monster : MonoBehaviour
     {
         // Test : 스킬 인덱스로 해당 스킬 애니메이션 적용
         // skillIndex로 SkillID를 얻어 SkillData 가져와 Skill에 적용
-        skillIndex = Random.Range(0, 4);
+        //skillIndex = Random.Range(0, data.skillList.Count);
+        skillIndex = 3;
     }
 }

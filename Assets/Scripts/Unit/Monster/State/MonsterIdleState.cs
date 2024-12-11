@@ -36,7 +36,7 @@ public class MonsterIdleState : MonsterBaseState
             return;
         }
 
-        if (wanderCoolDownTime > stateMachine.Monster.monsterData.wanderRate)
+        if (wanderCoolDownTime > stateMachine.Monster.data.wanderRate)
         {
             stateMachine.ChangeState(stateMachine.WanderState);
             return;
