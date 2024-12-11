@@ -17,9 +17,9 @@ public class MonsterWaitingAttackState : MonsterBaseState
 
         if (CanAttack() && IsTargetInFieldOfView() && !stateMachine.IsAttacking)
         {
-            lastAttackTime = Time.time;
             stateMachine.IsAttacking = true;
             stateMachine.ChangeState(stateMachine.AttackState);
+            lastAttackTime = Time.time;
             return;
         }
 
@@ -43,9 +43,9 @@ public class MonsterWaitingAttackState : MonsterBaseState
 
             if (CanAttack() && IsTargetInFieldOfView() && !stateMachine.IsAttacking)
             {
-                lastAttackTime = Time.time;
                 stateMachine.IsAttacking = true;
                 stateMachine.ChangeState(stateMachine.AttackState);
+                lastAttackTime = Time.time;
                 return;
             }
         }

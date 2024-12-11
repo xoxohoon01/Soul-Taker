@@ -38,8 +38,8 @@ public class MonsterAttackState : MonsterBaseState
 
         if (!IsAttackAnimation(stateMachine.Monster.animator, "Skill"))
         {
-            stateMachine.IsAttacking = false;
             stateMachine.ChangeState(stateMachine.WaitingAttackState);
+            stateMachine.IsAttacking = false;
             return;
         }
     }
