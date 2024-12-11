@@ -38,7 +38,7 @@ public class MonsterAttackState : MonsterBaseState
 
         if (!IsAttackAnimation(stateMachine.Monster.animator, "Skill"))
         {
-            stateMachine.ChangeState(stateMachine.ChaseState);
+            stateMachine.ChangeState(stateMachine.WaitingAttackState);
             return;
         }
     }

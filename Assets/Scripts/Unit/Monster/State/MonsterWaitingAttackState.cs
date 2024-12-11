@@ -33,7 +33,9 @@ public class MonsterWaitingAttackState : MonsterBaseState
     public override void Update()
     {
         base.Update();
-        
+
+        if (IsInAnimationTransition()) return;
+
         if (IsInAttackRange())
         {
             RotateToTarget();

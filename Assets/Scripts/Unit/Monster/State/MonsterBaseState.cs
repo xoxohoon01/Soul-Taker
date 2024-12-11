@@ -84,4 +84,9 @@ public class MonsterBaseState : IState
         Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
         stateMachine.Monster.transform.rotation = Quaternion.Slerp(stateMachine.Monster.transform.rotation, targetRotation, 10f * Time.deltaTime);
     }
+
+    protected bool IsInAnimationTransition()
+    {
+        return stateMachine.Monster.animator.IsInTransition(0);
+    }
 }
