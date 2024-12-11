@@ -69,4 +69,6 @@ crashlytics-build.properties
 
 # Temporary auto-generated Android Assets
 *.mat
-/Assets/SurrounDead Bunker
+Assets/ImportedAssets
+Assets/ImportedAssets/Cgoblin/Models/Macanim/Materials/CgoblinArcher.mat.meta
+/Assets/ImportedAssets

@@ -6,12 +6,12 @@ using UnityEngine;
 [UGS(typeof(ItemType))]
 public enum ItemType
 {
-    Consumption,
-    Misc,
+    Weapon,
+    Ring,
     Head,
     Body,
     Belt,
     Foot,
-    Weapon,
-    Ring
+    Consumption,
+    Misc
 }
