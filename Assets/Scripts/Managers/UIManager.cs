@@ -60,8 +60,7 @@ public class UIManager : MonoSingleton<UIManager>
 
     private void Start()
     {
-        // 캔버스 동적생성시 아래 코드 지울 것
-        //DontDestroyOnLoad(canvas);
+        DontDestroyOnLoad(canvas);
     }
 }
 

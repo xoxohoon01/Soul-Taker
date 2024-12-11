@@ -6,10 +6,10 @@ using System.Linq;
 
 public class DungeonManager : MonoSingleton<DungeonManager>
 {
-    public bool isDungeonClear = false; 
+    public bool isDungeonClear = false;
     private int _currentDungeonID;
-    public GameObject spawnerPrefab; 
-    public List<Spawner> spawns = new List<Spawner>();   
+    public GameObject spawnerPrefab;
+    public List<Spawner> spawns = new List<Spawner>();
     public List<RoomCollider> roomColliders;
 
     [SerializeField] private int roomMonsterCount;
@@ -17,14 +17,14 @@ public class DungeonManager : MonoSingleton<DungeonManager>
     private void Awake()
     {
         spawnerPrefab = Resources.Load<GameObject>("Spawn");
-        roomColliders = FindObjectsOfType<RoomCollider>().ToList(); 
+        roomColliders = FindObjectsOfType<RoomCollider>().ToList();
     }
     public int RoomMonsterCount(int _spawnerMonsterCount)
     {
         roomMonsterCount += _spawnerMonsterCount;
         return roomMonsterCount;
     }
-    public void MonsterDieCount() 
+    public void MonsterDieCount()
     {
         roomMonsterCount--;
 
@@ -53,13 +53,13 @@ public class DungeonManager : MonoSingleton<DungeonManager>
         {
             if (spawner.GetRoomId() == currentRoomID)
             {
-                spawner.CreatMonster(); 
+                spawner.CreatMonster();
             }
         }
-    } 
+    }
     public void RoomClear()
     {
-        foreach (var collider in roomColliders) 
+        foreach (var collider in roomColliders)
         {
             if (collider.GetComponent<RoomCollider>().GetRoomColliderID() == currentRoomID)
             {
@@ -67,19 +67,38 @@ public class DungeonManager : MonoSingleton<DungeonManager>
                 roomColliders.Remove(collider);
             }
         }
-        
+
         currentRoomID = 0;
     }
     private void DungeonClear()
     {
         isDungeonClear = true;
 
-        GameObject reward = Resources.Load<GameObject>("Reward");
-        if (reward != null)
-            Instantiate(reward, DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).rewardpostion, Quaternion.identity);
+        GameObject rewardPrefab = Resources.Load<GameObject>("Reward");
+        ObjectData rewardData = DataManager.Instance.Object.GetObjectid(DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).reward);
 
-        reward.GetComponent<Reward>().Initalize(_currentDungeonID);
-        // 해당 던전 ID에 맞는 리워드 데이터를 전달해줘야 됨 
+        if (rewardPrefab != null)
+        {
+            GameObject goReward = Instantiate(
+                rewardPrefab,
+                //DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).rewardpostion,
+                rewardData.postion,
+                Quaternion.identity
+            );
+
+            RewardBox rewardScript = goReward.GetComponent<RewardBox>();
+
+            if (rewardScript != null)
+            {
+                //rewardScript.Initalize(DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).reward);
+                rewardScript.Initalize(rewardData.ID);
+            }
+        }
+
+        //reward.GetComponent<Reward>().Initalize(DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).reward);
+        //// 해당 던전 ID에 맞는 리워드 데이터를 전달해줘야 됨 
+
+        //Debug.Log(DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).reward); // 6001 나옴 
     }
     private void CreateSpawner(int currentDungeonID)
     {
