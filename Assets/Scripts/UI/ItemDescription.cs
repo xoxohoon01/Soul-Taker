@@ -12,6 +12,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     [SerializeField] private TextMeshProUGUI textName;
     [SerializeField] private TextMeshProUGUI textDescription;
     [SerializeField] private TextMeshProUGUI textItemDescriptionTitle;
+    [SerializeField] private TextMeshProUGUI textEnhance;
     [SerializeField] private Image itemImage;
 
     [SerializeField] private Button closeButton;
@@ -36,6 +37,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         ItemData data = DataManager.Instance.Item.GetItemData(_item.itemId);
         textName.text = data.displayName;
         textDescription.text = data.description;
+        textEnhance.text = _item.enhance > 0 ? $"+{_item.enhance}" : "";
 
         SetButton();
     }
