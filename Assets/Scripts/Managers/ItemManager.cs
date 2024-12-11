@@ -89,11 +89,6 @@ public class ItemManager : MonoSingleton<ItemManager>
         }
     }
 
-    private void EquipmentRefresh(int itemid)
-    {
-        
-    }
-
     public List<ItemInstance> GetItems()
     {
         return _items;
