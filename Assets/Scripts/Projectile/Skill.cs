@@ -32,7 +32,7 @@ public class Skill : MonoBehaviour
         public bool canHit = true; // 타격 가능 여부
     }
 
-    public void Initialize(int id, GameObject sender, float damage)
+    public void Initialize(int id, GameObject sender, float damage, float time = 0)
     {
         currentSkill = DataManager.Instance.Skill.GetSkill(id);
 
@@ -40,7 +40,7 @@ public class Skill : MonoBehaviour
 
         this.damage = damage * currentSkill.damage;
 
-        lifeTime = currentSkill.lifeTime;
+        lifeTime = (time != 0) ? time : currentSkill.lifeTime;
         transform.localScale = currentSkill.size;
         transform.position =
             transform.position +
@@ -49,6 +49,9 @@ public class Skill : MonoBehaviour
             (transform.forward * currentSkill.offset.z) +
             (Vector3.up * (currentSkill.size.y / 2.0f));
         rb.velocity = transform.forward * currentSkill.speed;
+        ParticleSystem particle = Instantiate(Resources.Load<GameObject>($"Skill/{currentSkill.modelPath}"), transform).GetComponent<ParticleSystem>();
+        var main = particle.main;
+        main.simulationSpeed = 1 / lifeTime;
     }
 
     private void Attack()

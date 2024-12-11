@@ -17,39 +17,39 @@ using UnityEngine;
 namespace DataTable
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class SkillData : ITable
+    public partial class ObjectData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<SkillData> loadedList, Dictionary<int, SkillData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<ObjectData> loadedList, Dictionary<int, ObjectData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1q2WdCxYeQVFVN58CRhzW6VCNhuo-xf3NzElhko_NpMY"; // it is file id
-        static string sheetID = "414618239"; // it is sheet id
+        static string sheetID = "1662826587"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, SkillData> SkillDataMap = new Dictionary<int, SkillData>();  
-        public static List<SkillData> SkillDataList = new List<SkillData>();   
+        public static Dictionary<int, ObjectData> ObjectDataMap = new Dictionary<int, ObjectData>();  
+        public static List<ObjectData> ObjectDataList = new List<ObjectData>();   
 
         /// <summary>
-        /// Get SkillData List 
+        /// Get ObjectData List 
         /// Auto Load
         /// </summary>
-        public static List<SkillData> GetList()
+        public static List<ObjectData> GetList()
         {{
            if (isLoaded == false) Load();
-           return SkillDataList;
+           return ObjectDataList;
         }}
 
         /// <summary>
-        /// Get SkillData Dictionary, keyType is your sheet A1 field type.
+        /// Get ObjectData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, SkillData>  GetDictionary()
+        public static Dictionary<int, ObjectData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return SkillDataMap;
+           return ObjectDataMap;
         }}
 
     
@@ -57,17 +57,8 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 ID;
-		public System.String name;
-		public System.String description;
-		public System.String modelPath;
-		public UnityEngine.Vector3 offset;
-		public UnityEngine.Vector3 size;
-		public System.Single lifeTime;
-		public System.Single speed;
-		public System.Int32 targetCount;
-		public System.Int32 maxHitCount;
-		public System.Single hitDelay;
-		public System.Single damage;
+		public System.Collections.Generic.List<Int32> item;
+		public System.Collections.Generic.List<Int32> itemCount;
   
 
 #region fuctions
@@ -78,7 +69,7 @@ namespace DataTable
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("SkillData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("ObjectData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -94,7 +85,7 @@ namespace DataTable
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<SkillData>, Dictionary<int, SkillData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<ObjectData>, Dictionary<int, ObjectData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -122,14 +113,14 @@ namespace DataTable
                
 
 
-    public static (List<SkillData> list, Dictionary<int, SkillData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, SkillData> Map = new Dictionary<int, SkillData>();
-            List<SkillData> List = new List<SkillData>();     
+    public static (List<ObjectData> list, Dictionary<int, ObjectData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, ObjectData> Map = new Dictionary<int, ObjectData>();
+            List<ObjectData> List = new List<ObjectData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(SkillData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(ObjectData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["SkillData"];
+            var sheet = jsonObject["ObjectData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -148,7 +139,7 @@ namespace DataTable
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            SkillData instance = new SkillData();
+                            ObjectData instance = new ObjectData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -189,8 +180,8 @@ namespace DataTable
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            SkillDataList = List;
-                            SkillDataMap = Map;
+                            ObjectDataList = List;
+                            ObjectDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -200,10 +191,10 @@ namespace DataTable
 
  
 
-        public static void Write(SkillData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(ObjectData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(SkillData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(ObjectData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {
