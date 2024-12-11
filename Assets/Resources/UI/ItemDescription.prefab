@@ -1299,9 +1299,9 @@ MonoBehaviour:
   closeButton: {fileID: 8143769263229474498}
   useButton: {fileID: 1980019702522308114}
   equipButton: {fileID: 423849914377295152}
+  changeButton: {fileID: 6967854041507057836}
   unEquipButton: {fileID: 896376772231046394}
   destructionButton: {fileID: 9008553493442461725}
-  objCell: {fileID: 6018572625500441870, guid: 2fe16d46d7f9f4cbf802c0fa916de818, type: 3}
 --- !u!1 &4966575382646662209
 GameObject:
   m_ObjectHideFlags: 0

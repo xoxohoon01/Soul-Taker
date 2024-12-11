@@ -16,10 +16,7 @@ public class UIInventory : UIBase
     [SerializeField] private Button misc;
     [SerializeField] private Button closeButton;
     
-    [SerializeField] private Transform weapon;
-    [SerializeField] private Transform body;
-    [SerializeField] private Transform belt;
-    [SerializeField] private Transform foot;
+    [SerializeField] private List<Transform> transforms;
 
     private List<ItemInstance> _items;
 
@@ -36,16 +33,16 @@ public class UIInventory : UIBase
                 EquipmentRefresh();
                 break;
             case 1:
-                Refresh(ItemType.Consumption);
+                MiscRefresh(ItemType.Consumption);
                 break;
             case 2:
-                Refresh(ItemType.Misc);
+                MiscRefresh(ItemType.Misc);
                 break;
         }
         ButtonInitialize();
     }
     
-    private void Refresh(ItemType type)
+    private void MiscRefresh(ItemType type)
     {
         DeleteCell();
         
@@ -71,7 +68,7 @@ public class UIInventory : UIBase
             {
                 if (_items[i].equip)                                        //장비가 장착했으면 장착한 곳에서 생성
                 {
-                    obj = Instantiate(objCell, weapon);
+                    obj = Instantiate(objCell, transforms[(int)DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType]);
                     obj.GetComponent<ItemCell>().Initialize(_items[i]);
                 }
                 else
@@ -93,12 +90,12 @@ public class UIInventory : UIBase
         consumption.onClick.AddListener(() =>
         {
             page = 1;
-            Refresh(ItemType.Consumption);
+            MiscRefresh(ItemType.Consumption);
         });
         misc.onClick.AddListener(() =>
         {
             page = 2;
-            Refresh(ItemType.Misc);
+            MiscRefresh(ItemType.Misc);
         });
         closeButton.onClick.AddListener(() => Hide());
     }
@@ -109,10 +106,14 @@ public class UIInventory : UIBase
         {
             Destroy(child.gameObject);
         }
-
-        foreach (Transform child in weapon)
+        
+        //Transforms 자식 오브젝트 삭제
+        foreach (Transform part in transforms)
         {
-            Destroy(child.gameObject);
+            foreach (Transform child in part)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 }
