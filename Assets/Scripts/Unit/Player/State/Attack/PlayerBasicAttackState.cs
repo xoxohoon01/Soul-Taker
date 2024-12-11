@@ -22,14 +22,14 @@ public class PlayerBasicAttackState : PlayerAttackState
 
         // 공격속도 계산
         stateMachine.playerController.attackDelay = span;
-        stateMachine.playerController.attackSpan = span + 0.1f;
+        stateMachine.playerController.attackSpan = span;
 
         // 공격 판정 오브젝트 생성
-        stateMachine.playerController.CreateAttack();
+        stateMachine.playerController.CreateAttack(span);
 
         // 콤보 초기화 코루틴 실행
         if (stateMachine.playerController.coroutineCombo != null) stateMachine.playerController.StopCoroutine(stateMachine.playerController.coroutineCombo);
-        stateMachine.playerController.coroutineCombo = stateMachine.playerController.StartCoroutine("ClearCombo", span + 0.5f);
+        stateMachine.playerController.coroutineCombo = stateMachine.playerController.StartCoroutine("ClearCombo", span + 0.1f);
     }
 
     public override void Exit()

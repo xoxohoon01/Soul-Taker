@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
-    public void CreateAttack() // 공격 판정 오브젝트 생성
+    public void CreateAttack(float time) // 공격 판정 오브젝트 생성
     {
         Skill attack = new Skill();
         switch (comboIndex)
@@ -53,15 +53,15 @@ public class PlayerController : MonoBehaviour
             default:
             case 1:
                 attack = Instantiate(Resources.Load<GameObject>("Skill"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
-                attack.Initialize(5001, gameObject, stateMachine.status.Damage.GetValue());
+                attack.Initialize(5001, gameObject, stateMachine.status.Damage.GetValue(), time);
                 break;
             case 2:
                 attack = Instantiate(Resources.Load<GameObject>("Skill"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
-                attack.Initialize(5002, gameObject, stateMachine.status.Damage.GetValue());
+                attack.Initialize(5002, gameObject, stateMachine.status.Damage.GetValue(), time);
                 break;
             case 3:
                 attack = Instantiate(Resources.Load<GameObject>("Skill"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
-                attack.Initialize(5003, gameObject, stateMachine.status.Damage.GetValue());
+                attack.Initialize(5003, gameObject, stateMachine.status.Damage.GetValue(), time);
                 break;
         }
     }
