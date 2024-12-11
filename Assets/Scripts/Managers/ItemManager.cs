@@ -46,6 +46,22 @@ public class ItemManager : MonoSingleton<ItemManager>
         DatabaseManager.Instance.SaveData(_items);
     }
 
+    public ItemInstance AddItem(int itemId, int itemCount)     //아이템 추가하는 로직
+    {
+        var item = new ItemInstance();
+        {
+            item.id = nextId;
+            item.itemId = itemId;
+            item.count = itemCount;
+            item.enhance = 0;
+        }
+
+        _items.Add(item);
+        DatabaseManager.Instance.SaveData(_items);
+        
+        return item;
+    }
+
     private void AddId()            //아이템 번호 부여하는 로직
     {
         if (_items != null && _items.Count > 0)

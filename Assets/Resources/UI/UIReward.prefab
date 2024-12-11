@@ -90,10 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
-  _itemImage: {fileID: 0}
-  _itemCountTxt: {fileID: 0}
-  _itemTxt: {fileID: 0}
   _itemListPanel: {fileID: 0}
+  _itemCell: {fileID: 0}
 --- !u!114 &377621146653765088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
-  _itemImage: {fileID: 0}
-  _itemCountTxt: {fileID: 0}
-  _itemTxt: {fileID: 0}
   _itemListPanel: {fileID: 2938338947993328630}
+  _itemCell: {fileID: 6018572625500441870, guid: 2fe16d46d7f9f4cbf802c0fa916de818,
+    type: 3}

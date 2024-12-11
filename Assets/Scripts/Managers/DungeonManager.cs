@@ -63,7 +63,7 @@ public class DungeonManager : MonoSingleton<DungeonManager>
         {
             if (collider.GetComponent<RoomCollider>().GetRoomColliderID() == currentRoomID)
             {
-                collider.DestroyObject(); // 삭제 말고 콜라이더만 끄는 건? 
+                collider.DestroyObject(); 
                 roomColliders.Remove(collider);
             }
         }
@@ -81,7 +81,6 @@ public class DungeonManager : MonoSingleton<DungeonManager>
         {
             GameObject goReward = Instantiate(
                 rewardPrefab,
-                //DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).rewardpostion,
                 rewardData.postion,
                 Quaternion.identity
             );
@@ -90,15 +89,9 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 
             if (rewardScript != null)
             {
-                //rewardScript.Initalize(DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).reward);
                 rewardScript.Initalize(rewardData.ID);
             }
         }
-
-        //reward.GetComponent<Reward>().Initalize(DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).reward);
-        //// 해당 던전 ID에 맞는 리워드 데이터를 전달해줘야 됨 
-
-        //Debug.Log(DataManager.Instance.Dungeon.GetDungeonid(_currentDungeonID).reward); // 6001 나옴 
     }
     private void CreateSpawner(int currentDungeonID)
     {
