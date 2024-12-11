@@ -9,7 +9,8 @@ public class MonsterDeadState : MonsterBaseState
     }
     public override void Enter()
     {
-        stateMachine.Monster.agent.isStopped = true;
+        stateMachine.Monster.agent.enabled = false;
+        stateMachine.Monster.myCollider.enabled = false;
         stateMachine.Monster.animator.SetTrigger(HashDataManager.dieParameterHash);
     }
 
@@ -18,8 +19,7 @@ public class MonsterDeadState : MonsterBaseState
         if (IsDieAnimationEnd("Die") && isDead == false)
         {
             isDead = true;
-            DungeonManager.Instance.MonsterDieCount();
-            stateMachine.Monster.gameObject.SetActive(false);
+            stateMachine.Monster.OnDeath();
             return;
         }
     }
