@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.IO;
-using DataTable;
 using Newtonsoft.Json;
 using UGS;
 using UnityEngine;
@@ -14,6 +12,7 @@ public class DataManager : Singleton<DataManager>
     public SpawnerDataManager Spawner;
     public MonsterDataManager Monster;
     public SkillDataManager Skill;
+    public ObjectDataManager Object;
 
     public void Initialize()
     {
@@ -25,5 +24,6 @@ public class DataManager : Singleton<DataManager>
         Spawner = new SpawnerDataManager();
         Monster = new MonsterDataManager();
         Skill = new SkillDataManager();
+        Object = new ObjectDataManager();
     }
 }

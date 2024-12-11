@@ -59,6 +59,7 @@ namespace DataTable
 		public System.Int32 ID;
 		public System.Collections.Generic.List<Int32> item;
 		public System.Collections.Generic.List<Int32> itemCount;
+		public UnityEngine.Vector3 postion;
   
 
 #region fuctions

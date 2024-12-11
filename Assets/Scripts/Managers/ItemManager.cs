@@ -8,6 +8,13 @@ using UnityEngine;
 public class ItemManager : MonoSingleton<ItemManager>
 {
     [SerializeField]private List<ItemInstance> _items;
+
+    public ItemInstance weaponInstance;
+    public ItemInstance ringInstance;
+    public ItemInstance headInstance;
+    public ItemInstance bodyInstance;
+    public ItemInstance beltInstance;
+    public ItemInstance footInstance;
     
     private int nextId;
 
@@ -15,12 +22,14 @@ public class ItemManager : MonoSingleton<ItemManager>
     {
        _items = items;
        AddId();
+       EquipmentInitialize();
     }
     
     public void Initialize(ItemInstanceData items)          //인스펙터 창에서 추가한 아이템 리스트에 저장
     {
         _items = items.itemInstances;
         AddId();
+        EquipmentInitialize();
     }
 
     public void AddItem(int itemId)     //아이템 추가하는 로직
@@ -49,6 +58,37 @@ public class ItemManager : MonoSingleton<ItemManager>
         }
     }
 
+    private void EquipmentInitialize()
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            if (_items[i].equip)
+            {
+                switch (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType)
+                {
+                    case ItemType.Weapon:
+                        weaponInstance = _items[i];
+                        break;
+                    case ItemType.Ring:
+                        ringInstance = _items[i];
+                        break;
+                    case ItemType.Head:
+                        headInstance = _items[i];
+                        break;
+                    case ItemType.Body:
+                        bodyInstance = _items[i];
+                        break;
+                    case ItemType.Belt:
+                        beltInstance = _items[i];
+                        break;
+                    case ItemType.Foot:
+                        footInstance = _items[i];
+                        break;
+                }
+            }
+        }
+    }
+
     public List<ItemInstance> GetItems()
     {
         return _items;
@@ -68,10 +108,8 @@ public class ItemManager : MonoSingleton<ItemManager>
     {
         for (int i = 0; i < _items.Count; i++)
         {
-            Debug.Log($"for문 시작");
             if (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType == type)
             {
-                Debug.Log($"첫번째 if문 입장{_items[i].itemId} & 장착여부{_items[i].equip}");
                 if (_items[i].equip)
                 {
                     return true;
@@ -88,10 +126,81 @@ public class ItemManager : MonoSingleton<ItemManager>
         {
             if (_items[i].id == id)
             {
-                var item = _items[i];
+                ItemInstance item = _items[i];
                 item.equip = !item.equip;
-                Debug.Log($"아이템 장착 불값 변경{item.equip}");
+                
+                switch (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType)
+                {
+                    case ItemType.Weapon:
+                        weaponInstance = item.equip ? item : null;
+                        break;
+                    case ItemType.Ring:
+                        ringInstance = item.equip ? item : null;
+                        break;
+                    case ItemType.Head:
+                        headInstance = item.equip ? item : null;
+                        break;
+                    case ItemType.Body:
+                        bodyInstance = item.equip ? item : null;
+                        break;
+                    case ItemType.Belt:
+                        beltInstance = item.equip ? item : null;
+                        break;
+                    case ItemType.Foot:
+                        footInstance = item.equip ? item : null;
+                        break;
+                }
             }
         }
+    }
+
+    public void EquipItemChange(ItemType type)
+    {
+        switch (type)
+        {
+            case ItemType.Weapon:
+                GetInstance(type).equip = false;
+                weaponInstance = null;
+                break;
+            case ItemType.Ring:
+                GetInstance(type).equip = false;
+                ringInstance = null;
+                break;
+            case ItemType.Head:
+                GetInstance(type).equip = false;
+                headInstance = null;
+                break;
+            case ItemType.Body:
+                GetInstance(type).equip = false;
+                bodyInstance = null;
+                break;
+            case ItemType.Belt:
+                GetInstance(type).equip = false;
+                beltInstance = null;
+                break;
+            case ItemType.Foot:
+                GetInstance(type).equip = false;
+                footInstance = null;
+                break;
+        }
+    }
+    
+    public bool EquipItem(ItemType type)
+    {
+        return GetInstance(type) != null;
+    }
+
+    private ItemInstance GetInstance(ItemType type)        //해당 부위 장착 여부 확인
+    {
+        return type switch
+        {
+            ItemType.Weapon => weaponInstance,
+            ItemType.Ring => ringInstance,
+            ItemType.Head => headInstance,
+            ItemType.Body => bodyInstance,
+            ItemType.Belt => beltInstance,
+            ItemType.Foot => footInstance,
+            _ => null
+        };
     }
 }

@@ -12,11 +12,13 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     [SerializeField] private TextMeshProUGUI textName;
     [SerializeField] private TextMeshProUGUI textDescription;
     [SerializeField] private TextMeshProUGUI textItemDescriptionTitle;
+    [SerializeField] private TextMeshProUGUI textEnhance;
     [SerializeField] private Image itemImage;
 
     [SerializeField] private Button closeButton;
     [SerializeField] private Button useButton;
     [SerializeField] private Button equipButton;
+    [SerializeField] private Button changeButton;
     [SerializeField] private Button unEquipButton;
     [SerializeField] private Button destructionButton;
     
@@ -35,6 +37,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         ItemData data = DataManager.Instance.Item.GetItemData(_item.itemId);
         textName.text = data.displayName;
         textDescription.text = data.description;
+        textEnhance.text = _item.enhance > 0 ? $"+{_item.enhance}" : "";
 
         SetButton();
     }
@@ -45,6 +48,12 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         useButton.onClick.AddListener(() => ItemInitializeCount());
         equipButton.onClick.AddListener(() =>
         {
+            ItemManager.Instance.RefreshListEquip(_item.id);
+            DeleteItem();
+        });
+        changeButton.onClick.AddListener(() =>
+        {
+            ItemManager.Instance.EquipItemChange(DataManager.Instance.Item.GetItemData(_item.itemId).itemType);
             ItemManager.Instance.RefreshListEquip(_item.id);
             DeleteItem();
         });
@@ -60,6 +69,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     {
         useButton.gameObject.SetActive(false);
         equipButton.gameObject.SetActive(false);
+        changeButton.gameObject.SetActive(false);
         unEquipButton.gameObject.SetActive(false);
         
         var data = DataManager.Instance.Item.GetItemData(_item.itemId);
@@ -74,17 +84,32 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         {
             return;
         }
+
         
+        if (ItemManager.Instance.EquipItem(DataManager.Instance.Item.GetItemData(_item.itemId).itemType))
+        {
+            if (_item.equip)
+            {
+                unEquipButton.gameObject.SetActive(true);
+            }
+            changeButton.gameObject.SetActive(true);
+        }
+        else 
+        { 
+            equipButton.gameObject.SetActive(true);
+        }
+        
+        
+        /*
         if (ItemManager.Instance.FindItemEquip(data.itemType))
         {
             unEquipButton.gameObject.SetActive(true);
-            Debug.Log("unEquipButton 활성화");
         }
         else 
         {
             equipButton.gameObject.SetActive(true);
-            Debug.Log("equipButton 활성화");
         }
+        */
     }
 
     private void DeleteItem()
