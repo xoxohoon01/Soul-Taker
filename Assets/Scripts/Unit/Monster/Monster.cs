@@ -3,7 +3,7 @@ using DataTable;
 using UnityEngine.AI;
 using System.Collections;
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, IDamageable
 {
     public MonsterData data;
     public MonsterStatus status;
@@ -98,4 +98,10 @@ public class Monster : MonoBehaviour
     }
 
     WaitForSeconds wait = new WaitForSeconds(1f);
+
+    public void TakeDamage(float damage)
+    {
+        stateMachine.IsAttacked = true;
+        status.HP.CurrentValue -= damage;
+    }
 }
