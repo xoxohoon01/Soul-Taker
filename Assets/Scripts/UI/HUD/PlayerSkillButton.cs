@@ -1,18 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PlayerSkillButton : MonoBehaviour
+public class PlayerSkillButton : UIBase, IPointerDownHandler, IPointerUpHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private bool isClick;
+    private Skill currentSkill;
+
+    void UseSkill()
     {
-        
+        PlayerStateMachine playerStateMachine = PlayerManager.Instance.player.controller.stateMachine;
+        if (playerStateMachine.playerController.attackDelay <= 0)
+        {
+            playerStateMachine.ChangeState(new PlayerBasicAttackState(playerStateMachine));
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSkill(Skill skill)
     {
-        
+        currentSkill = skill;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        isClick = true;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        isClick = false;
+    }
+
+    private void Update()
+    {
+        if (isClick)
+        {
+            UseSkill();
+        }
     }
 }
