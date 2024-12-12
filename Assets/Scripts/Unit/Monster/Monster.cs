@@ -63,10 +63,10 @@ public class Monster : MonoBehaviour, IDamageable
         status.InitializeCurrentValue();
     }
 
-    public void CreateSkill(int skillID)
+    public void CreateSkill(int skillID, float time)
     {
         Skill skill = Instantiate(Resources.Load<GameObject>("Skill"), transform.position, Quaternion.Euler(transform.eulerAngles)).GetComponent<Skill>();
-        skill.Initialize(skillID, gameObject, status.Damage.GetValue());
+        skill.Initialize(skillID, gameObject, status.Damage.GetValue(), time);
     }
 
     public virtual void SelectSkillIndex()
@@ -78,7 +78,7 @@ public class Monster : MonoBehaviour, IDamageable
 
     public virtual void OnDeath()
     {
-        DungeonManager.Instance.MonsterDieCount();
+        //DungeonManager.Instance.MonsterDieCount();
         StartCoroutine(Die());
     }
 
