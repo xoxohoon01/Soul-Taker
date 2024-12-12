@@ -37,7 +37,7 @@ public class Capture : MonoBehaviour
     {
         cam = Camera.main;
         SettingColor();
-        SettingSize();
+        //SettingSize();
     }
 
     public void Create()
