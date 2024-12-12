@@ -51,7 +51,7 @@ public class UIInventory : UIBase
             if (DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType == type)
             {
                 GameObject obj = Instantiate(objCell, trsParent);
-                obj.GetComponent<ItemCell>().Initialize(_items[i]);   
+                obj.GetComponent<ItemCell>().Initialize(_items[i], 0);   
             }
         }
     }
@@ -69,12 +69,12 @@ public class UIInventory : UIBase
                 if (_items[i].equip)                                        //장비가 장착했으면 장착한 곳에서 생성
                 {
                     obj = Instantiate(objCell, transforms[(int)DataManager.Instance.Item.GetItemData(_items[i].itemId).itemType]);
-                    obj.GetComponent<ItemCell>().Initialize(_items[i]);
+                    obj.GetComponent<ItemCell>().Initialize(_items[i], 0);
                 }
                 else
                 {
                     obj = Instantiate(objCell, trsParent);
-                    obj.GetComponent<ItemCell>().Initialize(_items[i]);
+                    obj.GetComponent<ItemCell>().Initialize(_items[i], 0);
                 }
             }
         }

@@ -12,13 +12,17 @@ public class ItemCell : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textCount;
 
     private ItemInstance _item;
+    private ItemInstance _rewarditem;
+
+    private int _type;
     
     private ItemDescription _itemDescription;
-    
-    public void Initialize(ItemInstance item)
+
+    public void Initialize(ItemInstance item, int type)
     {
         _item = item;
-        
+        _type = type;
+
         Refresh();
     }
 
@@ -30,7 +34,6 @@ public class ItemCell : MonoBehaviour
         }
         else
         {
-            Debug.Log("실행됨");
             ConsumptionMisc();
         }
     }
@@ -50,6 +53,6 @@ public class ItemCell : MonoBehaviour
     public void OnClick()
     {
         _itemDescription = UIManager.Instance.Show<ItemDescription>();
-        _itemDescription.GetComponent<ItemDescription>().Initialize(_item);
+        _itemDescription.GetComponent<ItemDescription>().Initialize(_item, _type);
     }
 }
