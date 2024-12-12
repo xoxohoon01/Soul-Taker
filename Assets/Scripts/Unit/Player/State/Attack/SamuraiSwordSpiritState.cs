@@ -1,31 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DataTable;
 
-public class PlayerBasicAttackState : PlayerAttackState
+public class SamuraiSwordSpiritState : PlayerAttackState
 {
-    public PlayerBasicAttackState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    public SamuraiSwordSpiritState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
-    float span;
+    float span; //공격 유지 시간 (판정 오브젝트 지속시간, 캐릭터 모션 유지시간)
 
     public override void Enter()
     {
         base.Enter();
 
-        span = 1.0f / stateMachine.status.AttackSpeed.GetValue(); //공격 유지 시간 (판정 오브젝트 지속시간, 캐릭터 모션 유지시간)
+        span = 1.0f / stateMachine.status.AttackSpeed.GetValue();
+        stateMachine.playerController.skill1Cooldown = DataManager.Instance.Skill.GetSkill(5004).cooldown;
 
         StartAnimation(HashDataManager.basicAttackParameterHash);
-
-        // 콤보 체크 
-        stateMachine.playerController.comboIndex += stateMachine.playerController.comboIndex < 3 ? 1 : -2;
-        stateMachine.playerController.animator.SetInteger("ComboIndex", stateMachine.playerController.comboIndex);
 
         // 공격속도 계산
         stateMachine.playerController.attackDelay = span;
         stateMachine.playerController.attackSpan = span;
 
         // 공격 판정 오브젝트 생성
-        stateMachine.playerController.Attack(span);
+        stateMachine.playerController.Skill(5004);
 
         // 콤보 초기화 코루틴 실행
         if (stateMachine.playerController.coroutineCombo != null) stateMachine.playerController.StopCoroutine(stateMachine.playerController.coroutineCombo);

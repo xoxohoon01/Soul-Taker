@@ -30,6 +30,7 @@ public class ItemCell : MonoBehaviour
         }
         else
         {
+            Debug.Log("실행됨");
             ConsumptionMisc();
         }
     }
@@ -43,6 +44,7 @@ public class ItemCell : MonoBehaviour
     private void ConsumptionMisc()
     {
         textCount.text = _item.count.ToString();
+        Debug.Log(textCount.text);
     }
 
     public void OnClick()

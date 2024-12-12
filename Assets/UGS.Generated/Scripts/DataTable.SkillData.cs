@@ -68,6 +68,7 @@ namespace DataTable
 		public System.Int32 maxHitCount;
 		public System.Single hitDelay;
 		public System.Single damage;
+		public System.Single cooldown;
   
 
 #region fuctions
