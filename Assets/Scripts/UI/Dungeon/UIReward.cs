@@ -14,6 +14,8 @@ public class UIReward : UIBase
     {
         var rewardData = DataManager.Instance.Object.GetObjectid(currentRewardID);
 
+        
+
         List<int> itemList = rewardData.item; // 아이템 ID 리스트로 저장
         List<int> itemCountList = rewardData.itemCount; // ID랑 매칭되는 COUNT 리스트로 저장
         ItemInstance itemInstances = new ItemInstance(); // 아이템 인스턴스를 저장할 
@@ -24,7 +26,7 @@ public class UIReward : UIBase
             int itemCount = itemCountList[i];
                      
             GameObject goItem = Instantiate(_itemCell, _itemListPanel.transform);
-            goItem.GetComponent<ItemCell>().Initialize(ItemManager.Instance.AddItem(itemID, itemCount)); 
+            goItem.GetComponent<ItemCell>().Initialize(ItemManager.Instance.AddItem(itemID, itemCount), 1); 
         }
     }
 }

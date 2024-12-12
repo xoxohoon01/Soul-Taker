@@ -24,10 +24,13 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     
     private ItemInstance _item;
 
-    public void Initialize(ItemInstance item)
+    private int _type;
+
+    public void Initialize(ItemInstance item, int type)
     {
         _item = item;
-        
+        _type = type;
+
         ButtonInitialize();
         Refresh();
     }
@@ -39,7 +42,9 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         textDescription.text = data.description;
         textEnhance.text = _item.enhance > 0 ? $"+{_item.enhance}" : "";
 
-        SetButton();
+       
+            SetButton();
+
     }
     
     private void ButtonInitialize()
@@ -71,32 +76,40 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         equipButton.gameObject.SetActive(false);
         changeButton.gameObject.SetActive(false);
         unEquipButton.gameObject.SetActive(false);
-        
-        var data = DataManager.Instance.Item.GetItemData(_item.itemId);
+        destructionButton.gameObject.SetActive(false);
 
-        if (data.itemType == ItemType.Consumption)
+        if (_type == 0)
         {
-            useButton.gameObject.SetActive(true);
-            return;
-        }
+            var data = DataManager.Instance.Item.GetItemData(_item.itemId);
 
-        if (data.itemType == ItemType.Misc)
-        {
-            return;
-        }
-
-        
-        if (ItemManager.Instance.EquipItem(DataManager.Instance.Item.GetItemData(_item.itemId).itemType))
-        {
-            if (_item.equip)
+            if (data.itemType == ItemType.Consumption)
             {
-                unEquipButton.gameObject.SetActive(true);
+                useButton.gameObject.SetActive(true);
+                destructionButton.gameObject.SetActive(true);
+                return;
             }
-            changeButton.gameObject.SetActive(true);
-        }
-        else 
-        { 
-            equipButton.gameObject.SetActive(true);
+
+            if (data.itemType == ItemType.Misc)
+            {
+                return;
+            }
+
+
+            if (ItemManager.Instance.EquipItem(DataManager.Instance.Item.GetItemData(_item.itemId).itemType))
+            {
+                if (_item.equip)
+                {
+                    unEquipButton.gameObject.SetActive(true);
+                    destructionButton.gameObject.SetActive(true);
+                }
+                changeButton.gameObject.SetActive(true);
+                destructionButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                equipButton.gameObject.SetActive(true);
+                destructionButton.gameObject.SetActive(true);
+            }
         }
         
         
