@@ -44,8 +44,6 @@ public class DungeonManager : MonoSingleton<DungeonManager>
 
         CreateSpawner(_currentDungeonID);
         PlayerManager.Instance.SpawnPlayer(new Vector3(0, 1, 0));
-
-        Camera.main.transform.SetParent(PlayerManager.Instance.player.transform);
     }
     public void RoomEnter(int _currentRoomID)
     {

@@ -10,8 +10,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
     private void Start()
     {
-        player = Instantiate(playerPrefab).GetComponent<Player>();
-        player.status.InitializeStatus(DataManager.Instance.Character.GetCharacterid(1));
+        SpawnPlayer(Vector3.zero);
     }
 
     public void SpawnPlayer(Vector3 spawnPoint)
@@ -19,5 +18,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         player = Instantiate(playerPrefab, spawnPoint, Quaternion.Euler(0, 0, 0)).GetComponent<Player>();
         player.status.InitializeStatus(DataManager.Instance.Character.GetCharacterid(1));
         player.GetComponent<PlayerInput>().ConnectJoyStick();
+
+        Camera.main.transform.position = player.transform.position + new Vector3(0, 6, -8);
     }
 }
