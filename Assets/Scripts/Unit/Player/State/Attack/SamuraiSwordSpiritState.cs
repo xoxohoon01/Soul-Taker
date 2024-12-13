@@ -14,7 +14,6 @@ public class SamuraiSwordSpiritState : PlayerAttackState
         base.Enter();
 
         span = 1.0f / stateMachine.status.AttackSpeed.GetValue();
-        stateMachine.playerController.skill1Cooldown = DataManager.Instance.Skill.GetSkill(5004).cooldown;
 
         StartAnimation(HashDataManager.basicAttackParameterHash);
 

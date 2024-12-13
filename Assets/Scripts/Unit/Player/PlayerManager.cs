@@ -19,6 +19,6 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         player.status.InitializeStatus(DataManager.Instance.Character.GetCharacterid(1));
         player.GetComponent<PlayerInput>().ConnectJoyStick();
 
-        Camera.main.transform.position = player.transform.position + new Vector3(0, 6, -8);
+        Camera.main.transform.rotation = Quaternion.Euler(35, 0, 0);
     }
 }

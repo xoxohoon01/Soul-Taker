@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -17,9 +18,7 @@ public class PlayerController : MonoBehaviour
     public float attackDelay;
     public float attackSpan;
 
-    public float skill1Cooldown;
-    public float skill2Cooldown;
-    public float skill3Cooldown;
+    public float[] skillCooldown = new float[4];
     
     private void Awake()
     {
@@ -27,6 +26,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = transform.GetChild(0).GetComponent<Animator>();
         Input = GetComponent<PlayerInput>();
+        skillCooldown = new float[4];
     }
 
     private void Start()
@@ -43,15 +43,27 @@ public class PlayerController : MonoBehaviour
         attackDelay = Mathf.Max(attackDelay - Time.deltaTime, 0);
         attackSpan = Mathf.Max(attackSpan - Time.deltaTime, 0);
 
+
         // 스킬 딜레이 계산
-        skill1Cooldown = Mathf.Max(skill1Cooldown - Time.deltaTime, 0);
-        skill2Cooldown = Mathf.Max(skill2Cooldown - Time.deltaTime, 0);
-        skill3Cooldown = Mathf.Max(skill3Cooldown - Time.deltaTime, 0);
+        skillCooldown[0] = Mathf.Max(skillCooldown[0] - Time.deltaTime, 0);
+        skillCooldown[1] = Mathf.Max(skillCooldown[1] - Time.deltaTime, 0);
+        skillCooldown[2] = Mathf.Max(skillCooldown[2] - Time.deltaTime, 0);
+        skillCooldown[3] = Mathf.Max(skillCooldown[3] - Time.deltaTime, 0);
     }
 
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+    }
+
+    private void LateUpdate()
+    {
+        Camera.main.transform.position = stateMachine.playerController.transform.position + new Vector3(0, 7, -8);
+    }
+
+    public void Rotation()
+    {
+
     }
 
     public void Attack(float time) // 공격 판정 오브젝트 생성

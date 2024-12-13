@@ -52,12 +52,12 @@ public class MonsterBaseState : IState
     protected bool IsTargetInFieldOfView()
     {
         Vector3 directionToTarget = GetTargetDirection();
-        float angle = Vector3.Angle(stateMachine.Monster.transform.forward, directionToTarget);
+        //float angle = Vector3.Angle(stateMachine.Monster.transform.forward, directionToTarget);
 
         RaycastHit hit;
         Vector3 offset = new Vector3(0, 1, 2);
 
-        if (angle < stateMachine.Monster.data.fieldOfView * 0.5 && !Physics.Raycast(stateMachine.Monster.transform.position + offset,
+        if (!Physics.Raycast(stateMachine.Monster.transform.position + offset,
                 directionToTarget, out hit, stateMachine.Monster.data.detectRange, stateMachine.Monster.obstacleMask))
         {
             return true;
