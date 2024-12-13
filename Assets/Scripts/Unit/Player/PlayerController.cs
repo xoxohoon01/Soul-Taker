@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
+using UnityEngine.Windows;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class PlayerController : MonoBehaviour
 {
     public PlayerInput Input;
     public Rigidbody rb;
     public PlayerStateMachine stateMachine;
+
+    public GameObject cameraContainer;
+    private float maxCameraDistance = 8;
+    private float currentCameraDistance;
 
     [HideInInspector] public Animator animator;
 
@@ -27,6 +35,13 @@ public class PlayerController : MonoBehaviour
         animator = transform.GetChild(0).GetComponent<Animator>();
         Input = GetComponent<PlayerInput>();
         skillCooldown = new float[4];
+
+        cameraContainer = new GameObject("CameraContainer");
+        cameraContainer.transform.SetParent(transform);
+        cameraContainer.transform.localPosition = new Vector3(0, 3.5f, 0);
+
+        Camera.main.transform.SetParent(cameraContainer.transform);
+        Camera.main.transform.localPosition = new Vector3(0, 0, -8);
     }
 
     private void Start()
@@ -58,12 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        Camera.main.transform.position = stateMachine.playerController.transform.position + new Vector3(0, 7, -8);
-    }
-
-    public void Rotation()
-    {
-
+        Rotation();
     }
 
     public void Attack(float time) // 공격 판정 오브젝트 생성
@@ -99,4 +109,22 @@ public class PlayerController : MonoBehaviour
         comboIndex = 0;
         animator.SetInteger("ComboIndex", 0);
     }
+
+    private void Rotation()
+    {
+        cameraContainer.transform.rotation = Quaternion.Euler(LookController.Instance.secondRotation);
+
+        if (Physics.Raycast(cameraContainer.transform.position, -cameraContainer.transform.forward, out RaycastHit hit, maxCameraDistance))
+        {
+            float distance = Vector3.Distance(hit.point, cameraContainer.transform.position);
+            Camera.main.transform.localPosition = new Vector3(0, 0, -distance);
+            cameraContainer.transform.localPosition = new Vector3(0, Mathf.Clamp(3.5f - ((maxCameraDistance / distance) * 0.5f), 1.5f, 3.5f), 0);
+        }
+        else
+        {
+            Camera.main.transform.localPosition = new Vector3(0, 0, -maxCameraDistance);
+            cameraContainer.transform.localPosition = new Vector3(0, 3.5f, 0);
+        }
+    }
+
 }

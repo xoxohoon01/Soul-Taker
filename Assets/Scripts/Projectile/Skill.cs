@@ -42,12 +42,13 @@ public class Skill : MonoBehaviour
 
         lifeTime = (time != 0) ? time : currentSkill.lifeTime;
         transform.localScale = currentSkill.size;
-        transform.position =
-            transform.position +
-            (transform.right * currentSkill.offset.x) +
-            (transform.up * currentSkill.offset.y) +
-            (transform.forward * currentSkill.offset.z) +
-            (Vector3.up * (currentSkill.size.y / 2.0f));
+        //transform.position =
+        //    transform.position +
+        //    (transform.right * currentSkill.offset.x) +
+        //    (transform.up * currentSkill.offset.y) +
+        //    (transform.forward * currentSkill.offset.z) +
+        //    (Vector3.up * (currentSkill.size.y / 2.0f));
+        transform.position = sender.transform.GetChild(0).TransformPoint(sender.transform.GetChild(0).localPosition + currentSkill.offset) + (Vector3.up * (currentSkill.size.y / 2.0f));
         rb.velocity = transform.forward * currentSkill.speed;
         ParticleSystem particle = Instantiate(Resources.Load<GameObject>($"Skill/{currentSkill.modelPath}"), transform).GetComponent<ParticleSystem>();
         var main = particle.main;

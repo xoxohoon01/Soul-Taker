@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoSingleton<GameManager>
 {
     public GameObject _joyStick;
+    public GameObject _lookController;
 
     private new void Awake()
     {

@@ -18,7 +18,5 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         player = Instantiate(playerPrefab, spawnPoint, Quaternion.Euler(0, 0, 0)).GetComponent<Player>();
         player.status.InitializeStatus(DataManager.Instance.Character.GetCharacterid(1));
         player.GetComponent<PlayerInput>().ConnectJoyStick();
-
-        Camera.main.transform.rotation = Quaternion.Euler(35, 0, 0);
     }
 }

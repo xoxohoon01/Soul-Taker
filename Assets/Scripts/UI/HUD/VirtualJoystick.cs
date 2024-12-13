@@ -3,8 +3,8 @@ using UnityEngine.EventSystems;
 
 public class VirtualJoystick : MonoSingleton<VirtualJoystick>, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
+    public Vector2 Input { get { return input; } }
     private Vector2 input = Vector2.zero;
-    public Vector2 Direction { get { return input; } }
 
     private Canvas canvas;
     private Camera cam = null;
@@ -24,7 +24,7 @@ public class VirtualJoystick : MonoSingleton<VirtualJoystick>, IPointerDownHandl
 
     public void Connect()
     {
-        PlayerManager.Instance.player.controller.Input.joystick = this;
+        PlayerManager.Instance.player.controller.Input.moveJoystick = this;
     }
 
     public void OnPointerDown(PointerEventData eventData)
