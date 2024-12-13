@@ -9,7 +9,8 @@ public class MonsterAttackState : MonsterBaseState
     public override void Enter()
     {
         stateMachine.Monster.agent.isStopped = true;
-        
+        stateMachine.Monster.SelectSkillIndex();
+
         // Apply AttackSpeed to Animation Speed
         if (stateMachine.Monster.status.AttackSpeed.GetValue() > 1f)
         {
@@ -21,12 +22,13 @@ public class MonsterAttackState : MonsterBaseState
         }
 
         StartAnimation(HashDataManager.basicAttackParameterHash);
-        //stateMachine.Monster.monsterWeapon.UseWeapon(stateMachine.Monster.status.Damage.GetValue());
+        stateMachine.Monster.animator.SetInteger("SkillIndex", stateMachine.Monster.skillIndex);
+        int skillDataIndex = DataManager.Instance.Skill.GetSkill(stateMachine.Monster.data.skillList[stateMachine.Monster.skillIndex]).ID;
+        stateMachine.Monster.CreateSkill(skillDataIndex);
     }
 
     public override void Exit()
     {
-        stateMachine.Monster.agent.isStopped = false;
         StopAnimation(HashDataManager.basicAttackParameterHash);
     }
 
@@ -34,18 +36,12 @@ public class MonsterAttackState : MonsterBaseState
     {
         base.Update();
 
-        if (!IsAttackAnimation(stateMachine.Monster.animator, "Attack"))
+        if (!IsAttackAnimation(stateMachine.Monster.animator, "Skill"))
         {
-            stateMachine.ChangeState(stateMachine.ChaseState);
+            stateMachine.ChangeState(stateMachine.WaitingAttackState);
+            stateMachine.IsAttacking = false;
             return;
         }
-    }
-
-    public override void HandleInput()
-    {
-    }
-    public override void PhysicsUpdate()
-    {
     }
 
     protected bool IsAttackAnimation(Animator animator, string tag)

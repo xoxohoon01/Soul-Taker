@@ -544,7 +544,7 @@ Animator:
   m_GameObject: {fileID: 3034173846790678686}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dce4946dbead8294cae7bec70dc9f3f9, type: 2}
+  m_Controller: {fileID: 9100000, guid: e39c5dec539182c4fbf575f028ccab23, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1012,8 +1012,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4402128615783320902}
-  - component: {fileID: 1573580367521680043}
-  - component: {fileID: 5637162312197537597}
   m_Layer: 7
   m_Name: GripR
   m_TagString: Untagged
@@ -1038,41 +1036,6 @@ Transform:
   - {fileID: 4429409877311440213}
   m_Father: {fileID: 8280986257368485910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1573580367521680043
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6361435144101719879}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 2
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.5}
---- !u!114 &5637162312197537597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6361435144101719879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf35e0c07f2bbb64780cca90f42ee6d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6488961221664174215
 GameObject:
   m_ObjectHideFlags: 0

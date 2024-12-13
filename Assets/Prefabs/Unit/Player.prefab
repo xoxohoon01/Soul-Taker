@@ -1513,15 +1513,12 @@ MonoBehaviour:
   Input: {fileID: 0}
   rb: {fileID: 0}
   animator: {fileID: 0}
-  animationData:
-    movementParameterName: '@Movement'
-    idleParameterName: Idle
-    runParameterName: Run
-    attackParameterName: '@Attack'
-    basicAttackParameterName: BasicAttack
   comboIndex: 0
   attackDelay: 0
   attackSpan: 0
+  skill1Cooldown: 0
+  skill2Cooldown: 0
+  skill3Cooldown: 0
 --- !u!114 &5036748419438610265
 MonoBehaviour:
   m_ObjectHideFlags: 0

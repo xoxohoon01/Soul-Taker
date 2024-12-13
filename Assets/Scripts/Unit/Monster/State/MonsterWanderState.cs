@@ -20,14 +20,6 @@ public class MonsterWanderState : MonsterBaseState
         StopAnimation(HashDataManager.runParameterHash);
     }
 
-    public override void HandleInput()
-    {
-    }
-
-    public override void PhysicsUpdate()
-    {
-    }
-
     public override void Update()
     {
         base.Update();
@@ -49,8 +41,8 @@ public class MonsterWanderState : MonsterBaseState
         NavMeshHit hit;
        
         NavMesh.SamplePosition(stateMachine.Monster.transform.position
-                            + (Random.onUnitSphere * Random.Range(stateMachine.Monster.monsterData.minWanderDistance, stateMachine.Monster.monsterData.maxWanderDistance)),
-                            out hit, stateMachine.Monster.monsterData.maxWanderDistance, NavMesh.AllAreas);
+                            + (Random.onUnitSphere * Random.Range(stateMachine.Monster.data.minWanderDistance, stateMachine.Monster.data.maxWanderDistance)),
+                            out hit, stateMachine.Monster.data.maxWanderDistance, NavMesh.AllAreas);
         return hit.position;
     }
 }

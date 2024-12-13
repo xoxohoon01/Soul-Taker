@@ -121,12 +121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 0}
-  monsterWeapon: {fileID: 0}
   animator: {fileID: 0}
   agent: {fileID: 0}
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 256
+  skillIndex: 0
 --- !u!114 &8985155337251260765
 MonoBehaviour:
   m_ObjectHideFlags: 0
