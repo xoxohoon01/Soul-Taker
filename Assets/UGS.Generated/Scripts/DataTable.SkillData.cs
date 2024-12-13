@@ -60,6 +60,7 @@ namespace DataTable
 		public System.String name;
 		public System.String description;
 		public System.String modelPath;
+		public System.String iconPath;
 		public UnityEngine.Vector3 offset;
 		public UnityEngine.Vector3 size;
 		public System.Single lifeTime;
