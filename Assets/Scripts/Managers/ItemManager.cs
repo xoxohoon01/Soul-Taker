@@ -41,7 +41,7 @@ public class ItemManager : MonoSingleton<ItemManager>
             item.count = 1;
             item.enhance = 0;
         }
-        
+
         _items.Add(item);
         DatabaseManager.Instance.SaveData(_items);
         AddId();
