@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private void LateUpdate()
     {
         Quaternion targetRotation = Quaternion.LookRotation(stateMachine.playerController.rb.velocity, Vector3.up);
-        stateMachine.playerController.transform.rotation = Quaternion.Slerp(stateMachine.playerController.transform.rotation, targetRotation, 10f * Time.deltaTime);
+        //stateMachine.playerController.transform.rotation = Quaternion.Slerp(stateMachine.playerController.transform.rotation, targetRotation, 10f * Time.deltaTime);
         Camera.main.transform.position = stateMachine.playerController.transform.position + new Vector3(0, 7, -8);
     }
 
