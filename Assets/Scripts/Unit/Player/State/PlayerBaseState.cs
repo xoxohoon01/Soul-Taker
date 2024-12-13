@@ -44,7 +44,7 @@ public class PlayerBaseState : IState
 
     public void ReadInput()
     {
-        stateMachine.MovementInput = stateMachine.playerController.Input.input;
+        stateMachine.MovementInput = stateMachine.playerController.Input.moveInput;
 
         //stateMachine.MovementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }

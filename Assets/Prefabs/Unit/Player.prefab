@@ -1512,13 +1512,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Input: {fileID: 0}
   rb: {fileID: 0}
+  cameraContainer: {fileID: 0}
   animator: {fileID: 0}
   comboIndex: 0
   attackDelay: 0
   attackSpan: 0
-  skill1Cooldown: 0
-  skill2Cooldown: 0
-  skill3Cooldown: 0
+  skillCooldown:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &5036748419438610265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1649,8 +1652,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87804bf4727f64c4e8b16b777e5f9b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  input: {x: 0, y: 0}
+  moveJoystick: {fileID: 0}
+  lookJoystick: {fileID: 0}
+  moveInput: {x: 0, y: 0}
+  lookInput: {x: 0, y: 0}
 --- !u!1 &4261585035070685547
 GameObject:
   m_ObjectHideFlags: 0

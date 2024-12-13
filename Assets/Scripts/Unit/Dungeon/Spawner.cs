@@ -30,14 +30,14 @@ public class Spawner : MonoBehaviour
         DungeonManager.Instance.RoomMonsterCount(spawnData.count);
 
         MonsterData monsterData = DataManager.Instance.Monster.GetMonster(spawnData.monsterID);
-        GameObject monsterPrefab = Resources.Load<GameObject>(monsterData.parentPrefabPath);
-        for (int i = 0; i < spawnData.count; i++)
-        {
-            GameObject monsterObj = Instantiate(monsterPrefab, GetGridPosition(i, spawnData.count, spawnData.type), Quaternion.identity);
-            monsterObj.GetComponent<Monster>().SetMonsterData(monsterData);
-            monsterObj.transform.SetParent(this.transform); // 부모 설정
-            GameObject modelObj = Instantiate(Resources.Load<GameObject>(monsterData.modelPrefabPath), monsterObj.transform);
-        }
+        //GameObject monsterPrefab = Resources.Load<GameObject>(monsterData.parentPrefabPath);
+        //for (int i = 0; i < spawnData.count; i++)
+        //{
+        //    GameObject monsterObj = Instantiate(monsterPrefab, GetGridPosition(i, spawnData.count, spawnData.type), Quaternion.identity);
+        //    monsterObj.GetComponent<Monster>().SetMonsterData(monsterData);
+        //    monsterObj.transform.SetParent(this.transform); // 부모 설정
+        //    GameObject modelObj = Instantiate(Resources.Load<GameObject>(monsterData.modelPrefabPath), monsterObj.transform);
+        //}
 
         isClear = true;
     }
