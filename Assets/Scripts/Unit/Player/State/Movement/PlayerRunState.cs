@@ -38,11 +38,5 @@ public class PlayerRunState : PlayerMovementState
     public void Move()
     {
         stateMachine.playerController.rb.velocity = new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y).normalized * stateMachine.status.MoveSpeed.GetValue();
-        if (stateMachine.MovementInput != Vector2.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(stateMachine.playerController.rb.velocity, Vector3.up);
-            stateMachine.playerController.transform.rotation = Quaternion.Slerp(stateMachine.playerController.transform.rotation, targetRotation, 10f * Time.deltaTime);
-            Camera.main.transform.position = stateMachine.playerController.transform.position + new Vector3(0, 6, -8);
-        }
     }
 }
