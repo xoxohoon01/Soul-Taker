@@ -31,14 +31,38 @@ SpriteAtlas:
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables: []
+    packables:
+    - {fileID: 21300000, guid: 1ddafe361a57d4efaaa71049d41098a3, type: 3}
+    - {fileID: 21300000, guid: 673d9cdc55dc74572ab2dd36a1fd1bd1, type: 3}
+    - {fileID: 21300000, guid: a5230d157e52b4f5da693e173e275e38, type: 3}
+    - {fileID: 21300000, guid: c5af0c139a3ab4850ade3fc2a5eb1636, type: 3}
+    - {fileID: 21300000, guid: d252e8b7a4d6a487b822da171aaa805b, type: 3}
+    - {fileID: 21300000, guid: 2ad176d22e80b41508b7fa960190a119, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
-    packedSpriteRenderDataKeys: []
+    packedSpriteRenderDataKeys:
+    - 2ad176d22e80b41508b7fa960190a119: 21300000
+    - c5af0c139a3ab4850ade3fc2a5eb1636: 21300000
+    - a5230d157e52b4f5da693e173e275e38: 21300000
+    - 1ddafe361a57d4efaaa71049d41098a3: 21300000
+    - d252e8b7a4d6a487b822da171aaa805b: 21300000
+    - 673d9cdc55dc74572ab2dd36a1fd1bd1: 21300000
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 2ad176d22e80b41508b7fa960190a119, type: 3}
+  - {fileID: 21300000, guid: c5af0c139a3ab4850ade3fc2a5eb1636, type: 3}
+  - {fileID: 21300000, guid: a5230d157e52b4f5da693e173e275e38, type: 3}
+  - {fileID: 21300000, guid: 1ddafe361a57d4efaaa71049d41098a3, type: 3}
+  - {fileID: 21300000, guid: d252e8b7a4d6a487b822da171aaa805b, type: 3}
+  - {fileID: 21300000, guid: 673d9cdc55dc74572ab2dd36a1fd1bd1, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Sword12_FBX
+  - Sword5_FBX
+  - Sword3_FBX
+  - Sword1_FBX
+  - Sword10_FBX
+  - Sword2_FBX
   m_RenderDataMap: {}
   m_Tag: New Sprite Atlas
   m_IsVariant: 0
