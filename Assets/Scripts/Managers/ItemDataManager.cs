@@ -19,14 +19,19 @@ public class ItemDataManager : ItemData
     
     public bool Equipment(int itemid)
     {
+        if (!ItemDataMap.ContainsKey(itemid)) {
+            Debug.LogError("Item ID not found in the dictionary: " + itemid);
+            return false; // 또는 처리할 로직
+        }
+        
         switch (ItemDataMap[itemid].itemType)
         {
+            case ItemType.Weapon:
+            case ItemType.Ring:
             case ItemType.Head:
             case ItemType.Body:
             case ItemType.Belt:
             case ItemType.Foot:
-            case ItemType.Weapon:
-            case ItemType.Ring:
                 return true;
             default:
                 return false;

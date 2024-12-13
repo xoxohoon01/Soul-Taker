@@ -9,7 +9,7 @@ public class SpriteManager : MonoSingleton<SpriteManager>
     public SpriteAtlas spriteAtlas;
     private void Start()
     {
-        spriteAtlas = Resources.Load<SpriteAtlas>("/SpriteAtlas/SpriteAtlas");
+        spriteAtlas = Resources.Load<SpriteAtlas>("SpriteAtlas/SpriteAtlas");
     }
 
     public Sprite SpriteReturn(string spriteName)

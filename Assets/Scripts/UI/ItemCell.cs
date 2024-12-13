@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class ItemCell : MonoBehaviour
 {
+    [SerializeField] private Image backGround;
+    [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI textLv;
     [SerializeField] private TextMeshProUGUI textEnhance;
     [SerializeField] private TextMeshProUGUI textCount;
@@ -41,6 +43,7 @@ public class ItemCell : MonoBehaviour
     private void Equipment()
     {
         //textLv.text = _item
+        icon.sprite = SpriteManager.Instance.SpriteReturn(DataManager.Instance.Item.GetItemData(_item.itemId).icon);
         textEnhance.text = _item.enhance == 0 ? "" : $"+ {_item.enhance}";
     }
 

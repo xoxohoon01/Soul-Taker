@@ -511,6 +511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff8feec176484d0b9a07c739520ded8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backGround: {fileID: 2516885706700182058}
+  icon: {fileID: 5748391585535620934}
   textLv: {fileID: 1897837616134538687}
   textEnhance: {fileID: 2476022061068223396}
   textCount: {fileID: 825427825926623840}

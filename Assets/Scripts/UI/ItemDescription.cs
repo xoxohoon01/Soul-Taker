@@ -39,11 +39,16 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     {
         ItemData data = DataManager.Instance.Item.GetItemData(_item.itemId);
         textName.text = data.displayName;
-        textDescription.text = data.description;
+        itemImage.sprite = SpriteManager.Instance.SpriteReturn(data.icon);
         textEnhance.text = _item.enhance > 0 ? $"+{_item.enhance}" : "";
 
+        if (data.itemType == ItemType.Consumption || data.itemType == ItemType.Misc)
+        {
+            textItemDescriptionTitle.text = "아이템 설명 ";
+            textDescription.text = data.description;
+        }
        
-            SetButton();
+        SetButton();
 
     }
     
