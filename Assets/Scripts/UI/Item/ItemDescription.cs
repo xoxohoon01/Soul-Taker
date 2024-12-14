@@ -14,6 +14,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     [SerializeField] private TextMeshProUGUI textItemDescriptionTitle;
     [SerializeField] private TextMeshProUGUI textEnhance;
     [SerializeField] private Image itemImage;
+    [SerializeField] private Image itemGrade;
 
     [SerializeField] private Button closeButton;
     [SerializeField] private Button useButton;
@@ -38,6 +39,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     private void Refresh()
     {
         ItemData data = DataManager.Instance.Item.GetItemData(_item.itemId);
+        ItemGradeColor();
         textName.text = data.displayName;
         itemImage.sprite = SpriteManager.Instance.SpriteReturn(data.icon);
         textEnhance.text = _item.enhance > 0 ? $"+{_item.enhance}" : "";
@@ -148,6 +150,25 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         {
             ItemManager.Instance.DeleteItem(_item.id);
             DeleteItem();
+        }
+    }
+
+    private void ItemGradeColor()
+    {
+        switch (_item.gradeType)
+        {
+            case ItemGradeType.Normal:
+                itemGrade.color = Color.white;
+                break;
+            case ItemGradeType.Uncommon:
+                itemGrade.color = Color.green;
+                break;
+            case ItemGradeType.Rare:
+                itemGrade.color = Color.blue;
+                break;
+            case ItemGradeType.Legend:
+                itemGrade.color = Color.yellow;
+                break;
         }
     }
 }

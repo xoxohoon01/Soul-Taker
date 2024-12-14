@@ -30,6 +30,8 @@ public class ItemCell : MonoBehaviour
 
     private void Refresh()      //Update UI
     {
+        ItemGradeColor();
+        
         if (DataManager.Instance.Item.GetItemData(_item.itemId).itemType != ItemType.Consumption && DataManager.Instance.Item.GetItemData(_item.itemId).itemType != ItemType.Misc)
         {
             Equipment();
@@ -57,5 +59,24 @@ public class ItemCell : MonoBehaviour
     {
         _itemDescription = UIManager.Instance.Show<ItemDescription>();
         _itemDescription.GetComponent<ItemDescription>().Initialize(_item, _type);
+    }
+
+    private void ItemGradeColor()
+    {
+        switch (_item.gradeType)
+        {
+            case ItemGradeType.Normal:
+                backGround.color = Color.white;
+                break;
+            case ItemGradeType.Uncommon:
+                backGround.color = Color.green;
+                break;
+            case ItemGradeType.Rare:
+                backGround.color = Color.blue;
+                break;
+            case ItemGradeType.Legend:
+                backGround.color = Color.yellow;
+                break;
+        }
     }
 }

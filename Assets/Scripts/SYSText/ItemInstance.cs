@@ -8,6 +8,15 @@ public class ItemInstance
     public int count;
     public int enhance;     //강화 횟수
     public bool equip;      //아이템 장착
+    public ItemGradeType gradeType;
+}
+
+public enum ItemGradeType
+{
+    Normal,
+    Uncommon,
+    Rare,
+    Legend
 }
 
 [System.Serializable]

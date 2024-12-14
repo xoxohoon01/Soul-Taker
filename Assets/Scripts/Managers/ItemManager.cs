@@ -40,6 +40,7 @@ public class ItemManager : MonoSingleton<ItemManager>
             item.itemId = itemId;
             item.count = 1;
             item.enhance = 0;
+            item.gradeType = GetGradeType();
         }
 
         _items.Add(item);
@@ -219,5 +220,33 @@ public class ItemManager : MonoSingleton<ItemManager>
             ItemType.Foot => footInstance,
             _ => null
         };
+    }
+
+    private ItemGradeType GetGradeType()                   //가중치 랜덤
+    {
+        float[] probs = new float[]{70, 50, 30, 10};
+
+        float total = 0;
+        for (int i = 0; i < probs.Length; i++)
+        {
+            total += probs[i];
+        }
+        
+        System.Random random = new System.Random();
+        float randomValue = (float)random.NextDouble() * total;
+
+        for (int i = 0; i < probs.Length; i++)
+        {
+            if (randomValue < probs[i])
+            {
+                return (ItemGradeType)i;
+            }
+            else
+            {
+                randomValue -= probs[i];
+            }
+        }
+
+        return (ItemGradeType)(probs.Length-1);
     }
 }

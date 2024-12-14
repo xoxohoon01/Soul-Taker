@@ -59,6 +59,7 @@ namespace DataTable
 		public System.Int32 ID;
 		public System.String displayName;
 		public System.String description;
+		public System.String itemPurpose;
 		public System.String icon;
 		public ItemType itemType;
 		public System.Single hp;
