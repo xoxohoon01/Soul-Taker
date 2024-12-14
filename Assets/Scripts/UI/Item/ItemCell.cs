@@ -66,7 +66,7 @@ public class ItemCell : MonoBehaviour
         switch (_item.gradeType)
         {
             case ItemGradeType.Normal:
-                backGround.color = Color.white;
+                backGround.color = Color.gray;
                 break;
             case ItemGradeType.Uncommon:
                 backGround.color = Color.green;

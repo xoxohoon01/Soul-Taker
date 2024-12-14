@@ -13,6 +13,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     [SerializeField] private TextMeshProUGUI textDescription;
     [SerializeField] private TextMeshProUGUI textItemDescriptionTitle;
     [SerializeField] private TextMeshProUGUI textEnhance;
+    [SerializeField] private TextMeshProUGUI itemPurpose;
     [SerializeField] private Image itemImage;
     [SerializeField] private Image itemGrade;
 
@@ -26,6 +27,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     private ItemInstance _item;
 
     private int _type;
+    private string itemGradeKorean;
 
     public void Initialize(ItemInstance item, int type)
     {
@@ -43,6 +45,7 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         textName.text = data.displayName;
         itemImage.sprite = SpriteManager.Instance.SpriteReturn(data.icon);
         textEnhance.text = _item.enhance > 0 ? $"+{_item.enhance}" : "";
+        itemPurpose.text = $"{itemGradeKorean}{data.itemPurpose}";
 
         if (data.itemType == ItemType.Consumption || data.itemType == ItemType.Misc)
         {
@@ -51,7 +54,6 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         }
        
         SetButton();
-
     }
     
     private void ButtonInitialize()
@@ -158,16 +160,24 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         switch (_item.gradeType)
         {
             case ItemGradeType.Normal:
-                itemGrade.color = Color.white;
+                itemGrade.color = Color.gray;
+                textName.color = Color.gray;
+                itemGradeKorean = "일반";
                 break;
             case ItemGradeType.Uncommon:
                 itemGrade.color = Color.green;
+                textName.color = Color.green;
+                itemGradeKorean = "고급";
                 break;
             case ItemGradeType.Rare:
                 itemGrade.color = Color.blue;
+                textName.color = Color.blue;
+                itemGradeKorean = "희귀";
                 break;
             case ItemGradeType.Legend:
                 itemGrade.color = Color.yellow;
+                textName.color = Color.yellow;
+                itemGradeKorean = "전설";
                 break;
         }
     }
