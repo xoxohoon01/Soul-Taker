@@ -14,6 +14,9 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
     [SerializeField] private TextMeshProUGUI textItemDescriptionTitle;
     [SerializeField] private TextMeshProUGUI textEnhance;
     [SerializeField] private TextMeshProUGUI itemPurpose;
+    [SerializeField] private TextMeshProUGUI statTitle;
+    [SerializeField] private TextMeshProUGUI statName;
+    [SerializeField] private TextMeshProUGUI statValue;
     [SerializeField] private Image itemImage;
     [SerializeField] private Image itemGrade;
 
@@ -51,6 +54,17 @@ public class ItemDescription : UIBase            //UIManager 통해 생성하기
         {
             textItemDescriptionTitle.text = "아이템 설명 ";
             textDescription.text = data.description;
+        }
+        else
+        {
+            statTitle.text = "기본속성";
+            switch (data.itemType)
+            {
+                case ItemType.Weapon:
+                    statName.text = "공격력";
+                    statValue.text = $"{data.damage}";
+                    break;
+            }
         }
        
         SetButton();

@@ -23,14 +23,6 @@
             "enhance": 0,
             "equip": false,
             "gradeType": 2
-        },
-        {
-            "id": 4,
-            "itemId": 1004,
-            "count": 1,
-            "enhance": 0,
-            "equip": false,
-            "gradeType": 3
         }
     ]
 }
